@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <!-- Google Web Fonts -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!-- Stylesheet CSS -->
+    <link rel='stylesheet' href='stylesheets/index.css' />
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <!--firebase-->
+    <script src="https://www.gstatic.com/firebasejs/4.12.1/firebase.js"></script>
+    <script>
+    // Initialize Firebase
+        var config = {
+            apiKey: "AIzaSyBqaB_5x6WNZiU5RoSZ4aveLmuMgfs0m_0",
+            authDomain: "viban-44f1e.firebaseapp.com",
+            databaseURL: "https://viban-44f1e.firebaseio.com",
+            projectId: "viban-44f1e",
+            storageBucket: "",
+            messagingSenderId: "150917914821"
+        };
+        firebase.initializeApp(config);
+    </script>
+    <title>
+        viban
+    </title>
+</head>
+
+<body>
+    <div class="container-fluid">
+        <nav class="navbar navbar-expand-sm">
+            <button type="button" class="btn btn-info">吉祥物圖鑑</button>
+            <button type="button" class="btn btn-info">優惠券圖鑑</button>
+            <i class="material-icons justify-content-end">camera_alt</i>
+        </nav>
+        <canvas id="canvas">
+        </canvas>
+    </div>
+    <script>
+    //set notification
+        const messaging = firebase.messaging();
+
+        messaging.onTokenRefresh(function() {
+            messaging.getToken()
+                .then(function(refreshedToken) {
+                    console.log('Token refreshed.', refreshedToken);
+                })
+                .catch(function(err) {
+                    console.log('Unable to retrieve refreshed token ', err);
+                });
+        });
+
+        messaging.onMessage(function(payload) {
+            console.log("Message received. ", payload);
+        });
+
+        messaging.requestPermission()
+            .then(function() {
+                console.log('Notification permission granted.');
+                resetUI();
+            })
+            .catch(function(err) {
+                console.log('Unable to get permission to notify.', err);
+            });
+
+        function resetUI() {
+            console.log('resetUI');
+            messaging.getToken()
+                .then(function(currentToken) {
+                    if (currentToken) {
+                        console.log("currentToken:", currentToken);
+                    } else {
+                        console.log('No Instance ID token available. Request permission to generate one.');
+                    }
+                })
+                .catch(function(err) {
+                    console.log('An error occurred while retrieving token. ', err);
+                });
+        }
+
+
+
+
+
+    // set background
+    var canvas = document.getElementById("canvas");
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,9 @@
+.container-fluid {
+    padding: 10px 0px;
+    background-color: #EAF6F6;
+}
+
+.material-icons { 
+	text-align: right;
+	font-size: 48px; 
+}

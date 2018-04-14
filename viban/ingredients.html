@@ -1,0 +1,151 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <!-- Google Web Fonts -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!-- Stylesheet CSS -->
+    <link rel='stylesheet' href='stylesheets/ingredients.css' />
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.2.1.js" integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <!--firebase-->
+    <script src="https://www.gstatic.com/firebasejs/4.12.1/firebase.js"></script>
+    <script>
+    // Initialize Firebase
+    // var config = {
+    //     apiKey: "AIzaSyBqaB_5x6WNZiU5RoSZ4aveLmuMgfs0m_0",
+    //     authDomain: "viban-44f1e.firebaseapp.com",
+    //     databaseURL: "https://viban-44f1e.firebaseio.com",
+    //     projectId: "viban-44f1e",
+    //     storageBucket: "",
+    //     messagingSenderId: "150917914821"
+    // };
+    // firebase.initializeApp(config);
+    </script>
+    <title>
+        viban
+    </title>
+</head>
+
+<body>
+    <div class="container-fluid">
+        <nav id="circle-nav-wrapper" class="circle-nav-wrapper">
+            <div class="circle-nav-toggle"><i class="material-icons">camera</i></div>
+            <div class="circle-nav-panel"></div>
+            <ul class="circle-nav-menu">
+                <li class="circle-nav-item circle-nav-item-1"><a href="./index.html"><i class="material-icons">home</i><span>Home</span></a></li>
+                <li class="circle-nav-item circle-nav-item-2"><a href="#"><i class="material-icons">memory</i><span>Ingredients</span></a></li>
+                <li class="circle-nav-item circle-nav-item-3"><a href="./robots.html"><i class="material-icons">adb</i><span>Robots</span></a></li>
+                <li class="circle-nav-item circle-nav-item-4"><a href="#"><i class="material-icons">place</i><span>Map</span></a></li>
+                <li class="circle-nav-item circle-nav-item-5"><a href="#"><i class="material-icons">loyalty</i><span>Coupon</span></a></li>
+            </ul>
+        </nav>
+    </div>
+    <div class="container">
+        <!-- Start of content block -->
+        <div class="editor-indent">
+            <div class="css3-tabstrip">
+                <ul>
+                    <li>
+                        <input type="radio" name="css3-tabstrip-0" checked="checked" id="css3-tabstrip-0-0" />
+                        <label for="css3-tabstrip-0-0">礦石</label>
+                        <div>
+                            <table class="table borderless">
+                                <tbody>
+                                    <tr>
+                                        <td><img src="stylesheets/img/ruby.png" class="img-thumbnail"></td>
+                                        <td><img src="stylesheets/img/blue.png" class="img-thumbnail"></td>
+                                        <td><img src="stylesheets/img/ruby.png" class="img-thumbnail"></td>
+                                    </tr>
+                                    <tr>
+                                        <td><img src="stylesheets/img/ruby.png" class="img-thumbnail"></td>
+                                        <td><img src="stylesheets/img/blue.png" class="img-thumbnail"></td>
+                                        <td><img src="stylesheets/img/ruby.png" class="img-thumbnail"></td>
+                                    </tr>
+                                    <tr>
+                                        <td><img src="stylesheets/img/ruby.png" class="img-thumbnail"></td>
+                                        <td><img src="stylesheets/img/blue.png" class="img-thumbnail"></td>
+                                        <td><img src="stylesheets/img/ruby.png" class="img-thumbnail"></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </li>
+                    <li>
+                        <input type="radio" name="css3-tabstrip-0" id="css3-tabstrip-0-1" />
+                        <label for="css3-tabstrip-0-1">特殊道具</label>
+                        <div>
+                            <table class="table borderless">
+                                <tbody>
+                                    <tr>
+                                        <td><img src="stylesheets/img/tube.png" class="img-thumbnail"></td>
+                                        <td><img src="stylesheets/img/blue.png" class="img-thumbnail"></td>
+                                        <td><img src="stylesheets/img/ruby.png" class="img-thumbnail"></td>
+                                    </tr>
+                                    <tr>
+                                        <td><img src="stylesheets/img/ruby.png" class="img-thumbnail"></td>
+                                        <td><img src="stylesheets/img/blue.png" class="img-thumbnail"></td>
+                                        <td><img src="stylesheets/img/ruby.png" class="img-thumbnail"></td>
+                                    </tr>
+                                    <tr>
+                                        <td><img src="stylesheets/img/ruby.png" class="img-thumbnail"></td>
+                                        <td><img src="stylesheets/img/blue.png" class="img-thumbnail"></td>
+                                        <td><img src="stylesheets/img/ruby.png" class="img-thumbnail"></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="container col-xs-12" id="synthesis">
+            <table class="table borderless">
+                <tbody>
+                    <tr>
+                        <td><img src="stylesheets/img/ruby.png" class="img-thumbnail"></td>
+                        <td><img src="stylesheets/img/blue.png" class="img-thumbnail"></td>
+                        <td><img src="stylesheets/img/ruby.png" class="img-thumbnail"></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="container_button">
+            <div class="row justify-content-md-center">
+                <div class="col col-xs-3">
+                </div>
+                <div class="col-xs-6 col-xs-auto">
+                    <button type="button" class="btn btn-primary btn-lg">合成</button>
+                </div>
+                <div class="col col-xs-3">
+                </div>
+            </div>
+        </div>
+        <script>
+        //circle nav wrapper
+        ! function(e, o, l, c) {
+            e.fn.circleNav = function(o) {
+                var l = e.extend({}, e.fn.circleNav.settings, o);
+                return this.each(function() {
+                    var o = e(this),
+                        c = e(".circle-nav-toggle"),
+                        n = e(".circle-nav-panel"),
+                        a = e(".circle-nav-menu");
+                    l.overlay && 0 == e(".circle-nav-overlay").length && (e("body").append("<div class='circle-nav-overlay'></div>"), e(".circle-nav-overlay").css({ top: "0", right: "0", bottom: "0", left: "0", position: "fixed", "background-color": l.overlayColor, opacity: l.overlayOpacity, "z-index": "1", display: "none" })), e(".circle-nav-toggle, .circle-nav-overlay").on("click", function() { o.stop().toggleClass("circle-nav-open"), c.stop().toggleClass("circle-nav-open"), n.stop().toggleClass("circle-nav-open"), a.stop().toggleClass("circle-nav-open"), e(".circle-nav-overlay").fadeToggle(), e("body").css("overflow") ? e("body, html").css("overflow", "") : e("body, html").css("overflow", "hidden") })
+                })
+            }, e.fn.circleNav.settings = { overlay: !0, overlayColor: "#fff", overlayOpacity: ".7" }
+        }(jQuery, window, document);
+        $(function() { $("#circle-nav-wrapper").circleNav() });
+        </script>
+</body>
+
+</html>

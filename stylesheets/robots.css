@@ -1,34 +1,7 @@
-body {
-    position: relative;
-    margin: 0;
-    padding: 0
-    /*    background-image: url(./lab.jpg);
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    background-position: center;
-    background-size: cover;*/
-}
-
-
-.bg {
-    position: fixed;
-    top: 0;
-    left: 0;
-    bottom: 0;
-    right: 0;
-    z-index: -999;
-}
-
-.bg img {
-    min-height: 100%;
-    width: 100%;
-}
-
-
-
-/*.container-fluid {
+.container-fluid {
     padding: 10px 0px;
-}*/
+    background-color: #BBBBBB;
+}
 
 ul {
     margin: 0;
@@ -308,18 +281,3 @@ ul li {
         font-size: .8em
     }
 }
-
-/*.scientist {
-    position: fixed;
-    top: 210px;
-    left: 10px;
-    bottom: 0;
-    right: 0;
-}
-
-.scientist img {
-    min-height: 50%;
-    width: 70%;
-}*/
-
-/*# sourceMappingURL=styles.min.css.map */

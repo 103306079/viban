@@ -1,34 +1,14 @@
 body {
-    position: relative;
-    margin: 0;
-    padding: 0
-    /*    background-image: url(./lab.jpg);
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    background-position: center;
-    background-size: cover;*/
+    background-color: #594B6F;
 }
 
-
-.bg {
-    position: fixed;
-    top: 0;
-    left: 0;
-    bottom: 0;
-    right: 0;
-    z-index: -999;
-}
-
-.bg img {
-    min-height: 100%;
-    width: 100%;
-}
-
-
-
-/*.container-fluid {
+.container-fluid {
     padding: 10px 0px;
-}*/
+}
+
+
+
+/*menu*/
 
 ul {
     margin: 0;
@@ -82,7 +62,8 @@ ul li {
     .circle-nav-wrapper .circle-nav-toggle:focus,
     .circle-nav-wrapper .circle-nav-toggle:hover {
         opacity: .8;
-        cursor: pointer
+        cursor: pointer;
+        z-index: 999999;
     }
     .circle-nav-wrapper .circle-nav-toggle.circle-nav-open {
         border: 2px solid #fff;
@@ -309,17 +290,416 @@ ul li {
     }
 }
 
-/*.scientist {
-    position: fixed;
-    top: 210px;
-    left: 10px;
-    bottom: 0;
-    right: 0;
+@media (max-width:320px) {
+
+    .container {
+        padding: 25px 20px 0px 20px;
+    }
+
+
+    .css3-tabstrip {
+        width: 100%;
+        height: 350px;
+    }
+
+    .css3-tabstrip ul,
+    .css3-tabstrip li {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+    }
+
+    .css3-tabstrip,
+    .css3-tabstrip input[type="radio"]:checked+label {
+        position: relative;
+    }
+
+    .css3-tabstrip li,
+    .css3-tabstrip input[type="radio"]+label {
+        display: inline-block;
+    }
+
+    .css3-tabstrip li>div,
+    .css3-tabstrip input[type="radio"] {
+        position: absolute;
+    }
+
+    .css3-tabstrip li>div,
+    .css3-tabstrip input[type="radio"]+label {
+        border: solid 3px #A395C2;
+    }
+
+    .css3-tabstrip {
+        font: normal 18px Arial, Sans-serif;
+        color: #ffffff;
+    }
+
+    .css3-tabstrip li {
+        vertical-align: top;
+    }
+
+    .css3-tabstrip li:first-child {
+        margin-left: 10px;
+    }
+
+    .css3-tabstrip li>div {
+        top: 48px;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        padding: 8px;
+        overflow: auto;
+        background: #2A252F;
+        -moz-box-sizing: border-box;
+        -webkit-box-sizing: border-box;
+        box-sizing: border-box;
+        border-radius: 5px;
+        z-index: -1;
+    }
+
+    .css3-tabstrip input[type="radio"]+label {
+        margin: 0 5px 0 0;
+        padding: 10px 30px;
+        background: #A395C2;
+        text-align: center;
+        border-radius: 5px 5px 0 0;
+        cursor: pointer;
+        -moz-user-select: none;
+        -webkit-user-select: none;
+        user-select: none;
+    }
+
+    .css3-tabstrip input[type="radio"]:checked+label {
+        z-index: -1;
+        background: #2A252F;
+        border-bottom-color: #2A252F;
+        cursor: default;
+    }
+
+    .css3-tabstrip input[type="radio"] {
+        opacity: 0;
+    }
+
+    .css3-tabstrip input[type="radio"]~div {
+        display: none;
+    }
+
+    .css3-tabstrip input[type="radio"]:checked:not(:disabled)~div {
+        display: block;
+    }
+
+    .css3-tabstrip input[type="radio"]:disabled+label {
+        opacity: .5;
+        cursor: no-drop;
+    }
+
+    .borderless td,
+    .borderless th {
+        border: none;
+    }
+
+    .img-thumbnail {
+        margin: 5px 0px;
+        z-index: -1;
+    }
+
+    .container .col-xs-12 {
+        height: 100px;
+        padding: 0px 8px;
+        background: #2A252F;
+        border-radius: 5px;
+        border: solid 3px #A395C2;
+    }
+
+    .container .col-xs-12>table {
+        margin: 0px 0px 20px 0px;
+    }
+
+    .container_button {
+        margin: -12px 0px;
+    }
+
+    .btn {
+        background: #DCD5F2;
+        color: #000000;
+        border: solid 3px #A395C2;
+        padding: 5px 35px;
+        font-size: 20px;
+    }
 }
 
-.scientist img {
-    min-height: 50%;
-    width: 70%;
-}*/
+@media (min-width:321px) and (max-width:375px) {
 
-/*# sourceMappingURL=styles.min.css.map */
+    .container {
+        padding: 30px 20px 0px 20px;
+    }
+
+
+    .css3-tabstrip {
+        width: 100%;
+        height: 400px;
+    }
+
+    .css3-tabstrip ul,
+    .css3-tabstrip li {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+    }
+
+    .css3-tabstrip,
+    .css3-tabstrip input[type="radio"]:checked+label {
+        position: relative;
+    }
+
+    .css3-tabstrip li,
+    .css3-tabstrip input[type="radio"]+label {
+        display: inline-block;
+    }
+
+    .css3-tabstrip li>div,
+    .css3-tabstrip input[type="radio"] {
+        position: absolute;
+    }
+
+    .css3-tabstrip li>div,
+    .css3-tabstrip input[type="radio"]+label {
+        border: solid 3px #A395C2;
+    }
+
+    .css3-tabstrip {
+        font: normal 18px Arial, Sans-serif;
+        color: #ffffff;
+    }
+
+    .css3-tabstrip li {
+        vertical-align: top;
+    }
+
+    .css3-tabstrip li:first-child {
+        margin-left: 10px;
+    }
+
+    .css3-tabstrip li>div {
+        top: 48px;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        padding: 8px;
+        overflow: auto;
+        background: #2A252F;
+        -moz-box-sizing: border-box;
+        -webkit-box-sizing: border-box;
+        box-sizing: border-box;
+        border-radius: 5px;
+        z-index: -1;
+    }
+
+    .css3-tabstrip input[type="radio"]+label {
+        margin: 0 5px 0 0;
+        padding: 10px 45px;
+        background: #A395C2;
+        text-align: center;
+        border-radius: 5px 5px 0 0;
+        cursor: pointer;
+        -moz-user-select: none;
+        -webkit-user-select: none;
+        user-select: none;
+    }
+
+    .css3-tabstrip input[type="radio"]:checked+label {
+        z-index: -1;
+        background: #2A252F;
+        border-bottom-color: #2A252F;
+        cursor: default;
+    }
+
+    .css3-tabstrip input[type="radio"] {
+        opacity: 0;
+    }
+
+    .css3-tabstrip input[type="radio"]~div {
+        display: none;
+    }
+
+    .css3-tabstrip input[type="radio"]:checked:not(:disabled)~div {
+        display: block;
+    }
+
+    .css3-tabstrip input[type="radio"]:disabled+label {
+        opacity: .5;
+        cursor: no-drop;
+    }
+
+    .borderless td,
+    .borderless th {
+        border: none;
+    }
+
+    .img-thumbnail {
+        margin: 5px 0px;
+        z-index: -1;
+    }
+
+    .container .col-xs-12 {
+        height: 120px;
+        padding: 0px 8px;
+        background: #2A252F;
+        border-radius: 5px;
+        border: solid 3px #A395C2;
+    }
+
+    .container .col-xs-12>table {
+        margin: 0px 0px 20px 0px;
+    }
+
+    .container_button {
+        margin: -15px 0px;
+    }
+
+    .btn {
+        background: #DCD5F2;
+        color: #000000;
+        border: solid 3px #A395C2;
+        padding: 10px 40px;
+        font-size: 24px;
+    }
+}
+
+@media (min-width:376px) and (max-width:414px) {
+
+    .container {
+        padding: 35px 20px 0px 20px;
+    }
+
+
+    .css3-tabstrip {
+        width: 100%;
+        height: 450px;
+    }
+
+    .css3-tabstrip ul,
+    .css3-tabstrip li {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+    }
+
+    .css3-tabstrip,
+    .css3-tabstrip input[type="radio"]:checked+label {
+        position: relative;
+    }
+
+    .css3-tabstrip li,
+    .css3-tabstrip input[type="radio"]+label {
+        display: inline-block;
+    }
+
+    .css3-tabstrip li>div,
+    .css3-tabstrip input[type="radio"] {
+        position: absolute;
+    }
+
+    .css3-tabstrip li>div,
+    .css3-tabstrip input[type="radio"]+label {
+        border: solid 3px #A395C2;
+    }
+
+    .css3-tabstrip {
+        font: normal 20px Arial, Sans-serif;
+        color: #ffffff;
+    }
+
+    .css3-tabstrip li {
+        vertical-align: top;
+    }
+
+    .css3-tabstrip li:first-child {
+        margin-left: 15px;
+    }
+
+    .css3-tabstrip li>div {
+        top: 55px;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        padding: 8px;
+        overflow: auto;
+        background: #2A252F;
+        -moz-box-sizing: border-box;
+        -webkit-box-sizing: border-box;
+        box-sizing: border-box;
+        border-radius: 5px;
+        z-index: -1;
+    }
+
+    .css3-tabstrip input[type="radio"]+label {
+        margin: 0 5px 0 0;
+        padding: 12px 50px;
+        background: #A395C2;
+        text-align: center;
+        border-radius: 5px 5px 0 0;
+        cursor: pointer;
+        -moz-user-select: none;
+        -webkit-user-select: none;
+        user-select: none;
+    }
+
+    .css3-tabstrip input[type="radio"]:checked+label {
+        z-index: -1;
+        background: #2A252F;
+        border-bottom-color: #2A252F;
+        cursor: default;
+    }
+
+    .css3-tabstrip input[type="radio"] {
+        opacity: 0;
+    }
+
+    .css3-tabstrip input[type="radio"]~div {
+        display: none;
+    }
+
+    .css3-tabstrip input[type="radio"]:checked:not(:disabled)~div {
+        display: block;
+    }
+
+    .css3-tabstrip input[type="radio"]:disabled+label {
+        opacity: .5;
+        cursor: no-drop;
+    }
+
+    .borderless td,
+    .borderless th {
+        border: none;
+    }
+
+    .img-thumbnail {
+        margin: 5px 0px;
+        z-index: -1;
+    }
+
+    .container .col-xs-12 {
+        height: 130px;
+        padding: 0px 8px;
+        background: #2A252F;
+        border-radius: 5px;
+        border: solid 3px #A395C2;
+    }
+
+    .container .col-xs-12>table {
+        margin: 0px 0px 20px 0px;
+    }
+
+    .container_button {
+        margin: -10px 0px;
+    }
+
+    .btn {
+        background: #DCD5F2;
+        color: #000000;
+        border: solid 3px #A395C2;
+        padding: 10px 40px;
+        font-size: 24px;
+    }
+}

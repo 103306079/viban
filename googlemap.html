@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Page Title</title>
+<meta name="viewport" content="width=device-width; initial-scale=1.0">
+<link rel="stylesheet" style="text/css" href="googlemap.css" />
+<meta charset="utf-8">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+<div class="container">
+
+<button type="button" class="btn btn-info btn-lg" id="family"data-toggle="modal" data-target="#myModal1">合成</button>
+<button type="button" class="btn btn-info btn-lg" id="lou"data-toggle="modal" data-target="#myModal1">合成</button>
+ <button type="button" class="btn btn-info btn-lg" id="mac"data-toggle="modal" data-target="#myModal">合成</button>
+<div class="blue">
+	<p id="amount">0/2</p>
+<img src="blue.png">
+
+</div>
+<div class="purple">
+	<p>2/2</p>
+<img src="purple.png">
+
+</div>
+<div class="ruby">
+	<p id="amount">2/3</p>
+<img src="ruby.png">
+
+</div>
+<div class="rubym">
+	<p>2/2</p>
+<img src="ruby.png">
+
+</div>
+<div class="blue2">
+	<p id="amount">0/2</p>
+<img src="blue.png">
+
+</div>
+<div class="purple2">
+	<p>2/2</p>
+<img src="purple.png">
+
+</div>
+<div class="modal fade" id="myModal1" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">可惜</h4>
+        </div>
+        <div class="modal-body">
+          <p>材料不足</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal" id="back">Close</button>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+<div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">麥當勞</h4>
+        </div>
+        <div class="modal-body">
+          <img src="Mc.png" class="macp">
+          <h4 class="mcamount">擁有數量:0</h4>
+          <p>大麥克買一送一</p>
+
+          <p>不限門市兌換</p>
+
+
+        </div>
+        
+        <div class="modal-footer">
+        	<img src="ruby.png" class="rubychange">
+			<p>2/2</p>
+			<div>
+          <button type="button" class="btn btn-default" data-dismiss="modal" id="com">合成</button>
+          </div>
+          
+          
+        </div>
+      </div>
+      
+    </div>
+  </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,130 @@
+@media screen and (max-width: 414px){
+.container{
+	     
+    background-image: url('googlemap.jpg');        
+    background-repeat: no-repeat;        
+    position: relative;
+    display: center;        
+    width:375px;            
+    height: 667px;       
+    margin-left: auto;      
+    margin-right: auto;       
+  
+
+}
+.blue{
+	
+	position: absolute;
+    left: 90px;
+    top: 333px;
+}
+.purple{
+	
+	position: absolute;
+    left: 121px;
+    top: 333px;
+}
+.blue2{
+	
+	position: absolute;
+    left: 243px;
+    top: 240px;
+}
+.purple2{
+	
+	position: absolute;
+    left: 273px;
+    top: 240px;
+}
+.ruby{
+	
+	position: absolute;
+    left: 152px;
+    top: 333px;
+}
+.rubym{
+	
+	position: absolute;
+    left: 15px;
+    top: 375px;
+}
+img{
+	width:20px;
+	height: 20px;
+
+}
+.macp{
+	width:190px;
+	height: 150px;
+	
+	
+	display:block; 
+	margin:auto;
+	display:block; 
+	margin:auto;
+}
+#amount{
+	color:red;
+}
+#family{
+	position: absolute;
+    left: 100px;
+    top: 280px;
+    
+    background-color:#AA0000; 
+    border: 10px;
+    color:white;
+}
+#mac{
+	position: absolute;
+    left: 6px;
+    top: 330px;
+   	
+   	
+    background-color:#008800; 
+    border: 10px;
+    color:white;
+}
+#lou{
+	position: absolute;
+    left: 233px;
+    top: 180px;
+    background-color:#AA0000; 
+    border: 10px;
+    color:white;
+}
+.modal-body{
+	
+	width:100%;
+}
+.mcamount{
+	
+	
+	text-align: center;
+}
+p{
+	text-align: center;
+	font-size: 15px;
+}
+.rubychange{
+	display:block; 
+	margin:auto;
+	width:30px;
+	height: 30px;
+}
+#com{
+	width: 100%;
+	background-color:#008800; 
+	color: white;
+	font-size: 20px;
+}
+.modal-title{
+	text-align: center;
+}
+#back{
+	width: 100%;
+	background-color:#AA0000; 
+	color: white;
+	font-size: 20px;
+}
+}

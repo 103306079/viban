@@ -1,6 +1,10 @@
+body {
+    background-color: #DADAE9;
+}
+
+
 .container-fluid {
     padding: 10px 0px;
-    background-color: #BBBBBB;
 }
 
 ul {

@@ -1,0 +1,19 @@
+@media screen and (max-width: 414px){
+.contain{
+	     
+         
+    background-image: url('coupon.png'); ;       
+    width:375px;            
+    height: 667px;         
+  
+
+	}
+/*.head{
+    background-color: #bfb0d6;
+    height: 50px;
+}
+h1{
+    text-align: center;
+    padding:5px; 
+}*/
+}

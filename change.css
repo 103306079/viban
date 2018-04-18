@@ -1,0 +1,32 @@
+@media screen and (max-width: 414px){
+.contain{
+	     
+    background-image: url('mcc.png');        
+    background-repeat: no-repeat;        
+    position: relative;
+    display: center;        
+    width:375px;            
+    height: 667px;       
+    margin-left: auto;      
+    margin-right: auto;       
+  
+
+	}
+.bo{
+	display: inline-block;
+	width: 100%;
+	position: absolute;
+    left: 45px;
+    top: 480px;
+}
+#collect{
+	width:140px;
+	background-color: #bfb0d6;
+	color: black;
+}
+#change{
+	width:140px;
+	background-color: #bfb0d6;
+	color: black;
+}
+}

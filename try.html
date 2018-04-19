@@ -26,11 +26,13 @@
       a.innerHTML = Math.round(alpha);
       b.innerHTML = Math.round(beta);
       g.innerHTML = Math.round(gamma);
-          
+          if(0<a<70){
+		  window.location.assign("https://www.w3schools.com");
+	  }
 		}, false);
   }else{
   	document.querySelector('body').innerHTML = '你的瀏覽器不支援喔';
-  }
+  }u
 	</script>
 </head>
 <body>

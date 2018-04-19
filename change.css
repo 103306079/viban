@@ -19,6 +19,13 @@
     left: 45px;
     top: 480px;
 }
+#home{
+	width:140px;
+	background-color: #bfb0d6;
+	position: absolute;
+    left: 235px;
+    top: 20px;
+}
 #collect{
 	width:140px;
 	background-color: #bfb0d6;

@@ -19,18 +19,6 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
     <!--firebase-->
     <script src="https://www.gstatic.com/firebasejs/4.12.1/firebase.js"></script>
-    <script>
-    // Initialize Firebase
-    // var config = {
-    //     apiKey: "AIzaSyBqaB_5x6WNZiU5RoSZ4aveLmuMgfs0m_0",
-    //     authDomain: "viban-44f1e.firebaseapp.com",
-    //     databaseURL: "https://viban-44f1e.firebaseio.com",
-    //     projectId: "viban-44f1e",
-    //     storageBucket: "",
-    //     messagingSenderId: "150917914821"
-    // };
-    // firebase.initializeApp(config);
-    </script>
     <title>
         viban
     </title>
@@ -40,6 +28,29 @@
     <div class="bg">
         <img src="stylesheets/img/lab.jpg">
     </div>
+    <!-- modal -->
+    <div class="modal" tabindex="-1" role="dialog" id="myModal">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">遊戲教學</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <h5>歡迎來到喬伊的實驗室!</h5> 你的任務就是替喬伊收集城市地底的礦石，幫助他完成合成機器人的夢想。
+                    <br>喬伊已經在各個路口設置礦物雷達，當你拿著手機實際走到路口的紅綠燈時，將會收到礦物雷達發出的採礦任務通知。 收到通知後，即可開始採礦任務收集礦石。
+                    <h6>但切記，手機發出的亮光會驚醒礦坑裡沉睡的蝙蝠，所以請務必將手機保持在採礦模式，否則辛苦收集到的礦石將全部遺失！</h6>
+                    </p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary"><a href="#" style="color: #000000">挖礦去!！</a></button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- circle nav menu -->
     <div class="container-fluid">
         <nav id="circle-nav-wrapper" class="circle-nav-wrapper">
             <div class="circle-nav-toggle"><i class="material-icons">camera</i></div>
@@ -53,9 +64,6 @@
             </ul>
         </nav>
     </div>
-<!--     <div class="scientist">
-        <img src="stylesheets/img/scientist.png">
-    </div> -->
     <script>
     //circle nav wrapper
     ! function(e, o, l, c) {
@@ -71,6 +79,9 @@
         }, e.fn.circleNav.settings = { overlay: !0, overlayColor: "#fff", overlayOpacity: ".7" }
     }(jQuery, window, document);
     $(function() { $("#circle-nav-wrapper").circleNav() });
+
+    //show modal 
+    $('#myModal').modal('show');
 
 
 
@@ -115,16 +126,49 @@
     //         });
     // }
 
+    // Initialize Firebase
+    var config = {
+        apiKey: "AIzaSyBqaB_5x6WNZiU5RoSZ4aveLmuMgfs0m_0",
+        authDomain: "viban-44f1e.firebaseapp.com",
+        databaseURL: "https://viban-44f1e.firebaseio.com",
+        projectId: "viban-44f1e",
+        storageBucket: "viban-44f1e.appspot.com",
+        messagingSenderId: "150917914821"
+    };
+    firebase.initializeApp(config);
 
+    var dbRef = firebase.database();
+    var statusRef = dbRef.ref('viban/status');
 
-    // // set background
-    // var canvas = document.getElementById("canvas");
-    // canvas.width = window.innerWidth;
-    // canvas.height = window.innerHeight;
-
-
-
-    //# sourceMappingURL=scripts.min.js.map
+    // switch pages
+    statusRef.on("value", function(snapshot) {
+        console.log(snapshot.val());
+        switch (snapshot.val()) {
+            case 0: //首頁
+                document.location.href = "#";
+                break;
+            case 1: //挖礦中
+                document.location.href = "https://103306079.github.io/viban/ingredients.html";
+                break;
+            case 2: //過馬路任務成功
+                document.location.href = "https://103306079.github.io/viban/ingredients.html";
+                break;
+            case 3: //過馬路任務失敗
+                document.location.href = "https://103306079.github.io/viban/ingredients.html";
+                break;
+            case 4: //bonus任務成功
+                document.location.href = "https://103306079.github.io/viban/ingredients.html";
+                break;
+            case 5: //bonus任務失敗
+                document.location.href = "https://103306079.github.io/viban/ingredients.html";
+                break;
+            default:
+                document.location.href = "https://103306079.github.io/viban/index.html";
+        }
+    }, function(error) {
+        console.log("Error: " + error.code);
+    });
+    </script>
     </script>
 </body>
 

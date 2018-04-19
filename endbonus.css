@@ -1,0 +1,42 @@
+@media screen and (max-width: 414px){
+.contain{
+	     
+    background-image: url('end.jpg');        
+    background-repeat: no-repeat;        
+    position: relative;
+    display: center;        
+    width:375px;            
+    height: 667px;       
+    margin-left: auto;      
+    margin-right: auto;       
+  
+
+	}
+.go{
+    display: inline-block;
+    width: 100%;
+    position: absolute;
+    left: 45px;
+    top:550px;
+}
+#front{
+    width:140px;
+    background-color: #bfb0d6;
+    color: black;
+}
+#lab{
+    width:140px;
+    background-color: #bfb0d6;
+    color: black;
+}
+.collect{
+    display: inline-block;
+    position: absolute;
+    left: 190px;
+    top:432px;
+}
+img{
+    width: 25px;
+    height: 25px;
+}
+}

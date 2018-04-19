@@ -8,6 +8,14 @@
   
 
 	}
+    #home{
+    width:140px;
+    background-color: #bfb0d6;
+    position: absolute;
+    left:125px;
+    top: 70px;
+    color: black;
+}
 /*.head{
     background-color: #bfb0d6;
     height: 50px;

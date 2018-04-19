@@ -1,0 +1,24 @@
+@media screen and (max-width: 414px){
+.contain{
+	     
+    background-image: url('failed.jpg');        
+    background-repeat: no-repeat;        
+    position: relative;
+    display: center;        
+    width:375px;            
+    height: 667px;       
+    margin-left: auto;      
+    margin-right: auto;       
+  
+
+	}
+
+#home{
+    width:140px;
+    background-color: #bfb0d6;
+    position: absolute;
+    left:125px;
+    top: 100px;
+    color: black;
+}
+}

@@ -24,6 +24,21 @@ body {
     width: 100%;
 }
 
+.modal {
+    z-index: 999999999;
+}
+
+h6 {
+    color: #FF5F5F;
+}
+
+.modal-footer>button {
+    background: #DCD5F2;
+    border: solid 3px #A395C2;
+    font-size: 24px;
+    font-style: bold;
+}
+
 
 
 /*.container-fluid {
@@ -309,6 +324,7 @@ ul li {
     }
 }
 
+
 /*.scientist {
     position: fixed;
     top: 210px;
@@ -321,5 +337,6 @@ ul li {
     min-height: 50%;
     width: 70%;
 }*/
+
 
 /*# sourceMappingURL=styles.min.css.map */

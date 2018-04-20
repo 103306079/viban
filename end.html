@@ -1,24 +1,73 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-<title>Change</title>
-<meta name="viewport" content="width=device-width; initial-scale=1.0">
-<link rel="stylesheet" style="text/css" href="end.css"/>
-<meta charset="utf-8">
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <title>Change</title>
+    <meta name="viewport" content="width=device-width; initial-scale=1.0">
+    <link rel="stylesheet" style="text/css" href="end.css" />
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <!--firebase-->
+    <script src="https://www.gstatic.com/firebasejs/4.12.1/firebase.js"></script>
 </head>
+
 <body>
-<div class="contain">
-	<div class="go">
-	<button type="button" class="btn btn-info btn-lg" id="front" onclick="window.location.href='dig.html'">繼續向前挖</button>
-	<button type="button" class="btn btn-info btn-lg" id="lab" onclick="window.location.href='index.html'">到實驗室合成</button>
-	</div>
-	<div class="collect">
-		<img src="ruby.png">
-		<img src="ruby.png">
-	</div>
-</div>
+    <div class="contain">
+        <div class="go">
+            <button type="button" class="btn btn-info btn-lg" id="front" onclick="window.location.href='dig.html'">繼續向前挖</button>
+            <button type="button" class="btn btn-info btn-lg" id="lab" onclick="window.location.href='index.html'">到實驗室合成</button>
+        </div>
+        <div class="collect">
+            <img src="ruby.png">
+            <img src="ruby.png">
+        </div>
+    </div>
+    <script>
+	    // Initialize Firebase
+	    var config = {
+	        apiKey: "AIzaSyBqaB_5x6WNZiU5RoSZ4aveLmuMgfs0m_0",
+	        authDomain: "viban-44f1e.firebaseapp.com",
+	        databaseURL: "https://viban-44f1e.firebaseio.com",
+	        projectId: "viban-44f1e",
+	        storageBucket: "viban-44f1e.appspot.com",
+	        messagingSenderId: "150917914821"
+	    };
+	    firebase.initializeApp(config);
+
+	    var dbRef = firebase.database();
+	    var statusRef = dbRef.ref('viban/status');
+
+	    // switch pages
+	    statusRef.on("value", function(snapshot) {
+	        console.log(snapshot.val());
+	        switch (snapshot.val()) {
+	            case 0: //首頁
+	                document.location.href = "https://103306079.github.io/viban/index.html";
+	                break;
+	            case 1: //挖礦中
+	                document.location.href = "https://103306079.github.io/viban/dig.html";
+	                break;
+	            case 2: //過馬路任務結束(成功)
+	                document.location.href = "https://103306079.github.io/viban/end.html";
+	                break;
+	            case 3: //過馬路任務失敗
+	                document.location.href = "https://103306079.github.io/viban/failed.html";
+	                break;
+	            case 4: //bonus任務成功
+	                document.location.href = "https://103306079.github.io/viban/endbonus.html";
+	                break;
+	            case 5: //bonus任務失敗
+	                document.location.href = "https://103306079.github.io/viban/continuefail.html";
+	                break;
+	            default:
+	                document.location.href = "https://103306079.github.io/viban/index.html";
+	        }
+	    }, function(error) {
+	        console.log("Error: " + error.code);
+	    });
+    </script>
 </body>
+
 </html>

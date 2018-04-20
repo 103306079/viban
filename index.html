@@ -101,8 +101,9 @@
 
     //show modal 
     $('#myModal').modal('show');
-    document.getElementById("nextPage").onclick = function(){ changeModal() }
-    function changeModal(){
+    document.getElementById("nextPage").onclick = function() { changeModal() }
+
+    function changeModal() {
         $('#myModal').modal('hide');
         $('#nextModal').modal('show');
     }
@@ -192,7 +193,6 @@
     }, function(error) {
         console.log("Error: " + error.code);
     });
-    </script>
     </script>
 </body>
 

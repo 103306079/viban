@@ -74,15 +74,15 @@
     });
 
     function keepDigging() {
-        statusRef.set({
-        	snapshot.val() = 1;
+        statusRef.update({
+        	status:1
         })
         console.log(123);
     }
 
     function gotoLab() {
-        statusRef.set({
-        	snapshot.val() = 0;
+        statusRef.update({
+        	status:0;
         })
     }
     </script>

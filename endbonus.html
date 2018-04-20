@@ -25,6 +25,11 @@
         </div>
     </div>
     <script>
+
+    document.getElementById("front").onclick = function() { keepDigging() }
+    document.getElementById("lab").onclick = function() { gotoLab() }
+
+
     // Initialize Firebase
     var config = {
         apiKey: "AIzaSyBqaB_5x6WNZiU5RoSZ4aveLmuMgfs0m_0",
@@ -68,11 +73,16 @@
         console.log("Error: " + error.code);
     });
 
-    document.getElementById("front").onclick = function() { keepDigging() }
-
     function keepDigging() {
         statusRef.set({
         	snapshot.val() = 1;
+        })
+        console.log(123);
+    }
+
+    function gotoLab() {
+        statusRef.set({
+        	snapshot.val() = 0;
         })
     }
     </script>

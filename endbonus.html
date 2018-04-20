@@ -26,8 +26,8 @@
     </div>
     <script>
 
-    document.getElementById("front").onclick = function() { keepDigging() }
-    document.getElementById("lab").onclick = function() { gotoLab() }
+    // document.getElementById("front").onclick = function() { keepDigging() }
+    // document.getElementById("lab").onclick = function() { gotoLab() }
 
 
     // Initialize Firebase
@@ -73,18 +73,18 @@
         console.log("Error: " + error.code);
     });
 
-    function keepDigging() {
-        statusRef.update({
-        	status:1
-        })
-        console.log(123);
-    }
+    // function keepDigging() {
+    //     statusRef.update({
+    //     	status:1
+    //     })
+    //     console.log(123);
+    // }
 
-    function gotoLab() {
-        statusRef.update({
-        	status:0
-        })
-    }
+    // function gotoLab() {
+    //     statusRef.update({
+    //     	status:0
+    //     })
+    // }
     </script>
 </body>
 

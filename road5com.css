@@ -1,0 +1,30 @@
+@media screen and (max-width: 414px){
+.contain{
+	     
+    background-image: url('road5com.png');        
+    background-repeat: no-repeat;        
+    position: relative;
+    display: center;        
+    width:375px;            
+    height: 667px;       
+    margin-left: auto;      
+    margin-right: auto;       
+  
+
+	}
+.go{
+    
+    width: 100%;
+    position: absolute;
+    left: 200px;
+    top:550px;
+}
+
+#lab{
+    width:140px;
+    background-color: #bfb0d6;
+    color: black;
+    
+}
+
+}

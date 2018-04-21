@@ -50,10 +50,15 @@
                 document.location.href = "https://103306079.github.io/viban/index.html";
                 break;
             case 1: //挖礦中
+                var start_time = new Date().getTime();
                 document.location.href = "https://103306079.github.io/viban/dig.html";
                 break;
             case 2: //過馬路任務結束(成功)
+                var end_time = new Date().getTime();
+                var timeDuration = end_time - start_time;
+                console.log(timeDuration);
                 document.location.href = "#";
+                break;
                 break;
             case 3: //過馬路任務失敗
                 document.location.href = "https://103306079.github.io/viban/failed.html";

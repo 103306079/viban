@@ -1,17 +1,131 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-<title>road3fail</title>
-<meta name="viewport" content="width=device-width; initial-scale=1.0">
-<link rel="stylesheet" style="text/css" href="road3fail.css"/>
-<meta charset="utf-8">
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <title>road3fail</title>
+    <meta name="viewport" content="width=device-width; initial-scale=1.0">
+    <link rel="stylesheet" style="text/css" href="road3fail.css" />
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <!--firebase-->
+    <script src="https://www.gstatic.com/firebasejs/4.12.1/firebase.js"></script>
 </head>
+
 <body>
-<div class="contain">
-	
-</div>
+    <div class="contain">
+    </div>
+    <div class="timeDuration">
+    </div>
+    <script>
+    // Initialize Firebase
+    var config = {
+        apiKey: "AIzaSyBqaB_5x6WNZiU5RoSZ4aveLmuMgfs0m_0",
+        authDomain: "viban-44f1e.firebaseapp.com",
+        databaseURL: "https://viban-44f1e.firebaseio.com",
+        projectId: "viban-44f1e",
+        storageBucket: "viban-44f1e.appspot.com",
+        messagingSenderId: "150917914821"
+    };
+    firebase.initializeApp(config);
+
+    var dbRef = firebase.database();
+    var statusRef = dbRef.ref('viban/status');
+    var timeRef = dbRef.ref('viban/time');
+
+
+    // switch pages
+    statusRef.on("value", function(snapshot) {
+        console.log(snapshot.val());
+        switch (snapshot.val()) {
+            case 0: //index
+                document.location.href = "https://103306079.github.io/viban/index.html";
+                break;
+            case 1: //digging
+                document.location.href = "https://103306079.github.io/viban/dig.html";
+                break;
+            case 2: //side1 pause
+                document.location.href = "https://103306079.github.io/viban/side1.html";
+                break;
+            case 3: //side1 fail
+                document.location.href = "https://103306079.github.io/viban/side1fail.html";
+                break;
+            case 4: //road1 pause
+                document.location.href = "https://103306079.github.io/viban/road1.html";
+                break;
+            case 5: //road1 fail
+                document.location.href = "https://103306079.github.io/viban/road1fial.html";
+                break;
+            case 6: //side2 pause
+                document.location.href = "https://103306079.github.io/viban/side2.html";
+                break;
+            case 7: //side2 fail
+                document.location.href = "https://103306079.github.io/viban/side2fail.html";
+                break;
+            case 8: //road2 pause
+                document.location.href = "https://103306079.github.io/viban/road2.html";
+                break;
+            case 9: //road2 fail
+                document.location.href = "https://103306079.github.io/viban/road2fail.html";
+                break;
+            case 10: //side3 pause
+                document.location.href = "https://103306079.github.io/viban/side3.html";
+                break;
+            case 11: //side3 fail
+                document.location.href = "https://103306079.github.io/viban/side3fail.html";
+                break;
+            case 12: //road3 pause
+                document.location.href = "https://103306079.github.io/viban/road3.html";
+                break;
+            case 13: //road3 fail
+                document.location.href = "#";
+                break;
+            case 14: //side4 pause
+                document.location.href = "https://103306079.github.io/viban/side4.html";
+                break;
+            case 15: //side4 fail
+                document.location.href = "https://103306079.github.io/viban/side4fail.html";
+                break;
+            case 16: //road4 pause
+                document.location.href = "https://103306079.github.io/viban/road4.html";
+                break;
+            case 17: //road4 fail
+                document.location.href = "https://103306079.github.io/viban/road4fail.html";
+                break;
+            case 18: //side5 pause
+                document.location.href = "https://103306079.github.io/viban/side5.html";
+                break;
+            case 19: //side5 fail
+                document.location.href = "https://103306079.github.io/viban/side5fail.html";
+                break;
+            case 20: //road5 pause
+                document.location.href = "https://103306079.github.io/viban/road5.html";
+                break;
+            case 21: //road5 fail
+                document.location.href = "https://103306079.github.io/viban/road5fail.html";
+                break;
+            case 22: //success
+                document.location.href = "https://103306079.github.io/viban/road5com.html";
+                break;
+            default:
+                document.location.href = "https://103306079.github.io/viban/index.html";
+        }
+    }, function(error) {
+        console.log("Error: " + error.code);
+    });
+
+    var end = new Date().getTime();
+    console.log(end);
+    timeRef.on("value", function(snapshot) {
+        console.log(snapshot.val());
+        var timeDuration = end - snapshot.val();
+        console.log(timeDuration)
+        var Mins = Math.round(((timeDuration % 86400000) % 3600000) / 60000);
+        console.log(Mins);
+        $(".timeDuration").append("<p>目前已挖礦" + Mins + "分</p>");
+    })
+    </script>
 </body>
+
 </html>

@@ -63,7 +63,7 @@
                     <h6>切記，若行走同時打開了手機，手機發出的亮光會驚醒地底沉睡的蝙蝠，辛苦收集到的礦石將全部遺失！</h6>
                     <p>只要遵守採礦守則，你便能一邊行走一邊蒐集礦石，走得越久能蒐集到越多喔!
                         <br>在馬路口進行挖礦，還能開啟快速挖礦模式，得到稀有的礦石！
-                        <br>準備好去挖礦了嗎？</p> 
+                        <br>準備好去挖礦了嗎？</p>
                     </p>
                     </p>
                 </div>
@@ -175,27 +175,74 @@
     statusRef.on("value", function(snapshot) {
         console.log(snapshot.val());
         switch (snapshot.val()) {
-            case 0: //首頁
+            case 0: //index
                 document.location.href = "#";
                 break;
-            case 1: //挖礦中
-                var start_time = new Date().getTime();
+            case 1: //digging
                 document.location.href = "https://103306079.github.io/viban/dig.html";
                 break;
-            case 2: //過馬路任務結束(成功)
-                var end_time = new Date().getTime();
-                var timeDuration = end_time - start_time;
-                console.log(timeDuration);
-                document.location.href = "https://103306079.github.io/viban/end.html";
+            case 2: //side1 pause
+                document.location.href = "https://103306079.github.io/viban/side1.html";
                 break;
-            case 3: //過馬路任務失敗
-                document.location.href = "https://103306079.github.io/viban/failed.html";
+            case 3: //side1 fail
+                document.location.href = "https://103306079.github.io/viban/side1fail.html";
                 break;
-            case 4: //bonus任務成功
-                document.location.href = "https://103306079.github.io/viban/endbonus.html";
+            case 4: //road1 pause
+                document.location.href = "https://103306079.github.io/viban/road1.html";
                 break;
-            case 5: //bonus任務失敗
-                document.location.href = "https://103306079.github.io/viban/continuefail.html";
+            case 5: //road1 fail
+                document.location.href = "https://103306079.github.io/viban/road1fial.html";
+                break;
+            case 6: //side2 pause
+                document.location.href = "https://103306079.github.io/viban/side2.html";
+                break;
+            case 7: //side2 fail
+                document.location.href = "https://103306079.github.io/viban/side2fail.html";
+                break;
+            case 8: //road2 pause
+                document.location.href = "https://103306079.github.io/viban/road2.html";
+                break;
+            case 9: //road2 fail
+                document.location.href = "https://103306079.github.io/viban/road2fail.html";
+                break;
+            case 10: //side3 pause
+                document.location.href = "https://103306079.github.io/viban/side3.html";
+                break;
+            case 11: //side3 fail
+                document.location.href = "https://103306079.github.io/viban/side3fail.html";
+                break;
+            case 12: //road3 pause
+                document.location.href = "https://103306079.github.io/viban/road3.html";
+                break;
+            case 13: //road3 fail
+                document.location.href = "https://103306079.github.io/viban/road3fail.html";
+                break;
+            case 14: //side4 pause
+                document.location.href = "https://103306079.github.io/viban/side4.html";
+                break;
+            case 15: //side4 fail
+                document.location.href = "https://103306079.github.io/viban/side4fail.html";
+                break;
+            case 16: //road4 pause
+                document.location.href = "https://103306079.github.io/viban/road4.html";
+                break;
+            case 17: //road4 fail
+                document.location.href = "https://103306079.github.io/viban/road4fail.html";
+                break;
+            case 18: //side5 pause
+                document.location.href = "https://103306079.github.io/viban/side5.html";
+                break;
+            case 19: //side5 fail
+                document.location.href = "https://103306079.github.io/viban/side5fail.html";
+                break;
+            case 20: //road5 pause
+                document.location.href = "https://103306079.github.io/viban/road5.html";
+                break;
+            case 21: //road5 fail
+                document.location.href = "https://103306079.github.io/viban/road5fail.html";
+                break;
+            case 22: //success
+                document.location.href = "https://103306079.github.io/viban/road5com.html";
                 break;
             default:
                 document.location.href = "https://103306079.github.io/viban/index.html";
@@ -204,11 +251,6 @@
         console.log("Error: " + error.code);
     });
 
-    // function goMining() {
-    //     statusRef.set({
-    //         snapshot.val() = 1;
-    //     })
-    // }
     </script>
 </body>
 

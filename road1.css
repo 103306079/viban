@@ -12,5 +12,13 @@
   
 
 	}
+	
+   .timeDuration{
+        padding-top: 50px; 
+    }
+    .timeDuration> p {
+        text-align:center;
+        font-size:24px;
+    }
 
 }

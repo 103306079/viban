@@ -40,9 +40,8 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <h5>歡迎來到喬伊的實驗室!</h5> 你的任務就是替喬伊收集城市地底的礦石，幫助他完成合成機器人的夢想。
-                    <br>喬伊已經在各個路口設置礦物雷達，當你拿著手機實際走到路口的紅綠燈時，將會收到礦物雷達發出的採礦任務通知。
-                    <br>收到通知後，即可開始採礦任務收集礦石。
+                    <h5>歡迎來到喬伊的實驗室!</h5> 科學家喬伊在這座城市地底下發現許多珍貴的礦石， 而你的任務就是替喬伊收集地底的礦石，幫助他完成合成機器人的夢想。
+                    <br>按下開始挖礦並且開始行走，你便能開啟挖礦任務。 此時請務必將手機保持在挖礦模式，不必將手機打開，收進口袋便能自動開採礦石。
                     </p>
                 </div>
                 <div class="modal-footer">
@@ -61,10 +60,15 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <h6>但切記，手機發出的亮光會驚醒礦坑裡沉睡的蝙蝠，所以請務必將手機保持在採礦模式，否則辛苦收集到的礦石將全部遺失！</h6>
+                    <h6>切記，若行走同時打開了手機，手機發出的亮光會驚醒地底沉睡的蝙蝠，辛苦收集到的礦石將全部遺失！</h6>
+                    <p>只要遵守採礦守則，你便能一邊行走一邊蒐集礦石，走得越久能蒐集到越多喔!
+                        <br>在馬路口進行挖礦，還能開啟快速挖礦模式，得到稀有的礦石！
+                        <br>準備好去挖礦了嗎？</p> 
+                    </p>
+                    </p>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-primary" id="goMining"><a href="./dig.html" style="color: #000000">挖礦去!！</a></button>
+                    <button type="button" class="btn btn-primary" id="goMining"><a href="./dig.html" style="color: #000000">開始挖礦</a></button>
                 </div>
             </div>
         </div>
@@ -107,6 +111,8 @@
         $('#myModal').modal('hide');
         $('#nextModal').modal('show');
     }
+
+    // document.getElementById("goMining").onclick = function() { timeDuration() }
 
 
 
@@ -173,9 +179,13 @@
                 document.location.href = "#";
                 break;
             case 1: //挖礦中
+                var start_time = new Date().getTime();
                 document.location.href = "https://103306079.github.io/viban/dig.html";
                 break;
             case 2: //過馬路任務結束(成功)
+                var end_time = new Date().getTime();
+                var timeDuration = end_time - start_time;
+                console.log(timeDuration);
                 document.location.href = "https://103306079.github.io/viban/end.html";
                 break;
             case 3: //過馬路任務失敗
@@ -193,6 +203,12 @@
     }, function(error) {
         console.log("Error: " + error.code);
     });
+
+    // function goMining() {
+    //     statusRef.set({
+    //         snapshot.val() = 1;
+    //     })
+    // }
     </script>
 </body>
 

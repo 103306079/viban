@@ -40,12 +40,12 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <h5>歡迎來到喬伊的實驗室!</h5> 科學家喬伊在這座城市地底下發現許多珍貴的礦石， 而你的任務就是替喬伊收集地底的礦石，幫助他完成合成機器人的夢想。
-                    <br>按下開始挖礦並且開始行走，你便能開啟挖礦任務。 此時請務必將手機保持在挖礦模式，不必<span style="color: red">盯著</span>手機，收進口袋便能自動開採礦石。
+                    <h5>歡迎來到喬伊的實驗室!</h5>
+                    <p>科學家喬伊在這座城市地底下發現許多珍貴的礦石， 而你的任務就是替喬伊收集地底的礦石，幫助他完成合成機器人的夢想。
                     </p>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-primary" id="nextPage">下一頁</button>
+                    <button type="button" class="btn btn-primary" id="nextPage1">下一頁</button>
                 </div>
             </div>
         </div>
@@ -60,10 +60,46 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <h6>切記，若行走同時<span style="color: red">看了</span>手機，手機發出的亮光會驚醒地底沉睡的蝙蝠，辛苦收集到的礦石將全部遺失！</h6>
-                    <p>只要遵守採礦守則，你便能一邊行走一邊蒐集礦石，走得越久能蒐集到越多喔!
-                        <br>在馬路口進行挖礦，還能開啟快速挖礦模式，得到稀有的礦石！
-                        <br><span style="color: red">但在快速挖礦模式中，為了保持專注，請無論如何不要分心看手機喔！</span>
+                    <p>按下開始挖礦並行走，便能開啟挖礦任務。此時請務必將手機保持在挖礦模式，不必<span style="color: red">盯著</span>手機，收進口袋便能自動開採礦石。
+                    </p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" id="nextPage2">下一頁</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal" tabindex="-1" role="dialog" id="thirdModal">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">遊戲教學</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <p>切記，若行走同時<span style="color: red">看了</span>手機，辛苦收集到的礦石將全部遺失！
+                    </p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" id="nextPage3">下一頁</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal" tabindex="-1" role="dialog" id="lastModal">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">遊戲教學</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <p>只要遵守採礦守則，走得越久能蒐集到越多喔!
+                        <br>在馬路口進行挖礦，還有快速挖礦模式，只要不看手機，便可以得到稀有的礦石！
                         <br>準備好去挖礦了嗎？</p>
                     </p>
                     </p>
@@ -106,11 +142,23 @@
 
     //show modal 
     $('#myModal').modal('show');
-    document.getElementById("nextPage").onclick = function() { changeModal() }
+    document.getElementById("nextPage1").onclick = function() { changeModal1() }
+    document.getElementById("nextPage2").onclick = function() { changeModal2() }
+    document.getElementById("nextPage3").onclick = function() { changeModal3() }
 
-    function changeModal() {
+    function changeModal1() {
         $('#myModal').modal('hide');
         $('#nextModal').modal('show');
+    }
+
+    function changeModal2() {
+        $('#nextModal').modal('hide');
+        $('#thirdModal').modal('show');
+    }
+
+    function changeModal3() {
+        $('#thirdModal').modal('hide');
+        $('#lastModal').modal('show');
     }
 
     // document.getElementById("goMining").onclick = function() { timeDuration() }
@@ -175,7 +223,7 @@
     statusRef.on("value", function(snapshot) {
         console.log(snapshot.val());
         switch (snapshot.val()) {
-           case 0: //start
+            case 0: //start
                 document.location.href = "https://103306079.github.io/viban/start.html";
                 break;
             case 1: //digging
@@ -250,7 +298,6 @@
     }, function(error) {
         console.log("Error: " + error.code);
     });
-
     </script>
 </body>
 

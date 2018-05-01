@@ -48,7 +48,13 @@ h6 {
     color: #ffffff;
 }
 
-
+.modal-footer>button:hover {
+    background: #322A42;
+    border: solid 3px #A395C2;
+    font-size: 24px;
+    font-style: bold;
+    color: #ffffff;
+}
 
 /*.container-fluid {
     padding: 10px 0px;

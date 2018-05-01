@@ -25,6 +25,7 @@
 .go{
     
     width: 100%;
+    position:absolute;
     margin-left: 100px;
     top:550px;
 }

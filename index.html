@@ -172,7 +172,7 @@
     var dbRef = firebase.database();
     var statusRef = dbRef.ref('viban/status');
 
-    switch pages
+    //switch pages
     statusRef.on("value", function(snapshot) {
         console.log(snapshot.val());
         switch (snapshot.val()) {

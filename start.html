@@ -15,9 +15,9 @@
 
 <body>
     <div class="contain">
-        <div class="timeDuration">
+<!--         <div class="timeDuration">
 
-        </div>
+        </div> -->
     </div>
     <script>
     // Initialize Firebase
@@ -116,16 +116,16 @@
         console.log("Error: " + error.code);
     });
 
-    var end = new Date().getTime();
-    console.log(end);
-    timeRef.on("value", function(snapshot) {
-        console.log(snapshot.val());
-        var timeDuration = end - snapshot.val();
-        console.log(timeDuration)
-        var Mins = Math.round(((timeDuration % 86400000) % 3600000) / 60000);
-        console.log(Mins);
-        $(".timeDuration").append("<p style='padding-top:40px'>目前已挖礦" + Mins + "分</p>");
-    })
+    // var end = new Date().getTime();
+    // console.log(end);
+    // timeRef.on("value", function(snapshot) {
+    //     console.log(snapshot.val());
+    //     var timeDuration = end - snapshot.val();
+    //     console.log(timeDuration)
+    //     var Mins = Math.round(((timeDuration % 86400000) % 3600000) / 60000);
+    //     console.log(Mins);
+    //     $(".timeDuration").append("<p style='padding-top:40px'>目前已挖礦" + Mins + "分</p>");
+    // })
     </script>
 </body>
 

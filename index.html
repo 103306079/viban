@@ -172,7 +172,6 @@
     var dbRef = firebase.database();
     var statusRef = dbRef.ref('viban/status');
 
-    //switch pages
     statusRef.on("value", function(snapshot) {
         console.log(snapshot.val());
         switch (snapshot.val()) {
@@ -246,7 +245,7 @@
                 document.location.href = "https://103306079.github.io/viban/road5com.html";
                 break;
             default:
-                document.location.href = "https://103306079.github.io/viban/index.html";
+                document.location.href = "#";
         }
     }, function(error) {
         console.log("Error: " + error.code);

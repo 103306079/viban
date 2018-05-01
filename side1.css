@@ -10,9 +10,11 @@
         margin-left: auto;
         margin-right: auto;
     }
-    .timeDuration{
-        padding-top: 100px; 
+
+    .timeDuration {
+        padding-top: 100px;
     }
+
     .timeDuration> p {
         text-align:center;
         font-size:24px;

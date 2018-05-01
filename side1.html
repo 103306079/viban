@@ -3,7 +3,7 @@
 
 <head>
     <title>side1</title>
-    <meta name="viewport" content="width=device-width; initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" style="text/css" href="side1.css" />
     <meta charset="utf-8">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -39,7 +39,7 @@
     statusRef.on("value", function(snapshot) {
         console.log(snapshot.val());
         switch (snapshot.val()) {
-            case 0: //index
+            case 0: //start
                 document.location.href = "https://103306079.github.io/viban/index.html";
                 break;
             case 1: //digging
@@ -123,7 +123,7 @@
         console.log(timeDuration)
         var Mins = Math.round(((timeDuration % 86400000) % 3600000) / 60000);
         console.log(Mins);
-        $(".timeDuration").append("<p>目前已挖礦" + Mins + "分</p>");
+        $(".timeDuration").append("<p style='padding-top:40px'>目前已挖礦" + Mins + "分</p>");
     })
     </script>
 </body>

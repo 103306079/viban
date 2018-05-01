@@ -1,7 +1,7 @@
 @media screen and (max-width: 414px){
 .contain{
 	     
-    background-image: url('start.jpg');        
+    background-image: url('start.png');        
     background-repeat: no-repeat;        
     position: relative;
     display: center;        
@@ -12,16 +12,5 @@
   
 
 	}
-#dig{
-	background-color: #8e7db6;
-	width: 75%;
-	height: 60px;
-	color: black ;
-	font-size: 20px;
-
-	position: absolute;
-    left: 60px;
-    top: 480px;
-}
 
 }

@@ -7,6 +7,8 @@
     <meta name="copyright" content="oxxo.studio">
     <meta name=viewport content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
     <title>HTML5 控制裝置陀螺儀 ( 三軸 ) demo1 - OXXO.STUDIO</title>
+    <!--firebase-->
+    <script src="https://www.gstatic.com/firebasejs/4.12.1/firebase.js"></script>
     <style>
     body {
         margin: 50px;
@@ -15,21 +17,21 @@
     </style>
     <script>
     // Initialize Firebase
-//     var config = {
-//         apiKey: "AIzaSyBqaB_5x6WNZiU5RoSZ4aveLmuMgfs0m_0",
-//         authDomain: "viban-44f1e.firebaseapp.com",
-//         databaseURL: "https://viban-44f1e.firebaseio.com",
-//         projectId: "viban-44f1e",
-//         storageBucket: "viban-44f1e.appspot.com",
-//         messagingSenderId: "150917914821"
-//     };
-//     firebase.initializeApp(config);
+    var config = {
+        apiKey: "AIzaSyBqaB_5x6WNZiU5RoSZ4aveLmuMgfs0m_0",
+        authDomain: "viban-44f1e.firebaseapp.com",
+        databaseURL: "https://viban-44f1e.firebaseio.com",
+        projectId: "viban-44f1e",
+        storageBucket: "viban-44f1e.appspot.com",
+        messagingSenderId: "150917914821"
+    };
+    firebase.initializeApp(config);
 
-//     var dbRef = firebase.database();
-//     var statusRef = dbRef.ref('viban/status');
-//     var alphaRef = dbRef.ref('viban/alpha');
-//     var betaRef = dbRef.ref('viban/beta');
-//     var gammaRef = dbRef.ref('viban/gamma');
+    var dbRef = firebase.database();
+    var statusRef = dbRef.ref('viban/status');
+    var alphaRef = dbRef.ref('viban/alpha');
+    var betaRef = dbRef.ref('viban/beta');
+    var gammaRef = dbRef.ref('viban/gamma');
 
     if (window.DeviceOrientationEvent) {
         window.addEventListener('deviceorientation', function(event) {
@@ -45,9 +47,9 @@
             g.innerHTML = Math.round(gamma);
 
 
-//             alphaRef.push(a);
-//             betaRef.push(b);
-//             gammaRef.push(g);
+            alphaRef.push(a);
+            betaRef.push(b);
+            gammaRef.push(g);
 
         }, false);
     } else {

@@ -29,9 +29,10 @@
 
     var dbRef = firebase.database();
     var statusRef = dbRef.ref('viban/status');
-    var alphaRef = dbRef.ref('viban/alpha');
-    var betaRef = dbRef.ref('viban/beta');
-    var gammaRef = dbRef.ref('viban/gamma');
+    var sensorRef = dbRef.ref('viban/sensor');
+    // var alphaRef = dbRef.ref('viban/alpha');
+    // var betaRef = dbRef.ref('viban/beta');
+    // var gammaRef = dbRef.ref('viban/gamma');
 
     if (window.DeviceOrientationEvent) {
         window.addEventListener('deviceorientation', function(event) {
@@ -46,10 +47,10 @@
             b.innerHTML = Math.round(beta);
             g.innerHTML = Math.round(gamma);
 
-
-            alphaRef.push(alpha);
-            betaRef.push(beta);
-            gammaRef.push(gamma);
+            sensorRef.push([alpha,bata,gamma]);
+            // alphaRef.push(alpha);
+            // betaRef.push(beta);
+            // gammaRef.push(gamma);
 
         }, false);
     } else {
@@ -89,14 +90,14 @@
     }
     </style>
     <div id="info">相關參考：<a id="infoLink" href="#" target="_blank"></a></div>
-    <script>
+<!--     <script>
     var href = location.href;
     var page = href.split("demo/");
     var name = page[1].split("-demo")[0];
     var title = document.querySelector('title').innerHTML;
     document.getElementById('infoLink').setAttribute('href', '/articles/' + name + '.html');
     document.getElementById('infoLink').innerHTML = title.split("demo")[0];
-    </script>
+    </script> -->
 </body>
 
 </html>

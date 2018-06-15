@@ -43,10 +43,9 @@
             // console.log(a.innerHTML,b.innerHTML,g.innerHTML);
 
 
-            // var sensor = [a.innerHTML, b.innerHTML, g.innerHTML];
-            // console.log(sensor);
-            document.getElementById('sensor').append("<p>目前數值" + a.innerHTML+b.innerHTML+g.innerHTML + "</p>");
-            // $(".sensor").append("<p>目前數值" + a.innerHTML+b.innerHTML+g.innerHTML + "</p>");
+            var sensor = [a.innerHTML, b.innerHTML, g.innerHTML];
+            console.log(sensor);
+            document.getElementById('sensor').append("<p>目前數值" + sensor + "</p>");
 
         }, false);
     } else {

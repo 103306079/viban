@@ -45,7 +45,8 @@
 
             // var sensor = [a.innerHTML, b.innerHTML, g.innerHTML];
             // console.log(sensor);
-            $(".sensor").append("<p>目前數值" + a.innerHTML+b.innerHTML+g.innerHTML + "</p>");
+            document.getElementById('sensor').append("<p>目前數值" + a.innerHTML+b.innerHTML+g.innerHTML + "</p>");
+            // $(".sensor").append("<p>目前數值" + a.innerHTML+b.innerHTML+g.innerHTML + "</p>");
 
         }, false);
     } else {
@@ -68,7 +69,7 @@
     <span id="gamma"></span>
     <br/>
     <div class="container">
-        <div class="sensor" style="background-color: red;">
+        <div class="sensor" style="background-color: red;" id="sensor">
         </div>
     </div>
     <script>

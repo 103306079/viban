@@ -45,8 +45,11 @@
 
             var sensor = [a.innerHTML, b.innerHTML, g.innerHTML];
             console.log(sensor);
-            document.getElementById('sensor').append("<p>目前數值" + sensor + "</p>");
-
+            for(var i = 0; i<sensor.length; i++){
+               document.getElementById('sensor').append("<p>sensor array" + sensor[i] + "</p>");
+ 
+            }
+            
         }, false);
     } else {
         document.querySelector('body').innerHTML = '你的瀏覽器不支援喔';

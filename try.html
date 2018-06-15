@@ -41,10 +41,6 @@
             b.innerHTML = Math.round(beta);
             g.innerHTML = Math.round(gamma);
 
-            var sensor = [a.innerHTML,b.innerHTML,g.innerHTML];
-            console.log([alpha,bata,gamma]);
-            $(".sensor").append("<p>目前數值" + sensor + "</p>");
-
         }, false);
     } else {
         document.querySelector('body').innerHTML = '你的瀏覽器不支援喔';
@@ -70,6 +66,9 @@
         </div>
     </div>
     <script>
+    var sensor = [a.innerHTML, b.innerHTML, g.innerHTML];
+    console.log(sensor);
+    $(".sensor").append("<p>目前數值" + sensor + "</p>");
     //calculate sensor
     // var end = new Date().getTime();
     // console.log(end);

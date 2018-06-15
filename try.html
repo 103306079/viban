@@ -40,6 +40,12 @@
             a.innerHTML = Math.round(alpha);
             b.innerHTML = Math.round(beta);
             g.innerHTML = Math.round(gamma);
+            // console.log(a.innerHTML,b.innerHTML,g.innerHTML);
+
+
+            // var sensor = [a.innerHTML, b.innerHTML, g.innerHTML];
+            // console.log(sensor);
+            $(".sensor").append("<p>目前數值" + a.innerHTML+b.innerHTML+g.innerHTML + "</p>");
 
         }, false);
     } else {
@@ -66,9 +72,6 @@
         </div>
     </div>
     <script>
-    var sensor = [a.innerHTML, b.innerHTML, g.innerHTML];
-    console.log(sensor);
-    $(".sensor").append("<p>目前數值" + sensor + "</p>");
     //calculate sensor
     // var end = new Date().getTime();
     // console.log(end);

@@ -9,12 +9,6 @@
     <title>HTML5 控制裝置陀螺儀 ( 三軸 ) demo1 - OXXO.STUDIO</title>
     <!--firebase-->
     <script src="https://www.gstatic.com/firebasejs/4.12.1/firebase.js"></script>
-    <style>
-    body {
-        margin: 50px;
-        font-size: 15px;
-    }
-    </style>
     <script>
     // Initialize Firebase
     var config = {
@@ -29,7 +23,7 @@
 
     var dbRef = firebase.database();
     var statusRef = dbRef.ref('viban/status');
-    var sensorRef = dbRef.ref('viban/sensor');
+    // var sensorRef = dbRef.ref('viban/sensor');
     // var alphaRef = dbRef.ref('viban/alpha');
     // var betaRef = dbRef.ref('viban/beta');
     // var gammaRef = dbRef.ref('viban/gamma');
@@ -47,17 +41,21 @@
             b.innerHTML = Math.round(beta);
             g.innerHTML = Math.round(gamma);
 
+            var sensor = [alpha,beta,gamma];
             console.log([alpha,bata,gamma]);
-            sensorRef.push([alpha,bata,gamma]);
-            // alphaRef.push(alpha);
-            // betaRef.push(beta);
-            // gammaRef.push(gamma);
+            $(".sensor").append("<p>目前數值" + sensor + "</p>");
 
         }, false);
     } else {
         document.querySelector('body').innerHTML = '你的瀏覽器不支援喔';
     }
     </script>
+    <style>
+    body {
+        margin: 50px;
+        font-size: 15px;
+    }
+    </style>
 </head>
 
 <body>
@@ -67,37 +65,23 @@
     <br/> gamma:
     <span id="gamma"></span>
     <br/>
-    <style>
-    #info {
-        position: fixed;
-        z-index: 999;
-        bottom: 20px;
-        left: 0px;
-        background: #222;
-        padding: 20px 30px;
-        color: #fff;
-        box-shadow: rgba(0, 0, 0, .5) 0 0 10px;
-        border-radius: 0 5px 5px 0;
-        font-size: 16px;
-    }
-
-    #info a {
-        color: #0bf;
-        transition: .2s;
-    }
-
-    #info a:hover {
-        color: #6df;
-    }
-    </style>
-<!--     <script>
-    var href = location.href;
-    var page = href.split("demo/");
-    var name = page[1].split("-demo")[0];
-    var title = document.querySelector('title').innerHTML;
-    document.getElementById('infoLink').setAttribute('href', '/articles/' + name + '.html');
-    document.getElementById('infoLink').innerHTML = title.split("demo")[0];
-    </script> -->
+    <div class="container">
+        <div class="sensor">
+        </div>
+    </div>
+    <script>
+    //calculate sensor
+    // var end = new Date().getTime();
+    // console.log(end);
+    // timeRef.on("value", function(snapshot) {
+    //     console.log(snapshot.val());
+    //     var timeDuration = end - snapshot.val();
+    //     console.log(timeDuration)
+    //     var Mins = Math.round(((timeDuration % 86400000) % 3600000) / 60000);
+    //     console.log(Mins);
+    //     $(".sensor").append("<p>目前數值" + Mins + "</p>");
+    // })
+    </script>
 </body>
 
 </html>

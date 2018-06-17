@@ -7,6 +7,7 @@
     <meta name="copyright" content="oxxo.studio">
     <meta name=viewport content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
     <title>HTML5 控制裝置陀螺儀 ( 三軸 ) demo1 - OXXO.STUDIO</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <!--firebase-->
     <script src="https://www.gstatic.com/firebasejs/4.12.1/firebase.js"></script>
     <script>
@@ -27,9 +28,8 @@
     // var alphaRef = dbRef.ref('viban/alpha');
     // var betaRef = dbRef.ref('viban/beta');
     // var gammaRef = dbRef.ref('viban/gamma');
-        
-//     requestAnimationFrame(function);
-    
+    // requestAnimationFrame(function);
+
     if (window.DeviceOrientationEvent) {
         window.addEventListener('deviceorientation', function(event) {
             var a = document.getElementById('alpha'),
@@ -59,7 +59,7 @@
         document.querySelector('body').innerHTML = '你的瀏覽器不支援喔';
     }
 
-//     requestAnimationFrame(function);
+    // requestAnimationFrame(function);
     </script>
     <style>
     body {

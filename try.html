@@ -27,7 +27,7 @@
     // var alphaRef = dbRef.ref('viban/alpha');
     // var betaRef = dbRef.ref('viban/beta');
     // var gammaRef = dbRef.ref('viban/gamma');
-
+  
     if (window.DeviceOrientationEvent) {
         window.addEventListener('deviceorientation', function(event) {
             var a = document.getElementById('alpha'),
@@ -40,20 +40,20 @@
             a.innerHTML = Math.round(alpha);
             b.innerHTML = Math.round(beta);
             g.innerHTML = Math.round(gamma);
-            // console.log(a.innerHTML,b.innerHTML,g.innerHTML);
-
 
             var sensor = [a.innerHTML, b.innerHTML, g.innerHTML];
             console.log(sensor);
-            for(var i = 0; i<sensor.length; i++){
-               document.getElementById('sensor').append("<p>sensor array" + sensor[i] + "</p>");
- 
+            for (var i = 0; i < sensor.length; i++) {
+                document.getElementById('sensor').append("<p>sensor array" + sensor[i] + "</p>");
+
             }
-            
+            requestAnimationFrame(function);
         }, false);
     } else {
         document.querySelector('body').innerHTML = '你的瀏覽器不支援喔';
     }
+
+    requestAnimationFrame(function);
     </script>
     <style>
     body {
@@ -72,7 +72,6 @@
     <br/>
     <div class="container">
         <div class="sensor" id="sensor">
-            
         </div>
     </div>
     <script>

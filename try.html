@@ -31,6 +31,8 @@
     // requestAnimationFrame(function);
 
     var status = 0;
+    var counter = 0;
+    var timeout;
 
     if (window.DeviceOrientationEvent) {
         window.addEventListener('deviceorientation', function(event) {
@@ -60,6 +62,18 @@
             //     document.getElementById('sensor').append("現在狀態:看手機"+status);
             // }
 
+            // timeout = setTimeout(function() {
+            //     if (counter < 4) {
+            //         counter = 0;
+            //     }
+            // }, 800);
+
+            // if (counter > 4) {
+            //     $('.content').append('Magic 8 ball says: you rock!');
+            //     counter = 0;
+            //     clearInterval(timeout);
+            // }
+
         }, false);
     } else {
         document.querySelector('body').innerHTML = '你的瀏覽器不支援喔';
@@ -69,7 +83,7 @@
     //acceleration
     if (window.DeviceMotionEvent) {
         window.addEventListener('devicemotion', function(event) {
-            var accel = document.getElementById('acc'), 
+            var accel = document.getElementById('acc'),
                 x = document.getElementById('accX'),
                 y = document.getElementById('accY'),
                 z = document.getElementById('accZ')
@@ -84,7 +98,21 @@
             accY.innerHTML = Math.round(accY);
             accZ.innerHTML = Math.round(accZ);
 
-        },false);
+
+
+            timeout = setTimeout(function() {
+                if (counter < 4) {
+                    counter = 0;
+                }
+            }, 800);
+
+            if (counter > 4) {
+                $('.content').append('Magic 8 ball says: you rock!');
+                counter = 0;
+                clearInterval(timeout);
+            }
+
+        }, false);
         // } else {
         //     document.querySelector('body').innerHTML = '你的瀏覽器不支援喔';
     }

@@ -81,8 +81,11 @@
             accY.innerHTML = Math.round(accY);
             accZ.innerHTML = Math.round(accZ);
 
-        })
+        }, false);
+    } else {
+        document.querySelector('body').innerHTML = '你的瀏覽器不支援喔';
     }
+    
 
     // requestAnimationFrame(function);
     </script>

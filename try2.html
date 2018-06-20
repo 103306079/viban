@@ -136,7 +136,7 @@
         var timeout;
         window.addEventListener('devicemotion', function(event) {
             var accel = event.acceleration;
-            if (accel.y > 2 && accel.z > 2) {
+            if (accel.x > 7 && accel.z > 7) {
                 //$('.content').append('' + accel.x.toFixed(1) + ',' + accel.y.toFixed(1) + ',' + accel.z.toFixed(1) + '<br>');
                 counter++;
                 $('.content').append(counter);

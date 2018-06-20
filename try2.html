@@ -41,10 +41,10 @@
             b.innerHTML = Math.round(beta);
             g.innerHTML = Math.round(gamma);
             // look at phone
-            if (b.innerHTML >= 20 && b.innerHTML <= 50 && g.innerHTML >= 0 && g.innerHTML <= 10) {
-                status = 1;
-                document.getElementById('sensor').append("現在狀態:看手機" + status);
-            }
+//             if (b.innerHTML >= 20 && b.innerHTML <= 50 && g.innerHTML >= 0 && g.innerHTML <= 10) {
+//                 status = 1;
+//                 document.getElementById('sensor').append("現在狀態:看手機" + status);
+//             }
             // if (b.innerHTML >= 20 && b.innerHTML <= 50 && g.innerHTML >= 0 && g.innerHTML <= 10) {
             //     status = 1;
             //     document.getElementById('sensor').append("現在狀態:看手機"+status);
@@ -55,20 +55,20 @@
     }
     //acceleration
        
-//     if (window.DeviceMotionEvent) {
-//         window.addEventListener("devicemotion", function(event) {
-//             var accX = document.getElementById('accX'),
-//                 accY = document.getElementById('accY'),
-//                 accZ = document.getElementById('accZ')
-//             accX = DeviceAcceleration.x;
-//             accY = DeviceAcceleration.y;
-//             accZ = DeviceAcceleration.z;
-//             accX.innerHTML = Math.round(accX);
-//             accY.innerHTML = Math.round(accY);
-//             accZ.innerHTML = Math.round(accZ);
-//         })
-//     }
-    // requestAnimationFrame(function);
+    if (window.DeviceMotionEvent) {
+        window.addEventListener("devicemotion", function(event) {
+            var accX = document.getElementById('accX'),
+                accY = document.getElementById('accY'),
+                accZ = document.getElementById('accZ')
+            accX = DeviceAcceleration.x;
+            accY = DeviceAcceleration.y;
+            accZ = DeviceAcceleration.z;
+            accX.innerHTML = Math.round(accX);
+            accY.innerHTML = Math.round(accY);
+            accZ.innerHTML = Math.round(accZ);
+        })
+    }
+    requestAnimationFrame(function);
     </script>
     <style>
     body {

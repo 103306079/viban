@@ -54,18 +54,7 @@
     } else {
         document.querySelector('body').innerHTML = '你的瀏覽器不支援喔';
     }
-         if (window.DeviceMotionEvent) {
-        window.addEventListener('DeviceMotionEvent.accelerationIncludingGravity', function(event) {
-            var accX = document.getElementById('accX'),
-                accY = document.getElementById('accY'),
-                accZ = document.getElementById('accZ')
-            accX = event.acceleration.x;
-            accY = event.acceleration.y;
-            accZ = event.acceleration.z;
-            accX.innerHTML = Math.round(accX);
-            accY.innerHTML = Math.round(accY);
-            accZ.innerHTML = Math.round(accZ);
-        });
+         
         
     </script>
     <style>

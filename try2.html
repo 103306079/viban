@@ -55,20 +55,20 @@
     }
     //acceleration
        
-    if (window.DeviceMotionEvent) {
-        window.addEventListener("devicemotion", function(event) {
-            var accX = document.getElementById('accX'),
-                accY = document.getElementById('accY'),
-                accZ = document.getElementById('accZ')
-            accX = event.acceleration.x;
-            accY = event.acceleration.y;
-            accZ = event.acceleration.z;
-            accX.innerHTML = Math.round(accX);
-            accY.innerHTML = Math.round(accY);
-            accZ.innerHTML = Math.round(accZ);
-        })
-    }
-    requestAnimationFrame(function);
+//     if (window.DeviceMotionEvent) {
+//         window.addEventListener("devicemotion", function(event) {
+//             var accX = document.getElementById('accX'),
+//                 accY = document.getElementById('accY'),
+//                 accZ = document.getElementById('accZ')
+//             accX = event.acceleration.x;
+//             accY = event.acceleration.y;
+//             accZ = event.acceleration.z;
+//             accX.innerHTML = Math.round(accX);
+//             accY.innerHTML = Math.round(accY);
+//             accZ.innerHTML = Math.round(accZ);
+//         })
+//     }
+//     requestAnimationFrame(function);
     </script>
     <style>
     body {

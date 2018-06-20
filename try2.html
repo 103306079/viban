@@ -60,9 +60,9 @@
             var accX = document.getElementById('accX'),
                 accY = document.getElementById('accY'),
                 accZ = document.getElementById('accZ')
-            accX = instanceOfDeviceMotionEvent.accelerationIncludingGravity.x;
-            accY = instanceOfDeviceMotionEvent.accelerationIncludingGravity.y;
-            accZ = instanceOfDeviceMotionEvent.accelerationIncludingGravity.z;
+            accX = event.acceleration.x;
+            accY = event.acceleration.y;
+            accZ = event.acceleration.z;
             accX.innerHTML = Math.round(accX);
             accY.innerHTML = Math.round(accY);
             accZ.innerHTML = Math.round(accZ);

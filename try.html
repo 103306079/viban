@@ -98,7 +98,7 @@
             accY.innerHTML = Math.round(accY);
             accZ.innerHTML = Math.round(accZ);
 
-
+             document.getElementById('acc1').append(counter);
 
             timeout = setTimeout(function() {
                 if (counter < 4) {
@@ -107,7 +107,6 @@
             }, 800);
 
             if (counter > 4) {
-                $('.content').append('Magic 8 ball says: you rock!');
                 counter = 0;
                 clearInterval(timeout);
             }
@@ -136,6 +135,7 @@
     <span id="gamma"></span>
     <br/> acc:
     <span id="acc"></span>
+    <span id="acc1"></span>
     <br/> accX:
     <span id="accX"></span>
     <br/> accY:

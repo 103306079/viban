@@ -68,21 +68,21 @@
 
     //acceleration
     if (window.DeviceMotionEvent) {
-        window.addEventListener('devicemotion', function(evt) {
-            var acc = document.getElementById('acc'), 
-                // accX = document.getElementById('accX'),
-                // accY = document.getElementById('accY'),
-                // accZ = document.getElementById('accZ')
+        window.addEventListener('devicemotion', function(event) {
+            var accel = document.getElementById('acc'), 
+                x = document.getElementById('accX'),
+                y = document.getElementById('accY'),
+                z = document.getElementById('accZ')
 
-            acc = evt.acceleration;
-            // accX = event.acceleration.x;
-            // accY = event.acceleration.y;
-            // accZ = event.acceleration.z;
+            acc = event.acceleration;
+            accX = event.acceleration.x;
+            accY = event.acceleration.y;
+            accZ = event.acceleration.z;
 
-            acc.innerHTML = Math.round(acc);
-            // accX.innerHTML = Math.round(accX);
-            // accY.innerHTML = Math.round(accY);
-            // accZ.innerHTML = Math.round(accZ);
+            accel.innerHTML = Math.round(acc);
+            accX.innerHTML = Math.round(accX);
+            accY.innerHTML = Math.round(accY);
+            accZ.innerHTML = Math.round(accZ);
 
         })
         //     false);

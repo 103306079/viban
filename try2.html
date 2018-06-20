@@ -57,12 +57,13 @@
          var sensor = new Accelerometer();
         if (window.DeviceMotionEvent) {
         window.addEventListener('devicemotion', function(event) {
+            var accel = event.acceleration;
             var accX = document.getElementById('accX'),
                 accY = document.getElementById('accY'),
                 accZ = document.getElementById('accZ')
-            accX = event.sensor.x;
-            accY = event.sensor.y;
-            accZ = event.sensor.z;
+            accX = accel.x;
+            accY = accel.y;
+            accZ = accel.z;
             accX.innerHTML = Math.round(accX);
             accY.innerHTML = Math.round(accY);
             accZ.innerHTML = Math.round(accZ);

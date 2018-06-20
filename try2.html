@@ -141,12 +141,12 @@
                 counter++;
                 $('.content').append(counter);
                 timeout = setTimeout(function() {
-                    if (counter < 4) {
+                    if (counter < 1) {
                         counter = 0;
                     }
                 }, 800);
             }
-            if (counter > 4) {
+            if (counter > 1) {
                 $('.content').append('Magic 8 ball says: you rock!');
                 counter = 0;
                 clearInterval(timeout);

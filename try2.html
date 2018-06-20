@@ -55,20 +55,21 @@
         document.querySelector('body').innerHTML = '你的瀏覽器不支援喔';
     }
          
-//         if (window.DeviceMotionEvent) {
-//         window.addEventListener('devicemotion', function(event) {
-//             var accel = event.acceleration;
-//             var accX = document.getElementById('accX'),
-//                 accY = document.getElementById('accY'),
-//                 accZ = document.getElementById('accZ')
-//             accX = accel.x;
-//             accY = accel.y;
-//             accZ = accel.z;
-//             accX.innerHTML = Math.round(accX);
-//             accY.innerHTML = Math.round(accY);
-//             accZ.innerHTML = Math.round(accZ);
-//         });
-//         }
+        if (window.DeviceMotionEvent) {
+        window.addEventListener('devicemotion', function(event) {
+            var accel = event.acceleration;
+            var accX = document.getElementById('accX'),
+                accY = document.getElementById('accY'),
+                accZ = document.getElementById('accZ')
+            accX = accel.x;
+            accY = accel.y;
+            accZ = accel.z;
+            accX.innerHTML = Math.round(accX);
+            accY.innerHTML = Math.round(accY);
+            accZ.innerHTML = Math.round(accZ);
+        }
+        , false);
+        }
     </script>
     <style>
     body {

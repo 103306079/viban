@@ -38,7 +38,7 @@
                 b = document.getElementById('beta'),
                 g = document.getElementById('gamma')
 
-                alpha = event.alpha,
+            alpha = event.alpha,
                 beta = event.beta,
                 gamma = event.gamma;
 
@@ -60,8 +60,7 @@
             //     document.getElementById('sensor').append("現在狀態:看手機"+status);
             // }
 
-        }
-        , false);
+        }, false);
     } else {
         document.querySelector('body').innerHTML = '你的瀏覽器不支援喔';
     }
@@ -70,24 +69,27 @@
     //acceleration
     if (window.DeviceMotionEvent) {
         window.addEventListener('devicemotion', function(event) {
-            var accX = document.getElementById('accX'),
-                accY = document.getElementById('accY'),
-                accZ = document.getElementById('accZ')
+            var acc = document.getElementById('acc'), 
+                // accX = document.getElementById('accX'),
+                // accY = document.getElementById('accY'),
+                // accZ = document.getElementById('accZ')
 
-            accX = event.acceleration.x;
-            accY = event.acceleration.y;
-            accZ = event.acceleration.z;
+            acc = event.acceleration;
+            // accX = event.acceleration.x;
+            // accY = event.acceleration.y;
+            // accZ = event.acceleration.z;
 
-            accX.innerHTML = Math.round(accX);
-            accY.innerHTML = Math.round(accY);
-            accZ.innerHTML = Math.round(accZ);
+            acc.innerHTML = Math.round(acc);
+            // accX.innerHTML = Math.round(accX);
+            // accY.innerHTML = Math.round(accY);
+            // accZ.innerHTML = Math.round(accZ);
 
-        });
-    //     ,false);
-    // } else {
-    //     document.querySelector('body').innerHTML = '你的瀏覽器不支援喔';
+        })
+        //     false);
+        // } else {
+        //     document.querySelector('body').innerHTML = '你的瀏覽器不支援喔';
     }
-    
+
 
     // requestAnimationFrame(function);
     </script>
@@ -105,6 +107,8 @@
     <span id="beta"></span>
     <br/> gamma:
     <span id="gamma"></span>
+    <br/> acc:
+    <span id="acc"></span>
     <br/> accX:
     <span id="accX"></span>
     <br/> accY:

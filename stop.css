@@ -1,0 +1,27 @@
+@media screen and (max-width: 414px){
+.contain{
+	     
+    background-image: url('stop.png');        
+    background-repeat: no-repeat;        
+    position: relative;
+    display: center;        
+    width:375px;            
+    height: 667px;       
+    margin-left: auto;      
+    margin-right: auto;       
+  
+
+	}
+#dig{
+	background-image: url('com.png');
+	width: 75%;
+	height: 60px;
+	
+	
+
+	position: absolute;
+    left: 60px;
+    top: 400px;
+}
+
+}

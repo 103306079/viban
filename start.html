@@ -116,6 +116,8 @@
 //         console.log("Error: " + error.code);
 //     });
         var status = 0;
+        var counter = 0;
+        var timeout;
     if (window.DeviceOrientationEvent) {
         window.addEventListener('deviceorientation', function(event) {
 //             var a = document.getElementById('alpha'),
@@ -128,11 +130,30 @@
 //             b.innerHTML = Math.round(beta);
 //             g.innerHTML = Math.round(gamma);
             // look at phone
-            if (beta >= 20 && beta <= 50 && gamma >= 0 && gamma <= 10) {
+            var accel = event.acceleration;
+            if (accel.x > 1.5 || accel.y > 1.5) {
+                //$('.content').append('' + accel.x.toFixed(1) + ',' + accel.y.toFixed(1) + ',' + accel.z.toFixed(1) + '<br>');
+                counter++;
+//                 $('.content').append(counter);
+                timeout = setTimeout(function() {
+                    if (counter < 1) {
+                        counter = 0;
+                    }
+                }, 800);
+            }
+//             if (counter > 1) {
+// //                 $('.content').append('Magic 8 ball says: you rock!');
+// //                 counter = 0;
+//                window.location.href = "https://www.example.com";
+//                 clearInterval(timeout);
+//             }
+        
+            if (beta >= 20 && beta <= 50 && gamma >= 0 && gamma <= 10 && counter < 1) {
                 status = 0;
                 
             }else{
                 document.location.href = "https://103306079.github.io/viban/dig.html";
+                 clearInterval(timeout);
             }
             // if (b.innerHTML >= 20 && b.innerHTML <= 50 && g.innerHTML >= 0 && g.innerHTML <= 10) {
             //     status = 1;

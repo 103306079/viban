@@ -9,6 +9,36 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
+<script>
+	var status = 0;
+    if (window.DeviceOrientationEvent) {
+        window.addEventListener('deviceorientation', function(event) {
+//             var a = document.getElementById('alpha'),
+//                 b = document.getElementById('beta'),
+//                 g = document.getElementById('gamma')
+                alpha = event.alpha,
+                beta = event.beta,
+                gamma = event.gamma;
+//             a.innerHTML = Math.round(alpha);
+//             b.innerHTML = Math.round(beta);
+//             g.innerHTML = Math.round(gamma);
+            // look at phone
+            if (beta >= 20 && beta <= 50 && gamma >= 0 && gamma <= 10) {
+                status = 0;
+                
+            }else{
+                document.location.href = "https://103306079.github.io/viban/dig.html";
+            }
+            // if (b.innerHTML >= 20 && b.innerHTML <= 50 && g.innerHTML >= 0 && g.innerHTML <= 10) {
+            //     status = 1;
+            //     document.getElementById('sensor').append("現在狀態:看手機"+status);
+            // }
+        }
+        , false);
+    } else {
+        document.querySelector('body').innerHTML = '你的瀏覽器不支援喔';
+    }
+	</script>
 <body>
 <div class="contain">
 	<button type="button" id="dig" onclick="window.location.href='index.html'">合成寶石</button>

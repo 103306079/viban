@@ -32,7 +32,6 @@
     firebase.initializeApp(config);
 
     var dbRef = firebase.database();
-    var statusRef = dbRef.ref('viban/status');
     var timeRef = dbRef.ref('viban/time');
 
 
@@ -129,7 +128,6 @@
 //             g.innerHTML = Math.round(gamma);
             // look at phone
             if (beta >= 20 && beta <= 50 && gamma >= 0 && gamma <= 10) {
-                // status = 0;
                 
             }else{
                 document.location.href = "https://103306079.github.io/viban/dig.html";

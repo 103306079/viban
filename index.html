@@ -56,7 +56,7 @@
 
 var uuid = _uuid();
     function addFunction() {
-            player.push({
+            dbRef.ref('viban/player'+uuid).set({
             name:uuid,
             time: 1,
             ruby:1,

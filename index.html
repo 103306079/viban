@@ -74,7 +74,7 @@ playerRef.once('value').then(function(snapshot) {
     snapshot.forEach(function(Snapshot) {
         console.log(Snapshot.val());
         var user = firebase.currentUser;
-        console.log(user.uid);
+        console.log(user.id);
     });
 })
 

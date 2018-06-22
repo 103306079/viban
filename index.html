@@ -31,6 +31,27 @@
   gtag('js', new Date());
 
   gtag('config', 'UA-121084620-1');
+    var config = {
+        apiKey: "AIzaSyBqaB_5x6WNZiU5RoSZ4aveLmuMgfs0m_0",
+        authDomain: "viban-44f1e.firebaseapp.com",
+        databaseURL: "https://viban-44f1e.firebaseio.com",
+        projectId: "viban-44f1e",
+        storageBucket: "viban-44f1e.appspot.com",
+        messagingSenderId: "150917914821"
+    };
+    firebase.initializeApp(config);
+    var dbRef = firebase.database();
+    var player = dbRef.ref('VibanPlayer');
+    var decodedCookie = decodeURIComponent(document.cookie);
+    function addFunction() {
+        player.push({
+            name: decodedCookie,
+            time: 1,
+            ruby:1,
+            coupon:1
+  });
+}
+    
 </script>
 
 <body>
@@ -114,7 +135,7 @@
                     </p>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-primary" id="goMining"><a href="./start.html" style="color: #000000">開始挖礦</a></button>
+                    <button type="button" class="btn btn-primary" id="goMining" onclick="addFunction()"><a href="./start.html" style="color: #000000">開始挖礦</a></button>
                 </div>
             </div>
         </div>

@@ -34,7 +34,7 @@
     var counter = 0;
     var timeout;
 
-    if (window.DeviceOrientationEvent) {
+    if (window.DeviceOrientationEvent && window.DeviceMotionEvent) {
         window.addEventListener('deviceorientation', function(event) {
             var a = document.getElementById('alpha'),
                 b = document.getElementById('beta'),
@@ -74,7 +74,7 @@
                 }, 800);
             }
             if (counter > 4) {
-                $('.content').append('Magic 8 ball says: you rock!');
+                $('.sensor').append('Magic 8 ball says: you rock!');
                 counter = 0;
                 clearInterval(timeout);
             }
@@ -98,16 +98,6 @@
     <span id="beta"></span>
     <br/> gamma:
     <span id="gamma"></span>
-    <br/> acc:
-    <span id="acc"></span>
-    <span id="acc1"></span>
-    <br/> accX:
-    <span id="accX"></span>
-    <br/> accY:
-    <span id="accY"></span>
-    <br/> accZ:
-    <span id="accZ"></span>
-    <br/>
     <div class="container">
         <div class="sensor" id="sensor">
         </div>

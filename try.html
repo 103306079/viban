@@ -25,7 +25,7 @@
     var dbRef = firebase.database();
     var statusRef = dbRef.ref('viban/status');
 
-    if (window.DeviceOrientationEvent && window.DeviceMotionEvent) {
+    if (window.DeviceOrientationEvent || window.DeviceMotionEvent) {
         var counter = 0;
         var timeout;
         window.addEventListener('devicemotion', function(event) {

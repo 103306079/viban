@@ -49,7 +49,8 @@
 
 
                 // look at phone
-                if (b.innerHTML >= 20 && b.innerHTML <= 90 && g.innerHTML >= 0 && g.innerHTML <= 10 && accel.x > 3 || accel.y > 3) {
+                if (accel.x > 3 || accel.y > 3) {
+                // if (b.innerHTML >= 20 && b.innerHTML <= 90 && g.innerHTML >= 0 && g.innerHTML <= 10 && accel.x > 3 || accel.y > 3) {
                     counter++;
                     timeout = setTimeout(function() {
                         if (counter < 4) {
@@ -63,7 +64,7 @@
                     }
                     document.getElementById('sensor').append("現在狀態:看手機");
                 }else {
-    
+
                 }
 
             }, false);

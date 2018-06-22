@@ -25,9 +25,7 @@ var config = {
 firebase.initializeApp(config);
 
 var dbRef = firebase.database();
-var statusRef = dbRef.ref('viban/status');
 var timeRef = dbRef.ref('viban/time');
-var status = 0;
 
 
 if (window.DeviceOrientationEvent) {
@@ -43,7 +41,17 @@ if (window.DeviceOrientationEvent) {
         //             g.innerHTML = Math.round(gamma);
         // look at phone
         if (beta >= 20 && beta <= 50 && gamma >= 0 && gamma <= 10) {
-            status = 0;
+
+            var end = new Date().getTime();
+            console.log(end);
+            timeRef.on("value", function(snapshot) {
+                console.log(snapshot.val());
+                var timeDuration = end - snapshot.val();
+                console.log(timeDuration)
+                var Mins = Math.round(((timeDuration % 86400000) % 3600000) / 60000);
+                console.log(Mins);
+                $(".timeDuration").append("<p>目前已挖礦" + Mins + "分</p>");
+            })
 
         } else {
             document.location.href = "https://103306079.github.io/viban/dig.html";
@@ -60,19 +68,11 @@ if (window.DeviceOrientationEvent) {
 
 <body>
     <div class="contain">
+        <div class="timeDuration">
+        </div>
         <button type="button" id="dig" onclick="window.location.href='index.html'">合成寶石</button>
     </div>
     <script>
-    var end = new Date().getTime();
-    console.log(end);
-    timeRef.on("value", function(snapshot) {
-        console.log(snapshot.val());
-        var timeDuration = end - snapshot.val();
-        console.log(timeDuration)
-        var Mins = Math.round(((timeDuration % 86400000) % 3600000) / 60000);
-        console.log(Mins);
-        $(".timeDuration").append("<p>目前已挖礦" + Mins + "分</p>");
-    })
     </script>
 </body>
 

@@ -140,7 +140,7 @@
 
             window.addEventListener('devicemotion', function(event) {
                 var accel = event.acceleration;
-                if (beta >= 20 && beta <= 90 && gamma >= 0 && gamma <= 10) {
+                if (beta >= -10 && beta <= 90 && gamma >= -40 && gamma <=40) {
                     counter++;
                     timeout = setTimeout(function() {
                         if (counter < 4) {

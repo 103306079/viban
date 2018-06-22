@@ -48,7 +48,7 @@
 // });
     var decodedCookie = decodeURIComponent(document.cookie);
     function addFunction() {
-            dbRef.ref('decodedCookie').set({
+            dbRef.ref('decodedCookie').push({
             time: 1,
             ruby:1,
             coupon:1

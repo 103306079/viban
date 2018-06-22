@@ -72,8 +72,8 @@ function addFunction() {
 playerRef.on("value", function(snapshot) {
     snapshot.forEach(function(childSnapshot) {
         console.log(childSnapshot.val());
-        if (playerRef.child == "LFcbNYq2JLM7qYwC0Ct") {
-            playerRef.child("LFcbNYq2JLM7qYwC0Ct").update({
+        if (playerRef.child == decodedCookie) {
+            playerRef.child(decodedCookie).update({
                 ruby: 3,
                 time: 10,
                 coupon: 12

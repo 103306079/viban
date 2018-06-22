@@ -52,6 +52,7 @@
                 if (accel.x > 3 || accel.y > 3) {
                     // if (b.innerHTML >= 20 && b.innerHTML <= 90 && g.innerHTML >= 0 && g.innerHTML <= 10 && accel.x > 3 || accel.y > 3) {
                     counter++;
+                     $('.sensor').append(counter);
                     timeout = setTimeout(function() {
                         if (counter < 4) {
                             counter = 0;

@@ -57,7 +57,7 @@
 
 // var uuid = _uuid();
     function addFunction() {
-             dbRef.ref(decodedCookie).set({
+             dbRef.ref('viban/"+decodedCookie).set({
             name:decodedCookie,
             ruby:1,
             time:1,

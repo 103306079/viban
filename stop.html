@@ -52,15 +52,15 @@ if (window.DeviceOrientationEvent || window.DeviceMotionEvent) {
 
         window.addEventListener('devicemotion', function(event) {
             var accel = event.acceleration;
-            if (accel.x > 1.5 || accel.y > 1.5) {
+            // if (accel.x > 1.5 || accel.y > 1.5) {
                 if (beta >= 20 && beta <= 90 && gamma >= 0 && gamma <= 10) {
                     counter++;
                     timeout = setTimeout(function() {
                         if (counter < 4) {
                             counter = 0;
                         }
-                    }, 800);
-                }
+                //     }, 800);
+                // }
 
             } else {
                 document.location.href = "https://103306079.github.io/viban/dig.html"

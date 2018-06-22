@@ -56,7 +56,7 @@
 
             window.addEventListener('devicemotion', function(event) {
                 var accel = event.acceleration;
-                if (accel.x > 1.5 || accel.y > 1.5) {
+                // if (accel.x > 1.5 || accel.y > 1.5) {
                     if (beta >= 20 && beta <= 90 && gamma >= 0 && gamma <= 10) {
                         counter++;
                         // document.getElementById('.contain').append("現在狀態:看手機");
@@ -67,7 +67,7 @@
                             }
                         }, 800);
 
-                    }
+                    // }
                 } else {
 
                 }

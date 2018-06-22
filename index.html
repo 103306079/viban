@@ -42,15 +42,28 @@
     firebase.initializeApp(config);
     var dbRef = firebase.database();
     var player = dbRef.ref('VibanPlayer');
+    player.on('value').then(function(snapshot) {
+    var name = snapshot.val().name;
+  // ...
+});
     var decodedCookie = decodeURIComponent(document.cookie);
     function addFunction() {
+        if(name == decodedCookie){
+            player.set({
+            name: decodedCookie,
+            time: 1,
+            ruby:2,
+            coupon:1
+        }else{
         player.push({
             name: decodedCookie,
             time: 1,
             ruby:1,
             coupon:1
   });
+        }
 }
+    
     
 </script>
 

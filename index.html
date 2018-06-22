@@ -48,10 +48,10 @@
 // });
     var decodedCookie = decodeURIComponent(document.cookie);
     function addFunction() {
-            dbRef.player.ref('decodedCookie').set('{
+            dbRef.ref('decodedCookie').set('{
             time: 1,
             ruby:1,
-            coupon:1'
+            coupon:1
         
   });
         }

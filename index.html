@@ -42,6 +42,7 @@
     firebase.initializeApp(config);
     var dbRef = firebase.database();
     var player = dbRef.ref('viban/player');
+    var play = dbRef.ref('viban');
 //     player.on('value').then(function(snapshot) {
 //     var name = snapshot.val().name;
 //   // ...
@@ -57,10 +58,8 @@
 // var uuid = _uuid();
     function addFunction() {
             play.push({
-            name:decodedCookie,
-            time: 1,
-            ruby:1,
-            coupon:1
+            name:decodedCookie
+            
         
   });
         }

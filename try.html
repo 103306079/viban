@@ -30,7 +30,6 @@
         var timeout;
         window.addEventListener('devicemotion', function(event) {
             var accel = event.acceleration;
-            $('.sensor').append(accel);
             window.addEventListener('deviceorientation', function(event) {
 
                 var a = document.getElementById('alpha'),
@@ -49,7 +48,7 @@
 
 
                 // look at phone
-                if (accel.x > 3 || accel.y > 3) {
+                if (accel.x > 7 || accel.y > 7) {
                     // if (b.innerHTML >= 20 && b.innerHTML <= 90 && g.innerHTML >= 0 && g.innerHTML <= 10 && accel.x > 3 || accel.y > 3) {
                     counter++;
                     $('.sensor').append(counter);
@@ -60,7 +59,7 @@
                     }, 800);
                     document.getElementById('sensor').append("現在狀態:看手機");
                 } else {
-
+                    document.getElementById('sensor').append("現在狀態:走路");
                 }
 
             }, false);

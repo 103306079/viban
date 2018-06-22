@@ -30,13 +30,14 @@
         var timeout;
         window.addEventListener('devicemotion', function(event) {
             var accel = event.acceleration;
+            $('.sensor').append('accel');
             window.addEventListener('deviceorientation', function(event) {
 
                 var a = document.getElementById('alpha'),
                     b = document.getElementById('beta'),
                     g = document.getElementById('gamma')
 
-                alpha = event.alpha,
+                    alpha = event.alpha,
                     beta = event.beta,
                     gamma = event.gamma;
 
@@ -48,7 +49,7 @@
 
 
                 // look at phone
-                if (b.innerHTML >= 10 && b.innerHTML <= 90 && g.innerHTML >= 0 && g.innerHTML <= 10 && accel.x > 1 || accel.y > 1) {
+                if (b.innerHTML >= 20 && b.innerHTML <= 90 && g.innerHTML >= 0 && g.innerHTML <= 10 && accel.x > 3 || accel.y > 3) {
                     counter++;
                     timeout = setTimeout(function() {
                         if (counter < 4) {

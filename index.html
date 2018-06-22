@@ -72,7 +72,7 @@ function addFunction() {
 playerRef.on("value", function(snapshot) {
     snapshot.forEach(function(childSnapshot) {
         console.log(childSnapshot.val());
-        if (playerRef.child.name == "LFcbNYq2JLM7qYwC0Ct") {
+        if (playerRef.child == "LFcbNYq2JLM7qYwC0Ct") {
             playerRef.child("LFcbNYq2JLM7qYwC0Ct").update({
                 ruby: 3,
                 time: 10,

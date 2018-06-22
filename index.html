@@ -48,7 +48,7 @@
 // });
     var decodedCookie = decodeURIComponent(document.cookie);
     function addFunction() {
-            dbRef.ref('viban/player').set({
+            dbRef.ref('viban/player').push({
             name:decodedCookie,
             time: 1,
             ruby:1,

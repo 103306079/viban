@@ -72,8 +72,7 @@ function addFunction() {
 
 playerRef.once('value').then(function(snapshot) {
     snapshot.forEach(function(childSnapshot) {
-        console.log(childSnapshot.key);
-        console.log(childSnapshot.key.child('ruby'));
+        console.log(childSnapshot.key+childSnapshot.val().ruby);
     });
 })
 

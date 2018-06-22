@@ -30,7 +30,7 @@
         var timeout;
         window.addEventListener('devicemotion', function(event) {
             var accel = event.acceleration;
-            $('.sensor').append('accel');
+            $('.sensor').append(accel);
             window.addEventListener('deviceorientation', function(event) {
 
                 var a = document.getElementById('alpha'),

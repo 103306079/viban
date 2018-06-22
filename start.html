@@ -146,11 +146,13 @@
                             counter = 0;
                         }
                     }, 800);
-                } else {
+                } else if(accel.x > 1.5 || accel.y > 1.5){
                     setTimeout(function() {
                         document.location.href = "https://103306079.github.io/viban/dig.html"
                     }, 1000);
 
+                }else {
+                    
                 }
                 if (counter > 4) {
                     // $('.sensor').append('Magic 8 ball says: you rock!');

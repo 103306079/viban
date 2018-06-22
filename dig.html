@@ -45,18 +45,9 @@
     if (window.DeviceOrientationEvent || window.DeviceMotionEvent) {
         window.addEventListener('deviceorientation', function(event) {
 
-            var a = document.getElementById('alpha'),
-                b = document.getElementById('beta'),
-                g = document.getElementById('gamma')
-
             alpha = event.alpha,
                 beta = event.beta,
                 gamma = event.gamma;
-
-            a.innerHTML = Math.round(alpha);
-            b.innerHTML = Math.round(beta);
-            g.innerHTML = Math.round(gamma);
-
 
             // look at phone
             // if (b.innerHTML >= 20 && b.innerHTML <= 90 && g.innerHTML >= 0 && g.innerHTML <= 10) {
@@ -65,19 +56,17 @@
 
             window.addEventListener('devicemotion', function(event) {
                 var accel = event.acceleration;
-                if (accel.x > 1.5 || accel.y > 1.5 && b.innerHTML >= 20 && b.innerHTML <= 90 && g.innerHTML >= 0 && g.innerHTML <= 10) {
+                if (accel.x > 1.5 || accel.y > 1.5 && beta >= 20 && beta <= 90 && gamma >= 0 && gamma <= 10) {
                     //$('.content').append('' + accel.x.toFixed(1) + ',' + accel.y.toFixed(1) + ',' + accel.z.toFixed(1) + '<br>');
                     counter++;
-                    $('.sensor').append(counter);
                     // document.getElementById('sensor').append("現在狀態:看手機");
-
+                    document.location.href = "https://103306079.github.io/viban/stop.html"
                     timeout = setTimeout(function() {
                         if (counter < 4) {
                             counter = 0;
                         }
                     }, 800);
                 } else {
-                    document.location.href = "https://103306079.github.io/viban/dig.html"
 
                 }
                 if (counter > 4) {
@@ -91,7 +80,7 @@
     } else {
         document.querySelector('body').innerHTML = '你的瀏覽器不支援喔';
     }
-    
+
     // switch pages
     //     statusRef.on("value", function(snapshot) {
     //         console.log(snapshot.val());

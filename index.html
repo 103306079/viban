@@ -67,15 +67,14 @@ function addFunction() {
         time: 1,
         coupon: 1
     });
-    console.log(current.key)
+    console.log(current.key);
 }
 
-
-// playerRef.once('value').then(function(snapshot) {
-//     snapshot.forEach(function(Snapshot) {
-//         console.log(Snapshot.key);
-//     });
-// })
+playerRef.once('value').then(function(snapshot) {
+    // snapshot.forEach(function(Snapshot) {
+        console.log(playerRef.key);
+    // });
+})
 
 </script>
 

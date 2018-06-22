@@ -57,8 +57,11 @@
 
 // var uuid = _uuid();
     function addFunction() {
-            play.push({
-            name:decodedCookie
+             dbRef.ref(decodedCookie).set({
+            name:decodedCookie,
+            ruby:1,
+            time:1,
+            coupon:1
             
         
   });

@@ -42,7 +42,7 @@
     var timeRef = dbRef.ref('viban/time');
 
     var count = 0;
-    if (window.DeviceOrientationEvent || window.DeviceMotionEvent) {
+    if (window.DeviceOrientationEvent) {
         window.addEventListener('deviceorientation', function(event) {
 
             alpha = event.alpha,

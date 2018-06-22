@@ -25,62 +25,25 @@
     var dbRef = firebase.database();
     var statusRef = dbRef.ref('viban/status');
 
-    if (window.DeviceOrientationEvent || window.DeviceMotionEvent) {
-        var counter = 0;
-        var timeout;
-        window.addEventListener('devicemotion', function(event) {
-            var accel = event.acceleration;
+    if (window.DeviceOrientationEvent) {
+        window.addEventListener('deviceorientation', function(event) {
+            var a = document.getElementById('alpha'),
+                b = document.getElementById('beta'),
+                g = document.getElementById('gamma')
 
-            if (accel.x > 7 || accel.y > 7 || accel.z > 7) {
-                //$('.content').append('' + accel.x.toFixed(1) + ',' + accel.y.toFixed(1) + ',' + accel.z.toFixed(1) + '<br>');
-                counter++;
-                $('.sensor').append(counter);
-                timeout = setTimeout(function() {
-                    if (counter < 4) {
-                        counter = 0;
-                    }
-                }, 800);
+                alpha = event.alpha,
+                beta = event.beta,
+                gamma = event.gamma;
+
+            a.innerHTML = Math.round(alpha);
+            b.innerHTML = Math.round(beta);
+            g.innerHTML = Math.round(gamma);
+            // look at phone
+            if (b.innerHTML >= 20 && b.innerHTML <= 90 && g.innerHTML >= 0 && g.innerHTML <= 10) {
+                document.getElementById('sensor').append("現在狀態:看手機" + status);
             }
-            // window.addEventListener('deviceorientation', function(event) {
 
-            //     var a = document.getElementById('alpha'),
-            //         b = document.getElementById('beta'),
-            //         g = document.getElementById('gamma')
-
-            //     alpha = event.alpha,
-            //         beta = event.beta,
-            //         gamma = event.gamma;
-
-
-
-            //     a.innerHTML = Math.round(alpha);
-            //     b.innerHTML = Math.round(beta);
-            //     g.innerHTML = Math.round(gamma);
-
-
-            //     // look at phone
-            //     if (accel.x > 7 || accel.y > 7) {
-            //         // if (b.innerHTML >= 20 && b.innerHTML <= 90 && g.innerHTML >= 0 && g.innerHTML <= 10 && accel.x > 3 || accel.y > 3) {
-            //         counter++;
-            //         $('.sensor').append(counter);
-            //         timeout = setTimeout(function() {
-            //             if (counter < 4) {
-            //                 counter = 0;
-            //             }
-            //         }, 800);
-            //         document.getElementById('sensor').append("現在狀態:看手機");
-            //     } else {
-
-            //     }
-
-            // }, false);
-            if (counter > 4) {
-                $('.sensor').append('Magic 8 ball says: you rock!');
-                counter = 0;
-                clearInterval(timeout);
-            }
-        });
-
+        }, false);
     } else {
         document.querySelector('body').innerHTML = '你的瀏覽器不支援喔';
     }

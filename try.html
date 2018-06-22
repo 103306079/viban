@@ -34,7 +34,7 @@
             if (accel.x > 7 || accel.y > 7 || accel.z > 7) {
                 //$('.content').append('' + accel.x.toFixed(1) + ',' + accel.y.toFixed(1) + ',' + accel.z.toFixed(1) + '<br>');
                 counter++;
-                $('.content').append(counter);
+                $('.sensor').append(counter);
                 timeout = setTimeout(function() {
                     if (counter < 4) {
                         counter = 0;

@@ -41,14 +41,14 @@
     };
     firebase.initializeApp(config);
     var dbRef = firebase.database();
-    
+    var player = dbRef.ref('viban/player');
 //     player.on('value').then(function(snapshot) {
 //     var name = snapshot.val().name;
 //   // ...
 // });
     var decodedCookie = decodeURIComponent(document.cookie);
     function addFunction() {
-            dbRef.ref('viban/player').push({
+            player.push({
             time: 1,
             ruby:1,
             coupon:1

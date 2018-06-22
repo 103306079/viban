@@ -68,30 +68,15 @@ function addFunction() {
         coupon: 1
     });
 
-    playerRef.on("value", function(snapshot) {
-        snapshot.forEach(function(childSnapshot) {
-            console.log(childSnapshot.val());
-            if (playerRef.child == decodedCookie) {
-                playerRef.child(decodedCookie).update({
-                    ruby: 3,
-                    time: 10,
-                    coupon: 12
-                })
+    if (playerRef.child("LFcd9q6Y3pTQucsDuD5")) {
+        playerRef.child("LFcd9q6Y3pTQucsDuD5").update({
+            ruby: 3,
+            time: 10,
+            coupon: 12
+        })
+    }
 
-            }
-        });
-    })
 }
-
-
-
-// if (playerRef.child("decodedCookie")) {
-//     playerRef.child("decodedCookie").update({
-//         ruby: 3,
-//         time: 10,
-//         coupon: 12
-//     })
-// }
 </script>
 
 <body>

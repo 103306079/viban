@@ -69,16 +69,27 @@ function addFunction() {
     });
 }
 
- playerRef.on("value", function(snapshot) {
-        console.log(snapshot.val());
-    })
+playerRef.on("value", function(snapshot) {
+    snapshot.forEach(function(childSnapshot) {
+        console.log(childSnapshot.val());
+        if (playerRef.child.name == "LFcbNYq2JLM7qYwC0Ct") {
+            playerRef.child("LFcbNYq2JLM7qYwC0Ct").update({
+                ruby: 3,
+                time: 10,
+                coupon: 12
+            })
 
-playerRef.child("decodedCookie").update({
-        ruby: 3,
-        time: 10,
-        coupon: 12
+        }
+    });
 })
 
+// if (playerRef.child("decodedCookie")) {
+//     playerRef.child("decodedCookie").update({
+//         ruby: 3,
+//         time: 10,
+//         coupon: 12
+//     })
+// }
 </script>
 
 <body>

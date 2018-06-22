@@ -41,14 +41,14 @@
     };
     firebase.initializeApp(config);
     var dbRef = firebase.database();
-    
-    player.on('value').then(function(snapshot) {
-    var name = snapshot.val().name;
-  // ...
-});
+    var player = dbRef.ref('VideoPlayer');
+//     player.on('value').then(function(snapshot) {
+//     var name = snapshot.val().name;
+//   // ...
+// });
     var decodedCookie = decodeURIComponent(document.cookie);
     function addFunction() {
-            dbRef.ref('decodedCookie').set('{
+            dbRef.player.ref('decodedCookie').set('{
             time: 1,
             ruby:1,
             coupon:1'

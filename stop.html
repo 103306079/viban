@@ -51,31 +51,31 @@ if (window.DeviceOrientationEvent || window.DeviceMotionEvent) {
         // }
 
         window.addEventListener('devicemotion', function(event) {
-            var accel = event.acceleration;
-            if (beta >= 20 && beta <= 90 && gamma >= 0 && gamma <= 10) {
-                counter++;
-                timeout = setTimeout(function() {
-                    if (counter < 4) {
-                        counter = 0;
-                    }
-                }, 800);
-            } else if (accel.x > 1.5 || accel.y > 1.5) {
-                    document.location.href = "https://103306079.github.io/viban/dig.html"
+                var accel = event.acceleration;
+                if (beta >= 20 && beta <= 90 && gamma >= 0 && gamma <= 10) {
+                    counter++;
+                    timeout = setTimeout(function() {
+                        if (counter < 4) {
+                            counter = 0;
+                        }
+                    }, 800);
+                } else if(accel.x > 1.5 || accel.y > 1.5){
+                    setTimeout(function() {
+                        document.location.href = "https://103306079.github.io/viban/dig.html"
+                    }, 1000);
+                }else {
+                }
+                if (counter > 4) {
+                    // $('.sensor').append('Magic 8 ball says: you rock!');
+                    counter = 0;
+                    clearInterval(timeout);
+                }
+            });
+        }, false);
+    } else {
+        document.querySelector('body').innerHTML = '你的瀏覽器不支援喔';
+    }
 
-            } else {
-
-            }
-            if (counter > 4) {
-                // $('.sensor').append('Magic 8 ball says: you rock!');
-                counter = 0;
-                clearInterval(timeout);
-            }
-        });
-
-    }, false);
-} else {
-    document.querySelector('body').innerHTML = '你的瀏覽器不支援喔';
-}
 </script>
 
 <body>

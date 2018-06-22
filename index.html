@@ -47,9 +47,17 @@
 //   // ...
 // });
     var decodedCookie = decodeURIComponent(document.cookie);
+    function _uuid() {
+  function s4() {
+    return Math.floor((1 + Math.random()) * 0x10000).toString(16).substring(1);
+  }
+  return s4() + s4() + '-' + s4() + '-' + s4() + '-' + s4() + '-' + s4() + s4() + s4();
+}
+
+var uuid = _uuid();
     function addFunction() {
-            dbRef.ref('viban/player/'+decodedCookie).set({
-            name:decodedCookie,
+            player.push({
+            name:uuid,
             time: 1,
             ruby:1,
             coupon:1

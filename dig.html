@@ -57,27 +57,11 @@
 
             window.addEventListener('devicemotion', function(event) {
                 var accel = event.acceleration;
-                if (accel.x > 1.5 || accel.y > 1.5&& beta >= 20 && beta <= 90 && gamma >= 0 && gamma <= 10) {
-                    
-                        counter++;
-                        // document.getElementById('.contain').append("現在狀態:看手機");
-                        document.location.href = "https://103306079.github.io/viban/stop.html"
-                        timeout = setTimeout(function() {
-                            if (counter < 4) {
-                                counter = 0;
-                            }
-                        }, 800);
-
-                    
-
-                }
-                if (counter > 4) {
-                    // $('.sensor').append('Magic 8 ball says: you rock!');
-                    counter = 0;
-                    clearInterval(timeout);
+                if (beta >= 20 && beta <= 90 && gamma >= 0 && gamma <= 10 && accel.x > 1.5 || accel.y > 1.5) {
+                    document.location.href = "https://103306079.github.io/viban/stop.html"
+                
                 }
             });
-
         }, false);
     } else {
         document.querySelector('body').innerHTML = '你的瀏覽器不支援喔';

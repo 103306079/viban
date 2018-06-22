@@ -51,7 +51,7 @@
 
             window.addEventListener('devicemotion', function(event) {
                 var accel = event.acceleration;
-                if (accel.x > 3 || accel.y > 3 && b.innerHTML >= 20 && b.innerHTML <= 90 && g.innerHTML >= 0 && g.innerHTML <= 10) {
+                if (accel.x > 3 || accel.y > 3 && beta >= 20 && beta <= 90 && gamma >= 0 && gamma <= 10) {
                     //$('.content').append('' + accel.x.toFixed(1) + ',' + accel.y.toFixed(1) + ',' + accel.z.toFixed(1) + '<br>');
                     counter++;
                     $('.sensor').append(counter);

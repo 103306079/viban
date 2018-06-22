@@ -41,7 +41,7 @@
     };
     firebase.initializeApp(config);
     var dbRef = firebase.database();
-    var player = dbRef.ref('VibanPlayer/-LFb3tUJzF9Ax1BMuYA4');
+    var player = dbRef.ref('VibanPlayer/player');
     var decodedCookie = decodeURIComponent(document.cookie);
     function addFunction() {
         player.push({

@@ -26,6 +26,7 @@ firebase.initializeApp(config);
 
 var dbRef = firebase.database();
 var timeRef = dbRef.ref('viban/time');
+var digTimeRef = dbRef.ref('viban/digTime');
 
 
 if (window.DeviceOrientationEvent) {
@@ -72,6 +73,7 @@ if (window.DeviceOrientationEvent) {
         var Mins = Math.round(((timeDuration % 86400000) % 3600000) / 60000);
         console.log(Mins);
         $(".timeDuration").append("<p>目前已挖礦" + Mins + "分</p>");
+        digTimeRef.set(Mins);
     })
     </script>
 </body>

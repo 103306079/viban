@@ -52,7 +52,7 @@
                 if (accel.x > 3 || accel.y > 3) {
                     // if (b.innerHTML >= 20 && b.innerHTML <= 90 && g.innerHTML >= 0 && g.innerHTML <= 10 && accel.x > 3 || accel.y > 3) {
                     counter++;
-                     $('.sensor').append(counter);
+                    $('.sensor').append(counter);
                     timeout = setTimeout(function() {
                         if (counter < 4) {
                             counter = 0;
@@ -62,13 +62,13 @@
                 } else {
 
                 }
-                if (counter > 4) {
-                    $('.sensor').append('Magic 8 ball says: you rock!');
-                    counter = 0;
-                    clearInterval(timeout);
-                }
 
             }, false);
+            if (counter > 4) {
+                $('.sensor').append('Magic 8 ball says: you rock!');
+                counter = 0;
+                clearInterval(timeout);
+            }
         });
 
 

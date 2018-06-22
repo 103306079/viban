@@ -37,7 +37,7 @@
                     b = document.getElementById('beta'),
                     g = document.getElementById('gamma')
 
-                    alpha = event.alpha,
+                alpha = event.alpha,
                     beta = event.beta,
                     gamma = event.gamma;
 
@@ -50,21 +50,21 @@
 
                 // look at phone
                 if (accel.x > 3 || accel.y > 3) {
-                // if (b.innerHTML >= 20 && b.innerHTML <= 90 && g.innerHTML >= 0 && g.innerHTML <= 10 && accel.x > 3 || accel.y > 3) {
+                    // if (b.innerHTML >= 20 && b.innerHTML <= 90 && g.innerHTML >= 0 && g.innerHTML <= 10 && accel.x > 3 || accel.y > 3) {
                     counter++;
                     timeout = setTimeout(function() {
                         if (counter < 4) {
                             counter = 0;
                         }
                     }, 800);
-                    if (counter > 4) {
-                        $('.sensor').append('Magic 8 ball says: you rock!');
-                        counter = 0;
-                        clearInterval(timeout);
-                    }
                     document.getElementById('sensor').append("現在狀態:看手機");
-                }else {
+                } else {
 
+                }
+                if (counter > 4) {
+                    $('.sensor').append('Magic 8 ball says: you rock!');
+                    counter = 0;
+                    clearInterval(timeout);
                 }
 
             }, false);

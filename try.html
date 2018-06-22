@@ -28,9 +28,6 @@
     if (window.DeviceOrientationEvent || window.DeviceMotionEvent) {
         window.addEventListener('deviceorientation', function(event) {
 
-            var counter = 0;
-            var timeout;
-
             var a = document.getElementById('alpha'),
                 b = document.getElementById('beta'),
                 g = document.getElementById('gamma')
@@ -45,7 +42,11 @@
 
 
             window.addEventListener('devicemotion', function(event) {
+
+                var counter = 0;
+                var timeout;
                 var accel = event.acceleration;
+                
                 if (accel.x > 7 || accel.y > 7 && b.innerHTML >= 20 && b.innerHTML <= 90 && g.innerHTML >= 0 && g.innerHTML <= 10) {
                     counter++;
                     $('.content').append(counter);

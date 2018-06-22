@@ -42,7 +42,7 @@
     var timeRef = dbRef.ref('viban/time');
 
     var count = 0;
-    if (window.DeviceOrientationEvent) {
+    if (window.DeviceOrientationEvent || window.DeviceMotionEvent) {
         window.addEventListener('deviceorientation', function(event) {
 
             alpha = event.alpha,
@@ -50,34 +50,34 @@
             gamma = event.gamma;
 
             // look at phone
-            if (beta >= 20 && beta <= 90 && gamma >= 0 && gamma <= 10) {
-                document.getElementById('sensor').append("現在狀態:看手機");
-                document.location.href = "https://103306079.github.io/viban/stop.html"
-            }
+            // if (beta >= 20 && beta <= 90 && gamma >= 0 && gamma <= 10) {
+            //     document.getElementById('sensor').append("現在狀態:看手機");
+            //     document.location.href = "https://103306079.github.io/viban/stop.html"
+            // }
 
-            // window.addEventListener('devicemotion', function(event) {
-            //     var accel = event.acceleration;
-            //     // if (accel.x > 1.5 || accel.y > 1.5) {
-            //         if (beta >= 20 && beta <= 90 && gamma >= 0 && gamma <= 10) {
-            //             counter++;
-            //             // document.getElementById('.contain').append("現在狀態:看手機");
-            //             document.location.href = "https://103306079.github.io/viban/stop.html"
-            //             timeout = setTimeout(function() {
-            //                 if (counter < 4) {
-            //                     counter = 0;
-            //                 }
-            //             }, 800);
+            window.addEventListener('devicemotion', function(event) {
+                var accel = event.acceleration;
+                if (accel.x > 1.5 || accel.y > 1.5) {
+                    if (beta >= 20 && beta <= 90 && gamma >= 0 && gamma <= 10) {
+                        counter++;
+                        // document.getElementById('.contain').append("現在狀態:看手機");
+                        document.location.href = "https://103306079.github.io/viban/stop.html"
+                        timeout = setTimeout(function() {
+                            if (counter < 4) {
+                                counter = 0;
+                            }
+                        }, 800);
 
-            //         // }
-            //     } else {
+                    }
+                } else {
 
-            //     }
-            //     if (counter > 4) {
-            //         // $('.sensor').append('Magic 8 ball says: you rock!');
-            //         counter = 0;
-            //         clearInterval(timeout);
-            //     }
-            // });
+                }
+                if (counter > 4) {
+                    // $('.sensor').append('Magic 8 ball says: you rock!');
+                    counter = 0;
+                    clearInterval(timeout);
+                }
+            });
 
         }, false);
     } else {

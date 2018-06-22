@@ -52,7 +52,7 @@ if (window.DeviceOrientationEvent || window.DeviceMotionEvent) {
 
         window.addEventListener('devicemotion', function(event) {
             var accel = event.acceleration;
-            if (beta >= 20 && beta <= 90 && gamma >= 0 && gamma <= 10) {
+            if (accel.x > 1.5 || accel.y > 1.5 && beta >= 20 && beta <= 90 && gamma >= 0 && gamma <= 10) {
                 counter++;
                 timeout = setTimeout(function() {
                     if (counter < 4) {

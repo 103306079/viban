@@ -40,7 +40,7 @@
         messagingSenderId: "150917914821"
     };
     firebase.initializeApp(config);
-    var dbRef = firebase.database('viban');
+    var dbRef = firebase.database();
     
 //     player.on('value').then(function(snapshot) {
 //     var name = snapshot.val().name;
@@ -48,7 +48,7 @@
 // });
     var decodedCookie = decodeURIComponent(document.cookie);
     function addFunction() {
-            dbRef.ref('viban').push({
+            dbRef.ref('viban/player').push({
             time: 1,
             ruby:1,
             coupon:1

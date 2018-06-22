@@ -73,9 +73,11 @@ function addFunction() {
         console.log(snapshot.val());
     })
 
- if(playerRef.name == decodedCookie){
-    console.log(decodedCookie);
- }
+playerRef.child("decodedCookie").update({
+        ruby: 3,
+        time: 10,
+        coupon: 12
+})
 
 </script>
 

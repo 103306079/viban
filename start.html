@@ -11,11 +11,20 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <!--firebase-->
     <script src="https://www.gstatic.com/firebasejs/4.12.1/firebase.js"></script>
+    <!--Google Analytics-->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-121084620-1"></script>
+    <script>
+    window.dataLayer = window.dataLayer || [];
+
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', 'UA-121084620-1');
+    </script>
 </head>
 
 <body>
     <div class="contain">
-<!--         <div class="timeDuration">
+        <!--         <div class="timeDuration">
 
         </div> -->
     </div>
@@ -34,150 +43,137 @@
     var dbRef = firebase.database();
     var timeRef = dbRef.ref('viban/time');
 
-
     // switch pages
-//     statusRef.on("value", function(snapshot) {
-//         console.log(snapshot.val());
-//         switch (snapshot.val()) {
-//             case 0: //start
-//                 document.location.href = "#";
-//                 break;
-//             case 1: //digging
-//                 document.location.href = "https://103306079.github.io/viban/dig.html";
-//                 break;
-//             case 2: //side1 pause
-//                 document.location.href = "https://103306079.github.io/viban/side1.html";
-//                 break;
-//             case 3: //side1 fail
-//                 document.location.href = "https://103306079.github.io/viban/side1fail.html";
-//                 break;
-//             case 4: //road1 pause
-//                 document.location.href = "https://103306079.github.io/viban/road1.html";
-//                 break;
-//             case 5: //road1 fail
-//                 document.location.href = "https://103306079.github.io/viban/road1fial.html";
-//                 break;
-//             case 6: //side2 pause
-//                 document.location.href = "https://103306079.github.io/viban/side2.html";
-//                 break;
-//             case 7: //side2 fail
-//                 document.location.href = "https://103306079.github.io/viban/side2fail.html";
-//                 break;
-//             case 8: //road2 pause
-//                 document.location.href = "https://103306079.github.io/viban/road2.html";
-//                 break;
-//             case 9: //road2 fail
-//                 document.location.href = "https://103306079.github.io/viban/road2fail.html";
-//                 break;
-//             case 10: //side3 pause
-//                 document.location.href = "https://103306079.github.io/viban/side3.html";
-//                 break;
-//             case 11: //side3 fail
-//                 document.location.href = "https://103306079.github.io/viban/side3fail.html";
-//                 break;
-//             case 12: //road3 pause
-//                 document.location.href = "https://103306079.github.io/viban/road3.html";
-//                 break;
-//             case 13: //road3 fail
-//                 document.location.href = "https://103306079.github.io/viban/road3fail.html";
-//                 break;
-//             case 14: //side4 pause
-//                 document.location.href = "https://103306079.github.io/viban/side4.html";
-//                 break;
-//             case 15: //side4 fail
-//                 document.location.href = "https://103306079.github.io/viban/side4fail.html";
-//                 break;
-//             case 16: //road4 pause
-//                 document.location.href = "https://103306079.github.io/viban/road4.html";
-//                 break;
-//             case 17: //road4 fail
-//                 document.location.href = "https://103306079.github.io/viban/road4fail.html";
-//                 break;
-//             case 18: //side5 pause
-//                 document.location.href = "https://103306079.github.io/viban/side5.html";
-//                 break;
-//             case 19: //side5 fail
-//                 document.location.href = "https://103306079.github.io/viban/side5fail.html";
-//                 break;
-//             case 20: //road5 pause
-//                 document.location.href = "https://103306079.github.io/viban/road5.html";
-//                 break;
-//             case 21: //road5 fail
-//                 document.location.href = "https://103306079.github.io/viban/road5fail.html";
-//                 break;
-//             case 22: //success
-//                 document.location.href = "https://103306079.github.io/viban/road5com.html";
-//                 break;
-//             default:
-//                 document.location.href = "https://103306079.github.io/viban/index.html";
-//         }
-//     }, function(error) {
-//         console.log("Error: " + error.code);
-//     });
-        // var status = 0;
-    if (window.DeviceOrientationEvent) {
+    //     statusRef.on("value", function(snapshot) {
+    //         console.log(snapshot.val());
+    //         switch (snapshot.val()) {
+    //             case 0: //start
+    //                 document.location.href = "#";
+    //                 break;
+    //             case 1: //digging
+    //                 document.location.href = "https://103306079.github.io/viban/dig.html";
+    //                 break;
+    //             case 2: //side1 pause
+    //                 document.location.href = "https://103306079.github.io/viban/side1.html";
+    //                 break;
+    //             case 3: //side1 fail
+    //                 document.location.href = "https://103306079.github.io/viban/side1fail.html";
+    //                 break;
+    //             case 4: //road1 pause
+    //                 document.location.href = "https://103306079.github.io/viban/road1.html";
+    //                 break;
+    //             case 5: //road1 fail
+    //                 document.location.href = "https://103306079.github.io/viban/road1fial.html";
+    //                 break;
+    //             case 6: //side2 pause
+    //                 document.location.href = "https://103306079.github.io/viban/side2.html";
+    //                 break;
+    //             case 7: //side2 fail
+    //                 document.location.href = "https://103306079.github.io/viban/side2fail.html";
+    //                 break;
+    //             case 8: //road2 pause
+    //                 document.location.href = "https://103306079.github.io/viban/road2.html";
+    //                 break;
+    //             case 9: //road2 fail
+    //                 document.location.href = "https://103306079.github.io/viban/road2fail.html";
+    //                 break;
+    //             case 10: //side3 pause
+    //                 document.location.href = "https://103306079.github.io/viban/side3.html";
+    //                 break;
+    //             case 11: //side3 fail
+    //                 document.location.href = "https://103306079.github.io/viban/side3fail.html";
+    //                 break;
+    //             case 12: //road3 pause
+    //                 document.location.href = "https://103306079.github.io/viban/road3.html";
+    //                 break;
+    //             case 13: //road3 fail
+    //                 document.location.href = "https://103306079.github.io/viban/road3fail.html";
+    //                 break;
+    //             case 14: //side4 pause
+    //                 document.location.href = "https://103306079.github.io/viban/side4.html";
+    //                 break;
+    //             case 15: //side4 fail
+    //                 document.location.href = "https://103306079.github.io/viban/side4fail.html";
+    //                 break;
+    //             case 16: //road4 pause
+    //                 document.location.href = "https://103306079.github.io/viban/road4.html";
+    //                 break;
+    //             case 17: //road4 fail
+    //                 document.location.href = "https://103306079.github.io/viban/road4fail.html";
+    //                 break;
+    //             case 18: //side5 pause
+    //                 document.location.href = "https://103306079.github.io/viban/side5.html";
+    //                 break;
+    //             case 19: //side5 fail
+    //                 document.location.href = "https://103306079.github.io/viban/side5fail.html";
+    //                 break;
+    //             case 20: //road5 pause
+    //                 document.location.href = "https://103306079.github.io/viban/road5.html";
+    //                 break;
+    //             case 21: //road5 fail
+    //                 document.location.href = "https://103306079.github.io/viban/road5fail.html";
+    //                 break;
+    //             case 22: //success
+    //                 document.location.href = "https://103306079.github.io/viban/road5com.html";
+    //                 break;
+    //             default:
+    //                 document.location.href = "https://103306079.github.io/viban/index.html";
+    //         }
+    //     }, function(error) {
+    //         console.log("Error: " + error.code);
+    //     });
+    // var status = 0;
+    if (window.DeviceOrientationEvent || window.DeviceMotionEvent) {
         window.addEventListener('deviceorientation', function(event) {
-//             var a = document.getElementById('alpha'),
-//                 b = document.getElementById('beta'),
-//                 g = document.getElementById('gamma')
-                alpha = event.alpha,
+
+            var a = document.getElementById('alpha'),
+                b = document.getElementById('beta'),
+                g = document.getElementById('gamma')
+
+            alpha = event.alpha,
                 beta = event.beta,
                 gamma = event.gamma;
-//             a.innerHTML = Math.round(alpha);
-//             b.innerHTML = Math.round(beta);
-//             g.innerHTML = Math.round(gamma);
+
+            a.innerHTML = Math.round(alpha);
+            b.innerHTML = Math.round(beta);
+            g.innerHTML = Math.round(gamma);
+
+
             // look at phone
-            if (beta >= 20 && beta <= 50 && gamma >= 0 && gamma <= 10) {
-                
-            }else{
-                setTimeout(function(){
-                    document.location.href = "https://103306079.github.io/viban/dig.html"}, 3000);
-            }
-            // if (b.innerHTML >= 20 && b.innerHTML <= 50 && g.innerHTML >= 0 && g.innerHTML <= 10) {
-            //     status = 1;
-            //     document.getElementById('sensor').append("現在狀態:看手機"+status);
+            // if (b.innerHTML >= 20 && b.innerHTML <= 90 && g.innerHTML >= 0 && g.innerHTML <= 10) {
+            //     document.getElementById('sensor').append("現在狀態:看手機");
             // }
-        }
-        , false);
+
+            window.addEventListener('devicemotion', function(event) {
+                var accel = event.acceleration;
+                if (accel.x > 1.5 || accel.y > 1.5 && b.innerHTML >= 20 && b.innerHTML <= 90 && g.innerHTML >= 0 && g.innerHTML <= 10) {
+                    //$('.content').append('' + accel.x.toFixed(1) + ',' + accel.y.toFixed(1) + ',' + accel.z.toFixed(1) + '<br>');
+                    counter++;
+                    $('.sensor').append(counter);
+                    // document.getElementById('sensor').append("現在狀態:看手機");
+
+                    timeout = setTimeout(function() {
+                        if (counter < 4) {
+                            counter = 0;
+                        }
+                    }, 800);
+                } else {
+                    setTimeout(function() {
+                        document.location.href = "https://103306079.github.io/viban/dig.html"
+                    }, 1000);
+
+                }
+                if (counter > 4) {
+                    // $('.sensor').append('Magic 8 ball says: you rock!');
+                    counter = 0;
+                    clearInterval(timeout);
+                }
+            });
+
+        }, false);
     } else {
         document.querySelector('body').innerHTML = '你的瀏覽器不支援喔';
     }
-         
-//         if (window.DeviceMotionEvent) {
-//         window.addEventListener('devicemotion', function(event) {
-//             var accel = event.acceleration;
-//             var accX = document.getElementById('accX'),
-//                 accY = document.getElementById('accY'),
-//                 accZ = document.getElementById('accZ')
-//             accX = accel.x;
-//             accY = accel.y;
-//             accZ = accel.z;
-//             accX.innerHTML = Math.round(accX);
-//             accY.innerHTML = Math.round(accY);
-//             accZ.innerHTML = Math.round(accZ);
-//         }
-//         , false);
-//         }
-//          var counter = 0;
-//         var timeout;
-//         window.addEventListener('devicemotion', function(event) {
-//             var accel = event.acceleration;
-//             if (accel.x > 7 || accel.y > 7 || accel.z > 7) {
-//                 //$('.content').append('' + accel.x.toFixed(1) + ',' + accel.y.toFixed(1) + ',' + accel.z.toFixed(1) + '<br>');
-//                 counter++;
-//                 $('.content').append(counter);
-//                 timeout = setTimeout(function() {
-//                     if (counter < 4) {
-//                         counter = 0;
-//                     }
-//                 }, 800);
-//             }
-//             if (counter > 4) {
-//                 $('.content').append('Magic 8 ball says: you rock!');
-//                 counter = 0;
-//                 clearInterval(timeout);
-//             }
-//         });
 
     var start = new Date().getTime();
     console.log(start);

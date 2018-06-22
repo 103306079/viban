@@ -26,28 +26,32 @@
 <!-- Global site tag (gtag.js) - Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-121084620-1"></script>
 <script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+//GA
+window.dataLayer = window.dataLayer || [];
 
-  gtag('config', 'UA-121084620-1');
-    var config = {
-        apiKey: "AIzaSyBqaB_5x6WNZiU5RoSZ4aveLmuMgfs0m_0",
-        authDomain: "viban-44f1e.firebaseapp.com",
-        databaseURL: "https://viban-44f1e.firebaseio.com",
-        projectId: "viban-44f1e",
-        storageBucket: "viban-44f1e.appspot.com",
-        messagingSenderId: "150917914821"
-    };
-    firebase.initializeApp(config);
-    var dbRef = firebase.database();
-//     var player = dbRef.ref('viban/player');
-    var play = dbRef.ref('viban');
+function gtag() { dataLayer.push(arguments); }
+gtag('js', new Date());
+gtag('config', 'UA-121084620-1');
+
+
+// Initialize Firebase
+var config = {
+    apiKey: "AIzaSyBqaB_5x6WNZiU5RoSZ4aveLmuMgfs0m_0",
+    authDomain: "viban-44f1e.firebaseapp.com",
+    databaseURL: "https://viban-44f1e.firebaseio.com",
+    projectId: "viban-44f1e",
+    storageBucket: "viban-44f1e.appspot.com",
+    messagingSenderId: "150917914821"
+};
+firebase.initializeApp(config);
+
+var dbRef = firebase.database();
+var playerRef = dbRef.ref('viban');
 //     player.on('value').then(function(snapshot) {
 //     var name = snapshot.val().name;
 //   // ...
 // });
-    var decodedCookie = decodeURIComponent(document.cookie);
+var decodedCookie = decodeURIComponent(document.cookie);
 //     function _uuid() {
 //   function s4() {
 //     return Math.floor((1 + Math.random()) * 0x10000).toString(16).substring(1);
@@ -56,19 +60,19 @@
 // }
 
 // var uuid = _uuid();
-    function addFunction() {
-            play.push({
-            name:decodedCookie,
-            ruby:1,
-            time:1,
-            coupon:1
-            
-        
-  });
-        }
+function addFunction() {
+    playerRef.push({
+        name: decodedCookie,
+        ruby: 1,
+        time: 1,
+        coupon: 1
+    });
+}
 
-    
-    
+ playerRef.on("value", function(snapshot) {
+        console.log(snapshot.val());
+    })
+
 </script>
 
 <body>
@@ -254,97 +258,96 @@
     // }
 
     // Initialize Firebase
-    var config = {
-        apiKey: "AIzaSyBqaB_5x6WNZiU5RoSZ4aveLmuMgfs0m_0",
-        authDomain: "viban-44f1e.firebaseapp.com",
-        databaseURL: "https://viban-44f1e.firebaseio.com",
-        projectId: "viban-44f1e",
-        storageBucket: "viban-44f1e.appspot.com",
-        messagingSenderId: "150917914821"
-    };
-    firebase.initializeApp(config);
+    // var config = {
+    //     apiKey: "AIzaSyBqaB_5x6WNZiU5RoSZ4aveLmuMgfs0m_0",
+    //     authDomain: "viban-44f1e.firebaseapp.com",
+    //     databaseURL: "https://viban-44f1e.firebaseio.com",
+    //     projectId: "viban-44f1e",
+    //     storageBucket: "viban-44f1e.appspot.com",
+    //     messagingSenderId: "150917914821"
+    // };
+    // firebase.initializeApp(config);
 
-    var dbRef = firebase.database();
-    var statusRef = dbRef.ref('viban/status');
+    // var dbRef = firebase.database();
 
-//     statusRef.on("value", function(snapshot) {
-//         console.log(snapshot.val());
-//         switch (snapshot.val()) {
-//             case 0: //start
-//                 document.location.href = "https://103306079.github.io/viban/start.html";
-//                 break;
-//             case 1: //digging
-//                 document.location.href = "https://103306079.github.io/viban/dig.html";
-//                 break;
-//             case 2: //side1 pause
-//                 document.location.href = "https://103306079.github.io/viban/side1.html";
-//                 break;
-//             case 3: //side1 fail
-//                 document.location.href = "https://103306079.github.io/viban/side1fail.html";
-//                 break;
-//             case 4: //road1 pause
-//                 document.location.href = "https://103306079.github.io/viban/road1.html";
-//                 break;
-//             case 5: //road1 fail
-//                 document.location.href = "https://103306079.github.io/viban/road1fail.html";
-//                 break;
-//             case 6: //side2 pause
-//                 document.location.href = "https://103306079.github.io/viban/side2.html";
-//                 break;
-//             case 7: //side2 fail
-//                 document.location.href = "https://103306079.github.io/viban/side2fail.html";
-//                 break;
-//             case 8: //road2 pause
-//                 document.location.href = "https://103306079.github.io/viban/road2.html";
-//                 break;
-//             case 9: //road2 fail
-//                 document.location.href = "https://103306079.github.io/viban/road2fail.html";
-//                 break;
-//             case 10: //side3 pause
-//                 document.location.href = "https://103306079.github.io/viban/side3.html";
-//                 break;
-//             case 11: //side3 fail
-//                 document.location.href = "https://103306079.github.io/viban/side3fail.html";
-//                 break;
-//             case 12: //road3 pause
-//                 document.location.href = "https://103306079.github.io/viban/road3.html";
-//                 break;
-//             case 13: //road3 fail
-//                 document.location.href = "https://103306079.github.io/viban/road3fail.html";
-//                 break;
-//             case 14: //side4 pause
-//                 document.location.href = "https://103306079.github.io/viban/side4.html";
-//                 break;
-//             case 15: //side4 fail
-//                 document.location.href = "https://103306079.github.io/viban/side4fail.html";
-//                 break;
-//             case 16: //road4 pause
-//                 document.location.href = "https://103306079.github.io/viban/road4.html";
-//                 break;
-//             case 17: //road4 fail
-//                 document.location.href = "https://103306079.github.io/viban/road4fail.html";
-//                 break;
-//             case 18: //side5 pause
-//                 document.location.href = "https://103306079.github.io/viban/side5.html";
-//                 break;
-//             case 19: //side5 fail
-//                 document.location.href = "https://103306079.github.io/viban/side5fail.html";
-//                 break;
-//             case 20: //road5 pause
-//                 document.location.href = "https://103306079.github.io/viban/road5.html";
-//                 break;
-//             case 21: //road5 fail
-//                 document.location.href = "https://103306079.github.io/viban/road5fail.html";
-//                 break;
-//             case 22: //success
-//                 document.location.href = "https://103306079.github.io/viban/road5com.html";
-//                 break;
-//             default:
-//                 document.location.href = "#";
-//         }
-//     }, function(error) {
-//         console.log("Error: " + error.code);
-//     });
+    //     statusRef.on("value", function(snapshot) {
+    //         console.log(snapshot.val());
+    //         switch (snapshot.val()) {
+    //             case 0: //start
+    //                 document.location.href = "https://103306079.github.io/viban/start.html";
+    //                 break;
+    //             case 1: //digging
+    //                 document.location.href = "https://103306079.github.io/viban/dig.html";
+    //                 break;
+    //             case 2: //side1 pause
+    //                 document.location.href = "https://103306079.github.io/viban/side1.html";
+    //                 break;
+    //             case 3: //side1 fail
+    //                 document.location.href = "https://103306079.github.io/viban/side1fail.html";
+    //                 break;
+    //             case 4: //road1 pause
+    //                 document.location.href = "https://103306079.github.io/viban/road1.html";
+    //                 break;
+    //             case 5: //road1 fail
+    //                 document.location.href = "https://103306079.github.io/viban/road1fail.html";
+    //                 break;
+    //             case 6: //side2 pause
+    //                 document.location.href = "https://103306079.github.io/viban/side2.html";
+    //                 break;
+    //             case 7: //side2 fail
+    //                 document.location.href = "https://103306079.github.io/viban/side2fail.html";
+    //                 break;
+    //             case 8: //road2 pause
+    //                 document.location.href = "https://103306079.github.io/viban/road2.html";
+    //                 break;
+    //             case 9: //road2 fail
+    //                 document.location.href = "https://103306079.github.io/viban/road2fail.html";
+    //                 break;
+    //             case 10: //side3 pause
+    //                 document.location.href = "https://103306079.github.io/viban/side3.html";
+    //                 break;
+    //             case 11: //side3 fail
+    //                 document.location.href = "https://103306079.github.io/viban/side3fail.html";
+    //                 break;
+    //             case 12: //road3 pause
+    //                 document.location.href = "https://103306079.github.io/viban/road3.html";
+    //                 break;
+    //             case 13: //road3 fail
+    //                 document.location.href = "https://103306079.github.io/viban/road3fail.html";
+    //                 break;
+    //             case 14: //side4 pause
+    //                 document.location.href = "https://103306079.github.io/viban/side4.html";
+    //                 break;
+    //             case 15: //side4 fail
+    //                 document.location.href = "https://103306079.github.io/viban/side4fail.html";
+    //                 break;
+    //             case 16: //road4 pause
+    //                 document.location.href = "https://103306079.github.io/viban/road4.html";
+    //                 break;
+    //             case 17: //road4 fail
+    //                 document.location.href = "https://103306079.github.io/viban/road4fail.html";
+    //                 break;
+    //             case 18: //side5 pause
+    //                 document.location.href = "https://103306079.github.io/viban/side5.html";
+    //                 break;
+    //             case 19: //side5 fail
+    //                 document.location.href = "https://103306079.github.io/viban/side5fail.html";
+    //                 break;
+    //             case 20: //road5 pause
+    //                 document.location.href = "https://103306079.github.io/viban/road5.html";
+    //                 break;
+    //             case 21: //road5 fail
+    //                 document.location.href = "https://103306079.github.io/viban/road5fail.html";
+    //                 break;
+    //             case 22: //success
+    //                 document.location.href = "https://103306079.github.io/viban/road5com.html";
+    //                 break;
+    //             default:
+    //                 document.location.href = "#";
+    //         }
+    //     }, function(error) {
+    //         console.log("Error: " + error.code);
+    //     });
     </script>
 </body>
 

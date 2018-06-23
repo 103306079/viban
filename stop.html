@@ -87,12 +87,6 @@ firebase.auth().onAuthStateChanged(function(user) {
     }
 });
 
-dbRef.ref().once('value').then(function(snapshot) {
-    snapshot.forEach(function(childsnapshot) {
-        console.log(childsnapshot.val().digTime);
-    })
-})
-
 var count = 0;
 if (window.DeviceOrientationEvent || window.DeviceMotionEvent) {
     window.addEventListener('deviceorientation', function(event) {

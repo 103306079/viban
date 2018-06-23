@@ -109,8 +109,8 @@ function writeUserData() {
         var user = result.user;
         dbRef.ref(user.uid).update({
             time: 0,
-            digTime: 0
-            
+            digTime: 0,
+            ruby: 0
         });
     });
 }
@@ -178,7 +178,7 @@ function writeUserData() {
                 </div>
                 <div class="modal-body">
                     <h5>歡迎來到喬伊的實驗室!</h5>
-                    <p>科學家喬伊在這座城市地底下發現許多珍貴的礦石， 而你的任務就是替喬伊收集地底的礦石，幫助他完成合成機器人的夢想。
+                    <p>科學家喬伊在這座城市地底下發現許多珍貴的礦石， 而你的任務就是替喬伊收集地底的礦石，幫助他合成可以到商店兌換的優惠券。
                     </p>
                 </div>
                 <div class="modal-footer">
@@ -197,7 +197,7 @@ function writeUserData() {
                     </button>
                 </div>
                 <div class="modal-body">
-                    <p>按下開始挖礦並行走，便能開啟挖礦任務。此時請務必將手機保持在挖礦模式，不必看著手機，收進口袋便能自動開採礦石。
+                    <p>按下開始挖礦並行走，便能開啟挖礦任務。此時請務必將手機保持在挖礦模式，不必「盯著」手機，收進口袋便能自動開採礦石。
                     </p>
                 </div>
                 <div class="modal-footer">
@@ -236,7 +236,6 @@ function writeUserData() {
                 </div>
                 <div class="modal-body">
                     <p>只要遵守採礦守則，走得越久能蒐集到越多喔!
-                        <br>在馬路口進行挖礦，還有快速挖礦模式，只要不看手機，便可以得到稀有的礦石！
                         <br>準備好去挖礦了嗎？</p>
                     </p>
                     </p>

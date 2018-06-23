@@ -1,106 +1,87 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-<title>Change</title>
-<meta name="viewport" content="width=device-width; initial-scale=1.0">
-<link rel="stylesheet" style="text/css" href="change.css"/>
-<meta charset="utf-8">
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-<script src="https://www.gstatic.com/firebasejs/4.12.1/firebase.js"></script>
-<script async src="https://www.googletagmanager.com/gtag/js?id=UA-121084620-1"></script>
+    <title>Change</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" style="text/css" href="change.css" />
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/4.12.1/firebase.js"></script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-121084620-1"></script>
 </head>
 <script>
 // Initialize Firebase
- var config = {
-        apiKey: "AIzaSyBqaB_5x6WNZiU5RoSZ4aveLmuMgfs0m_0",
-        authDomain: "viban-44f1e.firebaseapp.com",
-        databaseURL: "https://viban-44f1e.firebaseio.com",
-        projectId: "viban-44f1e",
-        storageBucket: "viban-44f1e.appspot.com",
-        messagingSenderId: "150917914821"
-    };
-    firebase.initializeApp(config);
-	var dbRef = firebase.database();
+var config = {
+    apiKey: "AIzaSyBqaB_5x6WNZiU5RoSZ4aveLmuMgfs0m_0",
+    authDomain: "viban-44f1e.firebaseapp.com",
+    databaseURL: "https://viban-44f1e.firebaseio.com",
+    projectId: "viban-44f1e",
+    storageBucket: "viban-44f1e.appspot.com",
+    messagingSenderId: "150917914821"
+};
+firebase.initializeApp(config);
+var dbRef = firebase.database();
+//先把uid 儲存起來 之後都可以用
+// var currentUserId = "2genxkG8K0bMF3LryCWaN8EQVyA3";
 
-    //先把uid 儲存起來 之後都可以用
-    var currentUserId ="2genxkG8K0bMF3LryCWaN8EQVyA3";
+//進行註冊
+firebase.auth().onAuthStateChanged(function(user) {
+    console.log(user);
+    if (user) {
+        currentUserId = user.uid;
+        console.log(currentUserId);
+        dbRef.ref("/" + currentUserId).on('value', function(snapshot) {
+            var rubyamount = snapshot.val().ruby;
+            console.log(rubyamount);
+            $(".modal-body").append("<p>目前已挖到" + rubyAmount + "顆寶石，確定以10顆寶石合成優惠券？</p>");
+        });
+    }
 
-    //進行註冊
-    firebase.auth().onAuthStateChanged(function(user) {
-        console.log(user);
-        if (user) {
-            currentUserId = user.uid;
-            console.log(currentUserId);
-        }
-        
+});
+
+function cozy() {
+    dbRef.ref("/" + currentUserId).on('value', function(snapshot) {
+        var rubyamount = snapshot.val().ruby;
+        var cozyamount = snapshot.val().cozy;
+        console.log(rubyamount);
+        dbRef.ref(currentUserId).update({
+            cozy: cozyamount + 1,
+            ruby: rubyamount - 10
+
+        });
     });
+}
 
-    //FB登入程式碼
-	var provider = new firebase.auth.FacebookAuthProvider();
-    function facebookSignin() {
-        firebase.auth().signInWithRedirect(provider).then(function(result) {
-            var token = result.credential.accessToken;
-            var user = result.user;
-            console.log(user);
-        }).catch(function(error) {
-            console.log(error.code);
-            console.log(error.message);
+function dragon() {
+    dbRef.ref("/" + currentUserId).on('value', function(snapshot) {
+        var rubyamount = snapshot.val().ruby;
+        var dragonamount = snapshot.val().dragon;
+        console.log(rubyamount);
+        dbRef.ref(currentUserId).update({
+            cozy: dragonamount + 1,
+            ruby: rubyamount - 10
+
         });
-    }
-    function facebookSignout() {
-        firebase.auth().signOut().then(function() {
-            console.log('Signout successful!')
-        }, function(error) {
-            console.log('Signout failed')
+    });
+}
+
+function deme() {
+    dbRef.ref("/" + currentUserId).on('value', function(snapshot) {
+        var rubyamount = snapshot.val().ruby;
+        var demeamount = snapshot.val().deme;
+        console.log(rubyamount);
+        dbRef.ref(currentUserId).update({
+            deme: cozyamount + 1,
+            ruby: rubyamount - 10
+
         });
-    }
-// 	function myFunction(){
-// 		dbRef.ref("/"+currentUserId).on('value', function(snapshot) {
-//                    var rubyamount=snapshot.val().ruby; 
-// 		var cozyamount=snapshot.val().cozy;
-//                  console.log(rubyamount);
-//              });
-// 	}
-	function cozy(){
-		dbRef.ref("/"+currentUserId).on('value', function(snapshot) {
-                var rubyamount=snapshot.val().ruby; 
-		var cozyamount=snapshot.val().cozy;
-                 console.log(rubyamount);
-		   dbRef.ref(currentUserId).update({
-            		cozy: cozyamount+1,
-            		ruby: rubyamount-10
-			
-        });
-             });
-	}
-	function dragon(){
-		dbRef.ref("/"+currentUserId).on('value', function(snapshot) {
-                var rubyamount=snapshot.val().ruby; 
-		var dragonamount=snapshot.val().dragon;
-                 console.log(rubyamount);
-		   dbRef.ref(currentUserId).update({
-            		cozy: dragonamount+1,
-            		ruby: rubyamount-10
-			
-        });
-             });
-	}
-	function deme(){
-		dbRef.ref("/"+currentUserId).on('value', function(snapshot) {
-                var rubyamount=snapshot.val().ruby; 
-		var demeamount=snapshot.val().deme;
-                 console.log(rubyamount);
-		   dbRef.ref(currentUserId).update({
-            		deme: cozyamount+1,
-            		ruby: rubyamount-10
-			
-        });
-             });
-	}
+    });
+}
 //     $(document).ready(function(){
-    
+
 //         $(".showRuby").on("click", function(){
 //             console.log("ENTER");
 //             dbRef.ref("/"+currentUserId).on('value', function(snapshot) {
@@ -108,37 +89,56 @@
 //                 $(".myRubyValue").text(rubyamount);
 //             });
 //         });
-
 //     });
 </script>
+
 <body>
-<div class="contain">
-	<button type="button" class="btn btn-info btn-lg" id="home" onclick="window.location.href='index.html'">回首頁</button>
-	
-	<div class="ruby1">
-	
-    <img src="ruby.png">
+    <div class="contain">
+        <button type="button" class="btn btn-info btn-lg" id="home" onclick="window.location.href='index.html'">回首頁</button>
+        <div class="ruby1">
+            <img src="ruby.png">
+        </div>
+        <p id="amount1">10*</p>
+        <div class="ruby2">
+            <img src="ruby.png">
+        </div>
+        <p id="amount2">10*</p>
+        <div class="ruby3">
+            <img src="ruby.png">
+        </div>
+        <p id="amount3">10*</p>
+        <button type="button" class="btn btn-info btn-lg" id="change1" data-toggle="modal" data-target="#deme">合成優惠券</button>
+    </div>
+    <button type="button" class="btn btn-info btn-lg" id="change2" onclick="cozy()"><a href="./cozy.html">合成優惠券</button>
+    </div>
+    <button type="button" class="btn btn-info btn-lg" id="change3"  onclick="dragon()"><a href="./dragon.html">合成優惠券</button>
+    </div>
 
-</div>
-	<p id="amount1">10*</p>
-	<div class="ruby2">
-	
-    <img src="ruby.png">
 
-</div>
-	<p id="amount2">10*</p>
-	<div class="ruby3">
-	
-    <img src="ruby.png">
-
-</div>
-	<p id="amount3">10*</p>
-	<button type="button" class="btn btn-info btn-lg" id="change1" onclick="deme()"><a href="./deme.html">合成優惠券</button>
-	</div>
-	<button type="button" class="btn btn-info btn-lg" id="change2" onclick="cozy()"><a href="./cozy.html">合成優惠券</button>
-	</div>
-	<button type="button" class="btn btn-info btn-lg" id="change3"  onclick="dragon()"><a href="./drangon.html">合成優惠券</button>
-	</div>
+    <div class="modal" id="deme">
+    <div class="modal-dialog">
+      <div class="modal-content">
+      
+        <!-- Modal Header -->
+        <div class="modal-header">
+          <h4 class="modal-title">合成優惠券</h4>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+        
+        <!-- Modal body -->
+        <div class="modal-body">
+          
+        </div>
+        
+        <!-- Modal footer -->
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger" data-dismiss="modal"><a href="./deme.html">合成</button>
+        </div>
+        
+      </div>
+    </div>
+  </div>
+  
 
 </body>
 </html>

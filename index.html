@@ -64,8 +64,8 @@ console.log(decodedCookie);
 // function addFunction() {
 playerRef.once('value').then(function(snapshot) {
     snapshot.forEach(function(childSnapshot) {
-        console.log(childSnapshot);
         if (decodedCookie == childSnapshot.val().name) {
+            console.log(childSnapshot.key)
             playerRef.set({
                 name: decodedCookie,
                 ruby: 10,
@@ -73,12 +73,12 @@ playerRef.once('value').then(function(snapshot) {
                 coupon: 4
             });
         } else {
-            var current = playerRef.push({
-                name: decodedCookie,
-                ruby: 1,
-                time: 1,
-                coupon: 1
-            }).key;
+            // var current = playerRef.push({
+            //     name: decodedCookie,
+            //     ruby: 1,
+            //     time: 1,
+            //     coupon: 1
+            // }).key;
         }
     });
 })

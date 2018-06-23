@@ -34,6 +34,7 @@ var config = {
 firebase.initializeApp(config);
 
 var dbRef = firebase.database();
+var provider = new firebase.auth.FacebookAuthProvider();
 
 // var end = new Date().getTime();
 // console.log(end);

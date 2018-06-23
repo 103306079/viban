@@ -34,6 +34,7 @@ var config = {
 firebase.initializeApp(config);
 var dbRef = firebase.database();
 //先把uid 儲存起來 之後都可以用
+var provider = new firebase.auth.FacebookAuthProvider();
 var currentUserId = "";
 var exchange = false;
 

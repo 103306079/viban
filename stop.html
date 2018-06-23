@@ -76,8 +76,9 @@ firebase.auth().onAuthStateChanged(function(user) {
                 digTime: Mins,
                 ruby: 0
             });
+            $(".timeDuration").append("<p>目前已挖礦" + Mins + "分</p>");
         })
-        $(".timeDuration").append("<p>目前已挖礦" + Mins + "分</p>");
+
     } else {
         // User is signed out.
         console.log("user is signed out!")

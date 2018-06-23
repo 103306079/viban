@@ -54,16 +54,41 @@ function facebookSignout() {
 // read information
 // var dbRef = firebase.database();
 // var playerRef = dbRef.ref('viban');
-    function myFunction() {
-    firebase.auth().getRedirectResult().then(function(result) {
-        var user = result.user;
+function myFunction() {
+    firebase.auth().onAuthStateChanged(function(user) {
+  if (user) {
+	  var uid = user.uid;
         
-   dbRef.ref(user.uid).once('value').then(function(snapshot) {
+   dbRef.ref(uid).once('value').then(function(snapshot) {
        var rubyamount=snapshot.val().ruby;
        console.log(rubyamount);
     });
+	  }
     });
+	
 	    }
+// 	firebase.auth().onAuthStateChanged(function(user) {
+//   if (user) {
+//     // User is signed in.
+//     var displayName = user.displayName;
+//     var email = user.email;
+//     var emailVerified = user.emailVerified;
+//     var photoURL = user.photoURL;
+//     var isAnonymous = user.isAnonymous;
+//     var uid = user.uid;
+//     var providerData = user.providerData;
+//     // ...
+//   } 
+//     function myFunction() {
+//     firebase.auth().getRedirectResult().then(function(result) {
+//         var user = result.user;
+        
+//    dbRef.ref(user.uid).once('value').then(function(snapshot) {
+//        var rubyamount=snapshot.val().ruby;
+//        console.log(rubyamount);
+//     });
+//     });
+// 	    }
 	
 // function writeUserData() {
 //     firebase.auth().getRedirectResult().then(function(result) {

@@ -41,11 +41,11 @@ function facebookSignout() {
         console.log('Signout failed')
     });
 }
-dbRef.ref().once('value').then(function(snapshot) {
-    snapshot.forEach(function(childsnapshot) {
-        console.log(childsnapshot.val());
-    })
-})
+// dbRef.ref().once('value').then(function(snapshot) {
+//     snapshot.forEach(function(childsnapshot) {
+//         console.log(childsnapshot.val());
+//     })
+// })
 // dbRef.once('value').then(function(snapshot) {
 //     console.log(snapshot);
 // })

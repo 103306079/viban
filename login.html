@@ -79,7 +79,11 @@ firebase.auth().getRedirectResult().then(function(result) {
     dbRef.ref(user.uid).set({
         time: 0,
         digTime: 0,
-        ruby: 0
+        ruby: 0,
+        cozy:0,
+        deme:0,
+        dragon:0,
+        dragon2:0
     });
     // console.log(user.uid.childsnapshot);
 }).catch(function(error) {

@@ -78,9 +78,7 @@ var playerRef = dbRef.ref('viban');
 var provider = new firebase.auth.FacebookAuthProvider();
 
 function facebookSignin() {
-    firebase.auth().signInWithRedirect(provider)
-
-        .then(function(result) {
+    firebase.auth().signInWithRedirect(provider).then(function(result) {
             var token = result.credential.accessToken;
             var user = result.user;
 
@@ -93,9 +91,7 @@ function facebookSignin() {
 }
 
 function facebookSignout() {
-    firebase.auth().signOut()
-
-        .then(function() {
+    firebase.auth().signOut().then(function() {
             console.log('Signout successful!')
         }, function(error) {
             console.log('Signout failed')

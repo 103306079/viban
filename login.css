@@ -8,11 +8,11 @@
         margin: 15% 12%;
     }
 
-    #login {
+    .btn {
         background: #807598;
         border: #807598;
         text-align: center;
-        margin: 5% 40% 15% 20%;
+        margin: auto;
     }
 
     p {
@@ -25,5 +25,6 @@
         border: #807598;
         text-align: center;
         margin: 5% 50% 15% 10%;
+        margin: auto;
     }
 }

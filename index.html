@@ -114,12 +114,13 @@ dbRef.ref().once('value').then(function(snapshot) {
 // var playerRef = dbRef.ref('viban');
 
 function writeUserData() {
-    firebase.auth().then(function(result) {
+    firebase.auth().getRedirectResult().then(function(result) {
         var user = result.user;
    dbRef.ref(user.uid).update({
         time: 10,
         ruby: 37
     });
+    }
 }
 
 //cookie

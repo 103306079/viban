@@ -45,18 +45,18 @@ function cozy() {
     compound = true;
     console.log(compound);
     if (compound == true) {
-        dbRef.ref("/" + currentUserId).on('value', function(snapshot) {
+        dbRef.ref("/" + currentUserId).once('value', function(snapshot) {
             var rubyAmount = snapshot.val().ruby;
             var cozyAmount = snapshot.val().cozy;
             console.log(rubyAmount);
             rubyAmount = rubyAmount - 10;
             cozyAmount = cozyAmount + 1;
+            compound = false;
             dbRef.ref(currentUserId).update({
                 cozy: cozyAmount,
                 ruby: rubyAmount
             });
         });
-        compound = false;
     }
     console.log(compound);
 }

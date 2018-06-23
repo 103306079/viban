@@ -109,8 +109,8 @@ function writeUserData() {
         var user = result.user;
         dbRef.ref(user.uid).update({
             time: 0,
-            digTime: 0,
-            ruby: 0
+            digTime: 0
+            
         });
     });
 }

@@ -85,7 +85,7 @@ firebase.auth().getRedirectResult().then(function(result) {
         ruby:0
     });
     console.log(snapshot);
-    
+
 
 }).catch(function(error) {
     // Handle Errors here.
@@ -164,11 +164,12 @@ firebase.auth().getRedirectResult().then(function(result) {
         fjs.parentNode.insertBefore(js, fjs);
     }(document, 'script', 'facebook-jssdk'));
     </script>
+    
     <!-- background -->
     <div class="bg">
-        <img src="stylesheets/img/lab.jpg">
-<!--         <button onclick="facebookSignin()">Facebook Signin</button>
-        <button onclick="facebookSignout()">Facebook Signout</button> -->
+<!--         <img src="stylesheets/img/lab.jpg"> -->
+        <button onclick="facebookSignin()">Facebook Signin</button>
+        <button onclick="facebookSignout()">Facebook Signout</button>
     </div>
     <!-- modal -->
     <div class="modal" tabindex="-1" role="dialog" id="myModal">

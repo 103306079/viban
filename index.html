@@ -78,19 +78,12 @@ firebase.auth().getRedirectResult().then(function(result) {
     var user = result.user;
     console.log(user.uid);
 
-//     dbRef.ref(user.uid).set({
-//         username: name,
-//         email: email,
-//         time: 0,
-//         ruby: 0
-//     });
-
-    dbRef.once('value').then(function(snapshot) {
-        snapshot.once('value').then(function(childsnapshot) {
-            console.log(childsnapshot);
-        })
-    })
-
+    dbRef.ref(user.uid).push({
+        username: name,
+        email: user.email,
+        time: 0,
+        ruby: 0
+    });
 
 }).catch(function(error) {
     // Handle Errors here.
@@ -103,20 +96,27 @@ firebase.auth().getRedirectResult().then(function(result) {
     // ...
 });
 
+dbRef.once('value').then(function(snapshot) {
+    snapshot.once('value').then(function(childsnapshot) {
+        console.log(childsnapshot);
+    })
+})
+
+
 // dbRef.once('value').then(function(snapshot) {
 //     console.log(snapshot);
 // })
 // read information
-var dbRef = firebase.database();
-var playerRef = dbRef.ref('viban');
+// var dbRef = firebase.database();
+// var playerRef = dbRef.ref('viban');
 
-function writeUserData(userId, name, time, ruby) {
-    playerRef.ref(userId).push({
-        username: name,
-        time: 0,
-        ruby: 0
-    });
-}
+// function writeUserData(userId, name, time, ruby) {
+//     playerRef.ref('users/' + userId).set({
+//         username: name,
+//         time: 0,
+//         ruby: 0
+//     });
+// }
 
 //cookie
 // var decodedCookie = decodeURIComponent(document.cookie);

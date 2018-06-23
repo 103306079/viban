@@ -62,6 +62,16 @@
                  console.log(rubyamount);
              });
 	}
+	function cozy(){
+		dbRef.ref("/"+currentUserId).on('value', function(snapshot) {
+                   var rubyamount=snapshot.val().ruby; 
+                 console.log(rubyamount);
+		   dbRef.ref(user.uid).update({
+            		
+            		ruby: rubyamount-10
+        });
+             });
+	}
 //     $(document).ready(function(){
     
 //         $(".showRuby").on("click", function(){
@@ -98,7 +108,7 @@
 	<p id="amount3">10*</p>
 	<button type="button" class="btn btn-info btn-lg" id="change1">合成優惠券</button>
 	</div>
-	<button type="button" class="btn btn-info btn-lg" id="change2" onclick="window.location.href='cozy.html'">合成優惠券</button>
+	<button type="button" class="btn btn-info btn-lg" id="change2" onclick=""><a href="./cozy.html">合成優惠券</button>
 	</div>
 	<button type="button" class="btn btn-info btn-lg" id="change3">合成優惠券</button>
 	</div>

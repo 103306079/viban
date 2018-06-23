@@ -113,7 +113,9 @@ dbRef.ref().once('value').then(function(snapshot) {
 // var dbRef = firebase.database();
 // var playerRef = dbRef.ref('viban');
 
-function writeUserData(userId, name, time, ruby) {
+function writeUserData() {
+    firebase.auth().then(function(result) {
+        var user = result.user;
    dbRef.ref(user.uid).update({
         time: 10,
         ruby: 37

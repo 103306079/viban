@@ -63,16 +63,16 @@ console.log(decodedCookie);
 // var uuid = _uuid();
 // function addFunction() {
 playerRef.once('value').then(function(snapshot) {
-    playerRef.forEach(function(childSnapshot) {
-        if (decodedCookie == snapshot.val().name) {
+    snapshot.forEach(function(childSnapshot) {
+        console.log(childSnapshot);
+        if (decodedCookie == childSnapshot.val().name) {
             playerRef.set({
                 name: decodedCookie,
                 ruby: 10,
                 time: 3,
                 coupon: 4
             });
-            console.log(playerRef);
-        } else{
+        } else {
             var current = playerRef.push({
                 name: decodedCookie,
                 ruby: 1,

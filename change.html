@@ -36,7 +36,7 @@ firebase.auth().onAuthStateChanged(function(user) {
         dbRef.ref("/" + currentUserId).on('value', function(snapshot) {
             var rubyAmount = snapshot.val().ruby;
             console.log(rubyAmount);
-            // $(".ruby").append("<p>目前已挖到" + rubyAmount + "顆寶石</p>");
+            $(".ruby").append("<p>目前已挖到" + rubyAmount + "顆寶石</p>");
         });
     }
 });
@@ -51,58 +51,63 @@ function cozy() {
             console.log(rubyAmount);
             rubyAmount = rubyAmount - 10;
             cozyAmount = cozyAmount + 1;
-            compound = false;
             dbRef.ref(currentUserId).update({
                 cozy: cozyAmount,
                 ruby: rubyAmount
             });
         });
+        compound = false;
     }
     console.log(compound);
 }
 
 function dragon() {
     compound = true;
-    dbRef.ref("/" + currentUserId).on('value', function(snapshot) {
-        var rubyAmount = snapshot.val().ruby;
-        var dragonAmount = snapshot.val().dragon;
-        console.log(rubyAmount);
-        dbRef.ref(currentUserId).update({
-            cozy: dragonAmount + 1,
-            ruby: rubyAmount - 10
+    console.log(compound);
+    if (compound == true) {
+        dbRef.ref("/" + currentUserId).once('value', function(snapshot) {
+            var rubyAmount = snapshot.val().ruby;
+            var dragonAmount = snapshot.val().dragon;
+            console.log(rubyAmount);
+            rubyAmount = rubyAmount - 10;
+            dragonAmount = dragonAmount + 1;
+            dbRef.ref(currentUserId).update({
+                dragon: dragonAmount,
+                ruby: rubyAmount
+            });
         });
-    });
-    compound = false;
+        compound = false;
+    }
+    console.log(compound);
+
 }
 
 function deme() {
     compound = true;
-    dbRef.ref("/" + currentUserId).on('value', function(snapshot) {
-        var rubyAmount = snapshot.val().ruby;
-        var demeAmount = snapshot.val().deme;
-        console.log(rubyAmount);
-        dbRef.ref(currentUserId).update({
-            deme: demeAmount + 1,
-            ruby: rubyAmount - 10
+    console.log(compound);
+    if (compound == true) {
+        dbRef.ref("/" + currentUserId).once('value', function(snapshot) {
+            var rubyAmount = snapshot.val().ruby;
+            var demeAmount = snapshot.val().deme;
+            console.log(rubyAmount);
+            rubyAmount = rubyAmount - 10;
+            demeAmount = demeAmount + 1;
+            dbRef.ref(currentUserId).update({
+                deme: demeAmount,
+                ruby: rubyAmount
+            });
         });
-    });
-    compound = false;
+        compound = false;
+    }
+    console.log(compound);
+
 }
-//     $(document).ready(function(){
-//         $(".showRuby").on("click", function(){
-//             console.log("ENTER");
-//             dbRef.ref("/"+currentUserId).on('value', function(snapshot) {
-//                 var rubyamount=snapshot.val().ruby; 
-//                 $(".myRubyValue").text(rubyamount);
-//             });
-//         });
-//     });
 </script>
 
 <body>
     <div class="contain">
     </div>
-    <!--         <div class="ruby"></div> -->
+    <div class="ruby"></div>
     <button type="button" class="btn btn-info btn-lg" id="home" onclick="window.location.href='index.html'">回首頁</button>
     <div class="ruby1">
         <img src="ruby.png">

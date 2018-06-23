@@ -11,8 +11,10 @@
     .btn {
         background: #807598;
         border: #807598;
-        text-align: center;
-         margin: 5% 10% 15% 40%;
+    }
+
+    #login {
+        margin: 5% 10% 15% 40%;
     }
 
     p {
@@ -20,11 +22,7 @@
         margin-top: 5%;
     }
 
-    .btn a {
-        background: #807598;
-        border: #807598;
-        text-align: center;
+    #go {
         margin: 5% 10% 15% 50%;
-        margin: auto;
     }
 }

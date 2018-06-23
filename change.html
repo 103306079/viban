@@ -69,7 +69,7 @@
 		var cozyamount=snapshot.val().cozy;
                  console.log(rubyamount);
 		   dbRef.ref(currentUserId).update({
-            		cozy: 1,
+            		cozy: cozyamount+1,
             		ruby: rubyamount-10
 			
         });

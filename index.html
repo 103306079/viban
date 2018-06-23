@@ -100,8 +100,8 @@ firebase.auth().getRedirectResult().then(function(result) {
 
 dbRef.once('value').then(function(snapshot) {
     console.log(snapshot);
-})
-read information
+});
+//read information
 var dbRef = firebase.database();
 var playerRef = dbRef.ref('viban');
 

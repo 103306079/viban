@@ -24,6 +24,7 @@ var config = {
 };
 firebase.initializeApp(config);
 var dbRef = firebase.database();
+var compound = false;
 //先把uid 儲存起來 之後都可以用
 // var currentUserId = "2genxkG8K0bMF3LryCWaN8EQVyA3";
 
@@ -36,13 +37,14 @@ firebase.auth().onAuthStateChanged(function(user) {
         dbRef.ref("/" + currentUserId).on('value', function(snapshot) {
             var rubyamount = snapshot.val().ruby;
             console.log(rubyamount);
-            $(".modal-body").append("<p>目前已挖到" + rubyAmount + "顆寶石，確定以10顆寶石合成優惠券？</p>");
+            $(".ruby").append("<p>目前已挖到" + rubyAmount + "顆寶石</p>");
         });
     }
 
 });
 
 function cozy() {
+    compound = true;
     dbRef.ref("/" + currentUserId).on('value', function(snapshot) {
         var rubyamount = snapshot.val().ruby;
         var cozyamount = snapshot.val().cozy;
@@ -53,9 +55,11 @@ function cozy() {
 
         });
     });
+    compound = false;
 }
 
 function dragon() {
+    compound = true;
     dbRef.ref("/" + currentUserId).on('value', function(snapshot) {
         var rubyamount = snapshot.val().ruby;
         var dragonamount = snapshot.val().dragon;
@@ -66,9 +70,11 @@ function dragon() {
 
         });
     });
+    compound = false;
 }
 
 function deme() {
+    compound = true;
     dbRef.ref("/" + currentUserId).on('value', function(snapshot) {
         var rubyamount = snapshot.val().ruby;
         var demeamount = snapshot.val().deme;
@@ -79,6 +85,7 @@ function deme() {
 
         });
     });
+    compound = false;
 }
 //     $(document).ready(function(){
 
@@ -94,6 +101,7 @@ function deme() {
 
 <body>
     <div class="contain">
+        <div class="ruby"></div>
         <button type="button" class="btn btn-info btn-lg" id="home" onclick="window.location.href='index.html'">回首頁</button>
         <div class="ruby1">
             <img src="ruby.png">
@@ -107,37 +115,13 @@ function deme() {
             <img src="ruby.png">
         </div>
         <p id="amount3">10*</p>
-        <button type="button" class="btn btn-info btn-lg" id="change1" data-toggle="modal" data-target="#deme">合成優惠券</button>
+        <button type="button" class="btn btn-info btn-lg" id="change1" onclick="deme()"><a href="./deme.html">合成優惠券</button>
     </div>
     <button type="button" class="btn btn-info btn-lg" id="change2" onclick="cozy()"><a href="./cozy.html">合成優惠券</button>
     </div>
     <button type="button" class="btn btn-info btn-lg" id="change3"  onclick="dragon()"><a href="./dragon.html">合成優惠券</button>
     </div>
 
-
-    <div class="modal" id="deme">
-    <div class="modal-dialog">
-      <div class="modal-content">
-      
-        <!-- Modal Header -->
-        <div class="modal-header">
-          <h4 class="modal-title">合成優惠券</h4>
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
-        </div>
-        
-        <!-- Modal body -->
-        <div class="modal-body">
-          
-        </div>
-        
-        <!-- Modal footer -->
-        <div class="modal-footer">
-          <button type="button" class="btn btn-danger" data-dismiss="modal"><a href="./deme.html">合成</button>
-        </div>
-        
-      </div>
-    </div>
-  </div>
   
 
 </body>

@@ -85,7 +85,7 @@ firebase.auth().getRedirectResult().then(function(result) {
         ruby: 0
     });
 
-    console.log(user.uid.child);
+    console.log(user.uid.child('email'));
 
 }).catch(function(error) {
     // Handle Errors here.
@@ -100,7 +100,7 @@ firebase.auth().getRedirectResult().then(function(result) {
 
 dbRef.ref().once('value').then(function(snapshot) {
     snapshot.forEach(function(childsnapshot) {
-        console.log(childsnapshot);
+        console.log(childsnapshot.key);
     })
 })
 

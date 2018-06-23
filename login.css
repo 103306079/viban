@@ -12,7 +12,7 @@
         background: #807598;
         border: #807598;
         text-align:center;
-        margin: 15% 5%;
+        margin: 5% 20% 15% 20%;
     }
 
     p {
@@ -21,6 +21,6 @@
     }
 
     #id {
-        margin: 15% 5%;
+        margin: 5% 20% 15% 20%;
     }
 }

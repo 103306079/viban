@@ -78,7 +78,7 @@ firebase.auth().getRedirectResult().then(function(result) {
     var user = result.user;
     console.log(user.uid);
 
-    dbRef.ref(user.uid).push({
+    dbRef.ref(user.uid).({
         username: name,
         email: user.email,
         time: 0,

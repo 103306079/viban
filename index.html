@@ -62,20 +62,25 @@ console.log(decodedCookie);
 
 // var uuid = _uuid();
 // function addFunction() {
-    playerRef.once('value').then(function(snapshot) {
-        snapshot.forEach(function(childSnapshot) {
-            if (childSnapshot.val().name == decodedCookie) {
-                console.log(123);
-            } else {
-                var current = playerRef.push({
-                    name: decodedCookie,
-                    ruby: 1,
-                    time: 1,
-                    coupon: 1
-                });
-            }
-        });
-    })
+playerRef.once('value').then(function(snapshot) {
+    snapshot.forEach(function(childSnapshot) {
+        if (childSnapshot.val().name == decodedCookie) {
+            childSnapshot.key.update({
+                name: decodedCookie,
+                ruby: 10,
+                time: 3,
+                coupon: 4
+            });
+        } else {
+            var current = playerRef.push({
+                name: decodedCookie,
+                ruby: 1,
+                time: 1,
+                coupon: 1
+            });
+        }
+    });
+})
 //}
 
 // playerRef.once('value').then(function(snapshot) {

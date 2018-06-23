@@ -5,12 +5,12 @@
     }
 
     button {
-        background-color: #807598;
-        border-color: #807598;
+        background: #807598;
+        border: #807598;
     }
 
     p {
-        padding-left: 5%;
-        padding-top: 5%;
+        padding-left: 8%;
+        padding-top: 20%;
     }
 }

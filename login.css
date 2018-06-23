@@ -8,11 +8,12 @@
         background: #807598;
         border: #807598;
         text-align:center;
+        margin-left: 8%;
     }
 
     p {
 
-        margin-left: 8%;
+        margin: 8%;
         margin-top: 20%;
     }
 }

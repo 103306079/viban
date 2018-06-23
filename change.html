@@ -10,10 +10,6 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
 <script>
-window.dataLayer = window.dataLayer || [];
-function gtag() { dataLayer.push(arguments); }
-gtag('js', new Date());
-gtag('config', 'UA-121084620-1');
 // Initialize Firebase
 var config = {
     apiKey: "AIzaSyBqaB_5x6WNZiU5RoSZ4aveLmuMgfs0m_0",
@@ -25,9 +21,86 @@ var config = {
 };
 firebase.initializeApp(config);
 var dbRef = firebase.database();
-	</script>
+// var playerRef = dbRef.ref('viban');
+// login with facebook
+var provider = new firebase.auth.FacebookAuthProvider();
+function facebookSignin() {
+    firebase.auth().signInWithRedirect(provider).then(function(result) {
+        var token = result.credential.accessToken;
+        var user = result.user;
+        console.log(user);
+    }).catch(function(error) {
+        console.log(error.code);
+        console.log(error.message);
+    });
+}
+function facebookSignout() {
+    firebase.auth().signOut().then(function() {
+        console.log('Signout successful!')
+    }, function(error) {
+        console.log('Signout failed')
+    });
+}
+dbRef.ref().once('value').then(function(snapshot) {
+    snapshot.forEach(function(childsnapshot) {
+        console.log(childsnapshot.val());
+    })
+})
+// dbRef.once('value').then(function(snapshot) {
+//     console.log(snapshot);
+// })
+// read information
+// var dbRef = firebase.database();
+// var playerRef = dbRef.ref('viban');
+    function myFunction() {
+    firebase.auth().getRedirectResult().then(function(result) {
+        var user = result.user;
+        
+   dbRef.ref(user.uid).once('value').then(function(snapshot) {
+       var rubyamount=snapshot.val().ruby;
+       console.log(rubyamount);
+    });
+    });
+}
+// function writeUserData() {
+//     firebase.auth().getRedirectResult().then(function(result) {
+//         var user = result.user;
+//         var a =10;
+//    dbRef.ref(user.uid).update({
+//         time: 0,
+//        digTime:0,
+//         ruby: 30-a
+//     });
+//     });
+// }
+//cookie
+// var decodedCookie = decodeURIComponent(document.cookie);
+// console.log(decodedCookie);
+// playerRef.once('value').then(function(snapshot) {
+//     snapshot.forEach(function(childSnapshot) {
+//         if (decodedCookie == childSnapshot.val().name) {
+//             var current = childSnapshot.key;
+//             console.log(current);
+//             playerRef.child(current).set({
+//                 name: decodedCookie,
+//                 ruby: 14,
+//                 time: 6,
+//                 coupon: 3
+//             });
+//         }
+//         if (decodedCookie != childSnapshot.val().name) {
+//             var current = playerRef.push({
+//                 name: decodedCookie,
+//                 ruby: 1,
+//                 time: 1,
+//                 coupon: 1
+//             }).key;
+//         }
+//     });
+// })
+</script>
 <body>
-<div class="contain">
+<div class="contain" onload="myFunction()">
 	<button type="button" class="btn btn-info btn-lg" id="home" onclick="window.location.href='index.html'">回首頁</button>
 	
 	<div class="ruby1">

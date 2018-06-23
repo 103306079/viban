@@ -61,6 +61,7 @@ firebase.auth().onAuthStateChanged(function(user) {
 function coupon() {
     exchange = true;
     if (exchange == true) {
+    	console.log(user.uid);
         dbRef.ref("/" + user.uid).once('value', function(snapshot) {
             var cozyAmount = snapshot.val().cozy;
             console.log(cozyAmount);

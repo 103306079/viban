@@ -44,18 +44,20 @@ firebase.auth().onAuthStateChanged(function(user) {
 function cozy() {
     compound = true;
     console.log(compound);
-    dbRef.ref("/" + currentUserId).on('value', function(snapshot) {
-        var rubyAmount = snapshot.val().ruby;
-        var cozyAmount = snapshot.val().cozy;
-        console.log(rubyAmount);
-        rubyAmount = rubyAmount - 10;
-        cozyAmount = cozyAmount + 1;
-        dbRef.ref(currentUserId).update({
-            cozy: cozyAmount,
-            ruby: rubyAmount
+    if (compound == true) {
+        dbRef.ref("/" + currentUserId).on('value', function(snapshot) {
+            var rubyAmount = snapshot.val().ruby;
+            var cozyAmount = snapshot.val().cozy;
+            console.log(rubyAmount);
+            rubyAmount = rubyAmount - 10;
+            cozyAmount = cozyAmount + 1;
+            dbRef.ref(currentUserId).update({
+                cozy: cozyAmount,
+                ruby: rubyAmount
+            });
         });
-    });
-    compound = false;
+        compound = false;
+    }
     console.log(compound);
 }
 
@@ -63,10 +65,10 @@ function dragon() {
     compound = true;
     dbRef.ref("/" + currentUserId).on('value', function(snapshot) {
         var rubyAmount = snapshot.val().ruby;
-        var dragonamount = snapshot.val().dragon;
+        var dragonAmount = snapshot.val().dragon;
         console.log(rubyAmount);
         dbRef.ref(currentUserId).update({
-            cozy: dragonamount + 1,
+            cozy: dragonAmount + 1,
             ruby: rubyAmount - 10
         });
     });
@@ -77,10 +79,10 @@ function deme() {
     compound = true;
     dbRef.ref("/" + currentUserId).on('value', function(snapshot) {
         var rubyAmount = snapshot.val().ruby;
-        var demeamount = snapshot.val().deme;
+        var demeAmount = snapshot.val().deme;
         console.log(rubyAmount);
         dbRef.ref(currentUserId).update({
-            deme: cozyamount + 1,
+            deme: demeAmount + 1,
             ruby: rubyAmount - 10
         });
     });

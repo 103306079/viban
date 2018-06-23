@@ -78,14 +78,14 @@ firebase.auth().getRedirectResult().then(function(result) {
     var user = result.user;
     console.log(user.uid);
 
-    dbRef.ref(user.uid).push({
+    dbRef.ref(user.uid).set({
         username: name,
         email: user.email,
         time: 0,
         ruby: 0
     });
 
-    console.log(user.uid.childsnapshot);
+    console.log(user.uid.child);
 
 }).catch(function(error) {
     // Handle Errors here.

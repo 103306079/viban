@@ -52,13 +52,6 @@ function facebookSignin() {
         var token = result.credential.accessToken;
         var user = result.user;
         console.log(user);
-        firebase.database().ref('users/' + loginUser.uid).set({
-            email: loginUser.email,
-            name: name.value,
-            age: age.value
-        }).catch(function(error) {
-            console.error("寫入使用者資訊錯誤", error);
-        });
     }).catch(function(error) {
         console.log(error.code);
         console.log(error.message);
@@ -82,6 +75,13 @@ firebase.auth().getRedirectResult().then(function(result) {
     // The signed-in user info.
     var user = result.user;
     console.log(user);
+    firebase.database().ref(user.uid).set({
+        email: user.email,
+        name: 0,
+        age: 0
+    }).catch(function(error) {
+        console.error("寫入使用者資訊錯誤", error);
+    });
 }).catch(function(error) {
     // Handle Errors here.
     var errorCode = error.code;

@@ -69,13 +69,14 @@ function addFunction() {
     });
     console.log(current.key);
 }
-
-playerRef.once('value').then(function(snapshot) {
-    snapshot.forEach(function(childSnapshot) {
-        console.log(childSnapshot.key);
-        console.log(childSnapshot.val().name);
-    });
-})
+var id =playerRef.childSnapshot.key;
+     console.log(id);
+// playerRef.once('value').then(function(snapshot) {
+//     snapshot.forEach(function(childSnapshot) {
+//         console.log(childSnapshot.key);
+//         console.log(childSnapshot.val().name);
+//     });
+// })
 
 </script>
 

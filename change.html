@@ -55,27 +55,52 @@
             console.log('Signout failed')
         });
     }
-
-    $(document).ready(function(){
+	function myFunction(){
+		dbRef.ref("/"+currentUserId).on('value', function(snapshot) {
+                   var rubyamount=snapshot.val().ruby; 
+                 console.log(rubyamount);
+             });
+	}
+//     $(document).ready(function(){
     
-        $(".showRuby").on("click", function(){
-            console.log("ENTER");
-            dbRef.ref("/"+currentUserId).on('value', function(snapshot) {
-                var rubyamount=snapshot.val().ruby; 
-                $(".myRubyValue").text(rubyamount);
-            });
-        });
+//         $(".showRuby").on("click", function(){
+//             console.log("ENTER");
+//             dbRef.ref("/"+currentUserId).on('value', function(snapshot) {
+//                 var rubyamount=snapshot.val().ruby; 
+//                 $(".myRubyValue").text(rubyamount);
+//             });
+//         });
 
-    });
+//     });
 </script>
-<body>
-<div class="contain" >
+<body onload="myFunction()">
+<div class="contain">
+	<button type="button" class="btn btn-info btn-lg" id="home" onclick="window.location.href='index.html'">回首頁</button>
 	
-    <div class="myRubyValue">這邊會顯示RUBY數值</div>
-    <button type="button" class="btn showRuby">顯示Ruby數值</button>
+	<div class="ruby1">
+	
+    <img src="ruby.png">
 
-    <div class="myRuby">這邊會顯示UID</div>
-    <button type="button" class="btn login" onclick="facebookSignin()">登入FB</button>
-    <button type="button" class="btn logout" onclick="facebookSignout()">登出FB</button>
+</div>
+	<p id="amount1">10*</p>
+	<div class="ruby2">
+	
+    <img src="ruby.png">
+
+</div>
+	<p id="amount2">10*</p>
+	<div class="ruby3">
+	
+    <img src="ruby.png">
+
+</div>
+	<p id="amount3">10*</p>
+	<button type="button" class="btn btn-info btn-lg" id="change1">合成優惠券</button>
+	</div>
+	<button type="button" class="btn btn-info btn-lg" id="change2" onclick="window.location.href='cozy.html'">合成優惠券</button>
+	</div>
+	<button type="button" class="btn btn-info btn-lg" id="change3">合成優惠券</button>
+	</div>
+
 </body>
 </html>

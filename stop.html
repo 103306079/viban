@@ -67,7 +67,7 @@ firebase.auth().onAuthStateChanged(function(user) {
         console.log(user.uid);
         // console.log(user.uid.time);
 
-        dbRef.ref("/" + user.uid).on('value').then(function(snapshot) {
+        dbRef.ref("/" + user.uid).on('value', function(snapshot) {
             var startTime = snapshot.val().time;
             console.log(startTime);
             var timeDuration = end - startTime;

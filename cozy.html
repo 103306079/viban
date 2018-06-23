@@ -3,7 +3,7 @@
 
 <head>
     <title>Change</title>
-    <meta name="viewport" content="width=device-width; initial-scale=1.0">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
     <link rel="stylesheet" style="text/css" href="cozy.css" />
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
@@ -34,7 +34,7 @@ firebase.auth().onAuthStateChanged(function(user) {
 
         dbRef.ref("/" + user.uid).on('value', function(snapshot) {
             var cozyAmount = snapshot.val().cozy;
-
+            console.log(cozyAmount);
             $(".coupon").append("<p>" + cozyAmount+ "</p>");
         })
 
@@ -55,5 +55,4 @@ firebase.auth().onAuthStateChanged(function(user) {
             <button type="button" class="btn btn-info btn-lg" id="change"></button>
         </div>
 </body>
-
 </html>

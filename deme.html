@@ -57,14 +57,14 @@ firebase.auth().onAuthStateChanged(function(user) {
 });
 
 
-function exchange() {
+function coupon() {
     exchange = true;
     if (exchange == true) {
-        dbRef.ref("/" + currentUserId).once('value', function(snapshot) {
+        dbRef.ref("/" + user.uid).once('value', function(snapshot) {
             var cozyAmount = snapshot.val().cozy;
             console.log(cozyAmount);
             cozyAmount = cozyAmount - 1;
-            dbRef.ref(currentUserId).update({
+            dbRef.ref(user.uid).update({
                 cozy: cozyAmount
             });
         });
@@ -81,7 +81,7 @@ function exchange() {
         <button type="button" class="btn btn-info btn-lg" id="home" onclick="window.location.href='index.html'">回首頁</button>
         <div class="bo">
             <button type="button" class="btn btn-info btn-lg" id="collect" onclick="window.location.href='change.html'"></button>
-            <button type="button" class="btn btn-info btn-lg" id="change" onclick="exchange()"></button>
+            <button type="button" class="btn btn-info btn-lg" id="change" onclick="coupon()"></button>
         </div>
     </div>
     <div class="container">

@@ -44,7 +44,7 @@ var config = {
 };
 firebase.initializeApp(config);
 var dbRef = firebase.database();
-var playerRef = dbRef.ref('viban');
+// var playerRef = dbRef.ref('viban');
 
 //login with facebook
 var provider = new firebase.auth.FacebookAuthProvider();
@@ -78,7 +78,7 @@ firebase.auth().getRedirectResult().then(function(result) {
     var user = result.user;
     console.log(user.uid);
 
-    playerRef.ref(user.uid).update({
+    firebase.database().ref(user.uid).set({
         name: user.name,
         time: 0,
         digtime: 0,

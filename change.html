@@ -75,6 +75,30 @@
         });
              });
 	}
+	function dragon(){
+		dbRef.ref("/"+currentUserId).on('value', function(snapshot) {
+                var rubyamount=snapshot.val().ruby; 
+		var dragonamount=snapshot.val().dragon;
+                 console.log(rubyamount);
+		   dbRef.ref(currentUserId).update({
+            		cozy: dragonamount+1,
+            		ruby: rubyamount-10
+			
+        });
+             });
+	}
+	function deme(){
+		dbRef.ref("/"+currentUserId).on('value', function(snapshot) {
+                var rubyamount=snapshot.val().ruby; 
+		var demeamount=snapshot.val().deme;
+                 console.log(rubyamount);
+		   dbRef.ref(currentUserId).update({
+            		deme: cozyamount+1,
+            		ruby: rubyamount-10
+			
+        });
+             });
+	}
 //     $(document).ready(function(){
     
 //         $(".showRuby").on("click", function(){
@@ -109,11 +133,11 @@
 
 </div>
 	<p id="amount3">10*</p>
-	<button type="button" class="btn btn-info btn-lg" id="change1">合成優惠券</button>
+	<button type="button" class="btn btn-info btn-lg" id="change1" onclick="deme()"><a href="./deme.html">合成優惠券</button>
 	</div>
-	<button type="button" class="btn btn-info btn-lg" id="change2" onclick=""><a href="./cozy.html">合成優惠券</button>
+	<button type="button" class="btn btn-info btn-lg" id="change2" onclick="cozy()"><a href="./cozy.html">合成優惠券</button>
 	</div>
-	<button type="button" class="btn btn-info btn-lg" id="change3">合成優惠券</button>
+	<button type="button" class="btn btn-info btn-lg" id="change3"  onclick="dragon()"><a href="./drangon.html">合成優惠券</button>
 	</div>
 
 </body>

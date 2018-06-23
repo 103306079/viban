@@ -73,7 +73,8 @@ playerRef.once('value').then(function(snapshot) {
                 time: 6,
                 coupon: 3
             });
-        } else if (decodedCookie != childSnapshot.val().name){
+        } 
+        if (decodedCookie != childSnapshot.val().name){
             var current = playerRef.push({
                 name: decodedCookie,
                 ruby: 1,

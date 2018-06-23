@@ -61,7 +61,7 @@ console.log(decodedCookie);
 // }
 
 // var uuid = _uuid();
-function addFunction() {
+// function addFunction() {
     playerRef.once('value').then(function(snapshot) {
         snapshot.forEach(function(childSnapshot) {
             if (childSnapshot.val().name == decodedCookie) {
@@ -76,7 +76,7 @@ function addFunction() {
             }
         });
     })
-}
+//}
 
 // playerRef.once('value').then(function(snapshot) {
 //     snapshot.forEach(function(childSnapshot) {

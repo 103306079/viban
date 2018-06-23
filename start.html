@@ -24,9 +24,6 @@
 
 <body>
     <div class="contain">
-        <!--         <div class="timeDuration">
-
-        </div> -->
     </div>
     <script>
     // Initialize Firebase
@@ -39,9 +36,52 @@
         messagingSenderId: "150917914821"
     };
     firebase.initializeApp(config);
-
     var dbRef = firebase.database();
-    var timeRef = dbRef.ref('viban/time');
+
+    // firebase.auth().getRedirectResult().then(function(result) {
+    //     if (result.credential) {
+    //         // This gives you a Facebook Access Token. You can use it to access the Facebook API.
+    //         var token = result.credential.accessToken;
+    //         console.log(token);
+    //     }
+    //     // The signed-in user info.
+    //     var user = result.user;
+    //     console.log(user.uid);
+    //     dbRef.ref(user.uid).set({
+    //         email: user.email,
+    //         time: 0,
+    //         digTime: 0,
+    //         ruby: 0
+    //     });
+    //     // console.log(user.uid.childsnapshot);
+    // }).catch(function(error) {
+    //     // Handle Errors here.
+    //     var errorCode = error.code;
+    //     var errorMessage = error.message;
+    //     // The email of the user's account used.
+    //     var email = error.email;
+    //     // The firebase.auth.AuthCredential type that was used.
+    //     var credential = error.credential;
+    //     // ...
+    // });
+
+    dbRef.ref().once('value').then(function(snapshot) {
+        snapshot.forEach(function(childsnapshot) {
+            console.log(childsnapshot.val());
+        })
+    })
+
+    var start = new Date().getTime();
+    console.log(start);
+    // timeRef.set(start);
+    firebase.auth().getRedirectResult().then(function(result) {
+        var user = result.user;
+        dbRef.ref(user.uid).update({
+            time: start,
+            digTime: 0,
+            ruby: 0
+        });
+    });
 
     // switch pages
     //     statusRef.on("value", function(snapshot) {
@@ -128,7 +168,7 @@
     if (window.DeviceOrientationEvent || window.DeviceMotionEvent) {
         window.addEventListener('deviceorientation', function(event) {
 
-                alpha = event.alpha,
+            alpha = event.alpha,
                 beta = event.beta,
                 gamma = event.gamma;
 
@@ -140,19 +180,19 @@
 
             window.addEventListener('devicemotion', function(event) {
                 var accel = event.acceleration;
-                if (beta >= -10 && beta <= 90 && gamma >= -40 && gamma <=40) {
+                if (beta >= 20 && beta <= 90 && gamma >= 0 && gamma <= 10) {
                     counter++;
                     timeout = setTimeout(function() {
                         if (counter < 4) {
                             counter = 0;
                         }
                     }, 800);
-                } else if(accel.x > 1.5 || accel.y > 1.5){
+                } else if (accel.x > 1.5 || accel.y > 1.5) {
                     setTimeout(function() {
                         document.location.href = "https://103306079.github.io/viban/dig.html"
                     }, 1000);
 
-                }else {
+                } else {
 
                 }
                 if (counter > 4) {
@@ -166,10 +206,6 @@
     } else {
         document.querySelector('body').innerHTML = '你的瀏覽器不支援喔';
     }
-
-    var start = new Date().getTime();
-    console.log(start);
-    timeRef.set(start);
     </script>
 </body>
 

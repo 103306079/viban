@@ -13,18 +13,16 @@
     <script src="https://www.gstatic.com/firebasejs/4.12.1/firebase.js"></script>
     <!--Google Analytics-->
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-121084620-1"></script>
-    
-</head>
-<script>
-// Initialize Firebase
-   
-	window.dataLayer = window.dataLayer || [];
+    <script>
+    window.dataLayer = window.dataLayer || [];
+
     function gtag() { dataLayer.push(arguments); }
     gtag('js', new Date());
     gtag('config', 'UA-121084620-1');
+    </script>
+</head>
+<script>
 // Initialize Firebase
-
-	
 var config = {
     apiKey: "AIzaSyBqaB_5x6WNZiU5RoSZ4aveLmuMgfs0m_0",
     authDomain: "viban-44f1e.firebaseapp.com",
@@ -36,8 +34,29 @@ var config = {
 firebase.initializeApp(config);
 
 var dbRef = firebase.database();
-var timeRef = dbRef.ref('viban/time');
-var digTimeRef = dbRef.ref('viban/digTime');
+
+// var end = new Date().getTime();
+// console.log(end);
+// timeRef.on("value", function(snapshot) {
+//     console.log(snapshot.val());
+//     var timeDuration = end - snapshot.val();
+//     console.log(timeDuration)
+//     var Mins = Math.round(((timeDuration % 86400000) % 3600000) / 60000);
+//     console.log(Mins);
+//     $(".timeDuration").append("<p>目前已挖礦" + Mins + "分</p>"+);
+//     digTimeRef.set(Mins);
+// })
+
+firebase.auth().getRedirectResult().then(function(result) {
+    var user = result.user;
+    var timeDuration = end - childsnapshot.val().time;
+    var Mins = Math.round(((timeDuration % 86400000) % 3600000) / 60000);
+    dbRef.ref(user.uid).update({
+        digTime: Mins,
+        ruby: 0
+    });
+    $(".timeDuration").append("<p>目前已挖礦" + Mins + "分</p>"+);
+});
 
 var count = 0;
 if (window.DeviceOrientationEvent || window.DeviceMotionEvent) {
@@ -53,31 +72,31 @@ if (window.DeviceOrientationEvent || window.DeviceMotionEvent) {
         // }
 
         window.addEventListener('devicemotion', function(event) {
-                var accel = event.acceleration;
-                if (beta >= -10 && beta <= 90 && gamma >= -40 && gamma <=40) {
-                    counter++;
-                    timeout = setTimeout(function() {
-                        if (counter < 4) {
-                            counter = 0;
-                        }
-                    }, 800);
-                } else if(accel.x > 1.5 || accel.y > 1.5){
-                    setTimeout(function() {
-                        document.location.href = "https://103306079.github.io/viban/dig.html"
-                    }, 1000);
-                }else {
-                }
-                if (counter > 4) {
-                    // $('.sensor').append('Magic 8 ball says: you rock!');
-                    counter = 0;
-                    clearInterval(timeout);
-                }
-            });
-        }, false);
-    } else {
-        document.querySelector('body').innerHTML = '你的瀏覽器不支援喔';
-    }
+            var accel = event.acceleration;
+            if (beta >= 20 && beta <= 90 && gamma >= 0 && gamma <= 10) {
+                counter++;
+                timeout = setTimeout(function() {
+                    if (counter < 4) {
+                        counter = 0;
+                    }
+                }, 800);
+            } else if (accel.x > 1.5 || accel.y > 1.5) {
+                document.location.href = "https://103306079.github.io/viban/dig.html"
 
+            } else {
+
+            }
+            if (counter > 4) {
+                // $('.sensor').append('Magic 8 ball says: you rock!');
+                counter = 0;
+                clearInterval(timeout);
+            }
+        });
+
+    }, false);
+} else {
+    document.querySelector('body').innerHTML = '你的瀏覽器不支援喔';
+}
 </script>
 
 <body>
@@ -86,19 +105,6 @@ if (window.DeviceOrientationEvent || window.DeviceMotionEvent) {
         </div>
         <button type="button" id="dig" onclick="window.location.href='index.html'">合成寶石</button>
     </div>
-    <script>
-    var end = new Date().getTime();
-    console.log(end);
-    timeRef.on("value", function(snapshot) {
-        console.log(snapshot.val());
-        var timeDuration = end - snapshot.val();
-        console.log(timeDuration)
-        var Mins = Math.round(((timeDuration % 86400000) % 3600000) / 60000);
-        console.log(Mins);
-        $(".timeDuration").append("<p>目前已挖礦" + Mins + "分</p>");
-        digTimeRef.set(Mins);
-    })
-    </script>
 </body>
 
 </html>

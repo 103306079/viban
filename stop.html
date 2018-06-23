@@ -61,12 +61,12 @@ var provider = new firebase.auth.FacebookAuthProvider();
 
 
 var end = new Date().getTime();
-var timeDuration = end - childsnapshot.val().time;
-var Mins = Math.round(((timeDuration % 86400000) % 3600000) / 60000);
 firebase.auth().onAuthStateChanged(function(user) {
     if (user) {
         // User is signed in.
         console.log(user.uid);
+        var timeDuration = end - user.uid.time;
+        var Mins = Math.round(((timeDuration % 86400000) % 3600000) / 60000);
         dbRef.ref(user.uid).update({
             digTime: Mins,
             ruby: 0
@@ -78,11 +78,11 @@ firebase.auth().onAuthStateChanged(function(user) {
     }
 });
 
-// dbRef.ref().once('value').then(function(snapshot) {
-//     snapshot.forEach(function(childsnapshot) {
-//         console.log(childsnapshot.val().digTime);
-//     })
-// })
+dbRef.ref().once('value').then(function(snapshot) {
+    snapshot.forEach(function(childsnapshot) {
+        console.log(childsnapshot.val().digTime);
+    })
+})
 
 var count = 0;
 if (window.DeviceOrientationEvent || window.DeviceMotionEvent) {

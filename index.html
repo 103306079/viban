@@ -100,7 +100,7 @@ firebase.auth().getRedirectResult().then(function(result) {
 
 dbRef.ref().once('value').then(function(snapshot) {
     snapshot.forEach(function(childsnapshot) {
-        console.log(childsnapshot.key);
+        console.log(childsnapshot.key.child('email'));
     })
 })
 

@@ -11,19 +11,19 @@
 </head>
 <script>
 // Initialize Firebase
-var config = {
-    apiKey: "AIzaSyBqaB_5x6WNZiU5RoSZ4aveLmuMgfs0m_0",
-    authDomain: "viban-44f1e.firebaseapp.com",
-    databaseURL: "https://viban-44f1e.firebaseio.com",
-    projectId: "viban-44f1e",
-    storageBucket: "viban-44f1e.appspot.com",
-    messagingSenderId: "150917914821"
-};
-firebase.initializeApp(config);
-var dbRef = firebase.database();
+ var config = {
+        apiKey: "AIzaSyBqaB_5x6WNZiU5RoSZ4aveLmuMgfs0m_0",
+        authDomain: "viban-44f1e.firebaseapp.com",
+        databaseURL: "https://viban-44f1e.firebaseio.com",
+        projectId: "viban-44f1e",
+        storageBucket: "viban-44f1e.appspot.com",
+        messagingSenderId: "150917914821"
+    };
+    firebase.initializeApp(config);
+	var dbRef = firebase.database();
 // var playerRef = dbRef.ref('viban');
 // login with facebook
-var provider = new firebase.auth.FacebookAuthProvider();
+	var provider = new firebase.auth.FacebookAuthProvider();
 function facebookSignin() {
     firebase.auth().signInWithRedirect(provider).then(function(result) {
         var token = result.credential.accessToken;

@@ -36,7 +36,7 @@ firebase.auth().onAuthStateChanged(function(user) {
         dbRef.ref("/" + currentUserId).on('value', function(snapshot) {
             var rubyAmount = snapshot.val().ruby;
             console.log(rubyAmount);
-            $(".ruby").append("<p>目前已挖到" + rubyAmount + "顆寶石</p>");
+            // $(".ruby").append("<p>目前已挖到" + rubyAmount + "顆寶石</p>");
         });
     }
 });
@@ -95,7 +95,7 @@ function deme() {
 
 <body>
     <div class="contain">
-        <div class="ruby"></div>
+<!--         <div class="ruby"></div> -->
         <button type="button" class="btn btn-info btn-lg" id="home" onclick="window.location.href='index.html'">回首頁</button>
         <div class="ruby1">
             <img src="ruby.png">

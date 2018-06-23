@@ -27,7 +27,6 @@ var dbRef = firebase.database();
 var compound = false;
 //先把uid 儲存起來 之後都可以用
 // var currentUserId = "2genxkG8K0bMF3LryCWaN8EQVyA3";
-
 //進行註冊
 firebase.auth().onAuthStateChanged(function(user) {
     console.log(user);
@@ -35,24 +34,22 @@ firebase.auth().onAuthStateChanged(function(user) {
         currentUserId = user.uid;
         console.log(currentUserId);
         dbRef.ref("/" + currentUserId).on('value', function(snapshot) {
-            var rubyamount = snapshot.val().ruby;
-            console.log(rubyamount);
+            var rubyAmount = snapshot.val().ruby;
+            console.log(rubyAmount);
             $(".ruby").append("<p>目前已挖到" + rubyAmount + "顆寶石</p>");
         });
     }
-
 });
 
 function cozy() {
     compound = true;
     dbRef.ref("/" + currentUserId).on('value', function(snapshot) {
-        var rubyamount = snapshot.val().ruby;
+        var rubyAmount = snapshot.val().ruby;
         var cozyamount = snapshot.val().cozy;
-        console.log(rubyamount);
+        console.log(rubyAmount);
         dbRef.ref(currentUserId).update({
             cozy: cozyamount + 1,
-            ruby: rubyamount - 10
-
+            ruby: rubyAmount - 10
         });
     });
     compound = false;
@@ -61,13 +58,12 @@ function cozy() {
 function dragon() {
     compound = true;
     dbRef.ref("/" + currentUserId).on('value', function(snapshot) {
-        var rubyamount = snapshot.val().ruby;
+        var rubyAmount = snapshot.val().ruby;
         var dragonamount = snapshot.val().dragon;
-        console.log(rubyamount);
+        console.log(rubyAmount);
         dbRef.ref(currentUserId).update({
             cozy: dragonamount + 1,
-            ruby: rubyamount - 10
-
+            ruby: rubyAmount - 10
         });
     });
     compound = false;
@@ -76,19 +72,17 @@ function dragon() {
 function deme() {
     compound = true;
     dbRef.ref("/" + currentUserId).on('value', function(snapshot) {
-        var rubyamount = snapshot.val().ruby;
+        var rubyAmount = snapshot.val().ruby;
         var demeamount = snapshot.val().deme;
-        console.log(rubyamount);
+        console.log(rubyAmount);
         dbRef.ref(currentUserId).update({
             deme: cozyamount + 1,
-            ruby: rubyamount - 10
-
+            ruby: rubyAmount - 10
         });
     });
     compound = false;
 }
 //     $(document).ready(function(){
-
 //         $(".showRuby").on("click", function(){
 //             console.log("ENTER");
 //             dbRef.ref("/"+currentUserId).on('value', function(snapshot) {

@@ -35,8 +35,14 @@ firebase.auth().onAuthStateChanged(function(user) {
         console.log(currentUserId);
         dbRef.ref("/" + currentUserId).on('value', function(snapshot) {
             var rubyAmount = snapshot.val().ruby;
+            var demeAmount = snapshot.val().deme;
+            var cozyAmount = snapshot.val().cozy;
+            var dragonAmount = snapshot.val().dragon;
             console.log(rubyAmount);
             $(".ruby").append("<p>目前已挖到" + rubyAmount + "顆寶石</p>");
+            $(".deme-coupon").append("<p>目前有" + demeAmount + "張優惠卷</p>");
+            $(".cozy-coupon").append("<p>目前已挖到" + cozyAmount + "顆寶石</p>");
+            $(".dragon-coupon").append("<p>目前已挖到" + dragonAmount + "顆寶石</p>");
         });
     }
 });
@@ -121,10 +127,13 @@ function deme() {
         <img src="ruby.png">
     </div>
     <p id="amount3">10*</p>
+    <div class="deme-coupon"></div>
     <button type="button" class="btn btn-info btn-lg" id="change1" onclick="deme()">
         <a href="./deme.html">合成優惠券</button>
+            <div class="cozy-coupon"></div>
     <button type="button" class="btn btn-info btn-lg" id="change2" onclick="cozy()">
         <a href="./cozy.html">合成優惠券</button>
+            <div class="dragon-coupon"></div>
     <button type="button" class="btn btn-info btn-lg" id="change3" onclick="dragon()">
         <a href="./dragon.html">合成優惠券</button>
 </body>

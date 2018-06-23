@@ -2,8 +2,7 @@
 <html>
 <head>
 <title>Change</title>
-<meta name="viewport" content="width=device-width; initial-scale=1.0">
-<link rel="stylesheet" style="text/css" href="change.css"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta charset="utf-8">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
@@ -23,142 +22,60 @@
     };
     firebase.initializeApp(config);
 	var dbRef = firebase.database();
-// var playerRef = dbRef.ref('viban');
-// login with facebook
-	var provider = new firebase.auth.FacebookAuthProvider();
-function facebookSignin() {
-    firebase.auth().signInWithRedirect(provider).then(function(result) {
-        var token = result.credential.accessToken;
-        var user = result.user;
+
+    //先把uid 儲存起來 之後都可以用
+    var currentUserId ="2genxkG8K0bMF3LryCWaN8EQVyA3";
+
+    //進行註冊
+    firebase.auth().onAuthStateChanged(function(user) {
         console.log(user);
-    }).catch(function(error) {
-        console.log(error.code);
-        console.log(error.message);
-    });
-}
-function facebookSignout() {
-    firebase.auth().signOut().then(function() {
-        console.log('Signout successful!')
-    }, function(error) {
-        console.log('Signout failed')
-    });
-}
-// dbRef.ref().once('value').then(function(snapshot) {
-//     snapshot.forEach(function(childsnapshot) {
-//         console.log(childsnapshot.val());
-//     })
-// })
-// dbRef.once('value').then(function(snapshot) {
-//     console.log(snapshot);
-// })
-// read information
-// var dbRef = firebase.database();
-// var playerRef = dbRef.ref('viban');
-	var uid="";
-firebase.auth().onAuthStateChanged(function(user) {
-  	if (user) {
-	uid = user.uid;
-	}
-});
-function myFunction() {
-    
-	dbRef.ref("/"+uid).on('value', function(snapshot) {
-        var rubyamount=snapshot.val().ruby;
-       console.log(rubyamount);
-		
-    console.log(uid);
-	  
-   });
-	
-	    }
-// 	firebase.auth().onAuthStateChanged(function(user) {
-//   if (user) {
-//     // User is signed in.
-//     var displayName = user.displayName;
-//     var email = user.email;
-//     var emailVerified = user.emailVerified;
-//     var photoURL = user.photoURL;
-//     var isAnonymous = user.isAnonymous;
-//     var uid = user.uid;
-//     var providerData = user.providerData;
-//     // ...
-//   } 
-//     function myFunction() {
-//     firebase.auth().getRedirectResult().then(function(result) {
-//         var user = result.user;
+        if (user) {
+            currentUserId = user.uid;
+            console.log(currentUserId);
+        }
         
-//    dbRef.ref(user.uid).once('value').then(function(snapshot) {
-//        var rubyamount=snapshot.val().ruby;
-//        console.log(rubyamount);
-//     });
-//     });
-// 	    }
-	
-// function writeUserData() {
-//     firebase.auth().getRedirectResult().then(function(result) {
-//         var user = result.user;
-//         var a =10;
-//    dbRef.ref(user.uid).update({
-//         time: 0,
-//        digTime:0,
-//         ruby: 30-a
-//     });
-//     });
-// }
-//cookie
-// var decodedCookie = decodeURIComponent(document.cookie);
-// console.log(decodedCookie);
-// playerRef.once('value').then(function(snapshot) {
-//     snapshot.forEach(function(childSnapshot) {
-//         if (decodedCookie == childSnapshot.val().name) {
-//             var current = childSnapshot.key;
-//             console.log(current);
-//             playerRef.child(current).set({
-//                 name: decodedCookie,
-//                 ruby: 14,
-//                 time: 6,
-//                 coupon: 3
-//             });
-//         }
-//         if (decodedCookie != childSnapshot.val().name) {
-//             var current = playerRef.push({
-//                 name: decodedCookie,
-//                 ruby: 1,
-//                 time: 1,
-//                 coupon: 1
-//             }).key;
-//         }
-//     });
-// })
+    });
+
+    //FB登入程式碼
+	var provider = new firebase.auth.FacebookAuthProvider();
+    function facebookSignin() {
+        firebase.auth().signInWithRedirect(provider).then(function(result) {
+            var token = result.credential.accessToken;
+            var user = result.user;
+            console.log(user);
+        }).catch(function(error) {
+            console.log(error.code);
+            console.log(error.message);
+        });
+    }
+    function facebookSignout() {
+        firebase.auth().signOut().then(function() {
+            console.log('Signout successful!')
+        }, function(error) {
+            console.log('Signout failed')
+        });
+    }
+
+    $(document).ready(function(){
+    
+        $(".showRuby").on("click", function(){
+            console.log("ENTER");
+            dbRef.ref("/"+currentUserId).on('value', function(snapshot) {
+                var rubyamount=snapshot.val().ruby; 
+                $(".myRubyValue").text(rubyamount);
+            });
+        });
+
+    });
 </script>
-<body onload="myFunction()">
+<body>
 <div class="contain" >
-	<button type="button" class="btn btn-info btn-lg" id="home" onclick="window.location.href='index.html'">回首頁</button>
 	
-	<div class="ruby1">
-	
-    <img src="ruby.png">
+    <div class="myRubyValue">這邊會顯示RUBY數值</div>
+    <button type="button" class="btn showRuby">顯示Ruby數值</button>
 
-</div>
-	<p id="amount1">10*</p>
-	<div class="ruby2">
-	
-    <img src="ruby.png">
-
-</div>
-	<p id="amount2">10*</p>
-	<div class="ruby3">
-	
-    <img src="ruby.png">
-
-</div>
-	<p id="amount3">10*</p>
-	<button type="button" class="btn btn-info btn-lg" id="change1" onclick="window.location.href='deme.html'">合成優惠券</button>
-	</div>
-	<button type="button" class="btn btn-info btn-lg" id="change2" onclick="window.location.href='cozy.html'">合成優惠券</button>
-	</div>
-	<button type="button" class="btn btn-info btn-lg" id="change3" onclick="window.location.href='dragon.html'">合成優惠券</button>
-	</div>
-
+    <div class="myRuby">這邊會顯示UID</div>
+    <button type="button" class="btn login" onclick="facebookSignin()">登入FB</button>
+    <button type="button" class="btn logout" onclick="facebookSignout()">登出FB</button>
 </body>
 </html>

@@ -43,6 +43,7 @@ var config = {
     messagingSenderId: "150917914821"
 };
 firebase.initializeApp(config);
+var dbRef = firebase.database();
 
 //login with facebook
 var provider = new firebase.auth.FacebookAuthProvider();
@@ -76,7 +77,7 @@ firebase.auth().getRedirectResult().then(function(result) {
     var user = result.user;
     console.log(user.uid);
 
-    firebase.database().ref(user.uid).set({
+    dbRef.ref(user.uid).set({
         name: user.name,
         time: 0,
         digtime: 0,
@@ -96,6 +97,9 @@ firebase.auth().getRedirectResult().then(function(result) {
     // ...
 });
 
+dbRef.once('value').then(function(snapshot) {
+    console.log(snapshot);
+})
 //read information
 // var dbRef = firebase.database();
 // var playerRef = dbRef.ref('viban');

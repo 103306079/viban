@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <!-- Google Web Fonts -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!-- Stylesheet CSS -->
+    <link rel='stylesheet' href='stylesheets/index.css' />
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <!--   <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE=" crossorigin="anonymous"></script> -->
+    <script src="https://code.jquery.com/jquery-3.2.1.js" integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <!--firebase-->
+    <script src="https://www.gstatic.com/firebasejs/4.12.1/firebase.js"></script>
+    <title>
+        viban
+    </title>
+</head>
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-121084620-1"></script>
+<script>
+//GA
+window.dataLayer = window.dataLayer || [];
+
+function gtag() { dataLayer.push(arguments); }
+gtag('js', new Date());
+gtag('config', 'UA-121084620-1');
+
+// Initialize Firebase
+var config = {
+    apiKey: "AIzaSyBqaB_5x6WNZiU5RoSZ4aveLmuMgfs0m_0",
+    authDomain: "viban-44f1e.firebaseapp.com",
+    databaseURL: "https://viban-44f1e.firebaseio.com",
+    projectId: "viban-44f1e",
+    storageBucket: "viban-44f1e.appspot.com",
+    messagingSenderId: "150917914821"
+};
+firebase.initializeApp(config);
+var dbRef = firebase.database();
+
+// login with facebook
+var provider = new firebase.auth.FacebookAuthProvider();
+
+function facebookSignin() {
+    firebase.auth().signInWithRedirect(provider).then(function(result) {
+        var token = result.credential.accessToken;
+        var user = result.user;
+        console.log(user);
+    }).catch(function(error) {
+        console.log(error.code);
+        console.log(error.message);
+    });
+}
+
+function facebookSignout() {
+    firebase.auth().signOut().then(function() {
+        console.log('Signout successful!')
+    }, function(error) {
+        console.log('Signout failed')
+    });
+}
+
+firebase.auth().getRedirectResult().then(function(result) {
+    if (result.credential) {
+        // This gives you a Facebook Access Token. You can use it to access the Facebook API.
+        var token = result.credential.accessToken;
+        console.log(token);
+    }
+    // The signed-in user info.
+    var user = result.user;
+    console.log(user.uid);
+    dbRef.ref(user.uid).set({
+        time: 0,
+        digTime: 0,
+        ruby: 0
+    });
+    // console.log(user.uid.childsnapshot);
+}).catch(function(error) {
+    // Handle Errors here.
+    var errorCode = error.code;
+    var errorMessage = error.message;
+    // The email of the user's account used.
+    var email = error.email;
+    // The firebase.auth.AuthCredential type that was used.
+    var credential = error.credential;
+    // ...
+});
+
+dbRef.ref().once('value').then(function(snapshot) {
+    snapshot.forEach(function(childsnapshot) {
+        console.log(childsnapshot.val().time);
+    })
+})
+</script>
+
+<body>
+    <script>
+    //facebook auth
+    window.fbAsyncInit = function() {
+        FB.init({
+            appId: '221803615278344',
+            cookie: true,
+            xfbml: true,
+            version: 'v3.0'
+        });
+        FB.AppEvents.logPageView();
+    };
+    (function(d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) { return; }
+        js = d.createElement(s);
+        js.id = id;
+        js.src = "https://connect.facebook.net/en_US/sdk.js";
+        fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));
+    </script>
+    <div class="contain">
+        <button onclick="facebookSignin()">Facebook Signin</button>
+        <button onclick="facebookSignout()">Facebook Signout</button>
+    </div>
+</body>
+
+</html>

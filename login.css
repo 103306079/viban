@@ -8,4 +8,9 @@
         background-color: #807598;
         border-color: #807598;
     }
+
+    p {
+        padding-left: 5%;
+        padding-top: 5%;
+    }
 }

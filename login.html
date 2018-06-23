@@ -122,8 +122,9 @@ dbRef.ref().once('value').then(function(snapshot) {
     }(document, 'script', 'facebook-jssdk'));
     </script>
     <div class="contain">
-        <button onclick="facebookSignin()">Facebook Signin</button>
-        <button onclick="facebookSignout()">Facebook Signout</button>
+        <p>感謝您願意受試Viban的遊戲，請先登入Facebook，Viban不會拿取您的任何個人資料，請放心登入！</p>
+        <button type="button" class="btn btn-primary" onclick="facebookSignin()">Facebook Signin</button>
+        <button type="button" class="btn btn-primary" onclick="facebookSignout()">Facebook Signout</button>
     </div>
 </body>
 

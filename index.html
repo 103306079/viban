@@ -78,12 +78,12 @@ firebase.auth().getRedirectResult().then(function(result) {
     var user = result.user;
     console.log(user.uid);
 
-    dbRef.ref(user.uid).set({
-        username: name,
-        email: email,
-        time: 0,
-        ruby: 0
-    });
+//     dbRef.ref(user.uid).set({
+//         username: name,
+//         email: email,
+//         time: 0,
+//         ruby: 0
+//     });
 
     dbRef.once('value').then(function(snapshot) {
         snapshot.once('value').then(function(childsnapshot) {
@@ -110,13 +110,13 @@ firebase.auth().getRedirectResult().then(function(result) {
 // var dbRef = firebase.database();
 // var playerRef = dbRef.ref('viban');
 
-// function writeUserData(userId, name, time, ruby) {
-//     playerRef.ref('users/' + userId).set({
-//         username: name,
-//         time: 0,
-//         ruby: 0
-//     });
-// }
+function writeUserData(userId, name, time, ruby) {
+    playerRef.ref('viban/users/' + userId).set({
+        username: name,
+        time: 0,
+        ruby: 0
+    });
+}
 
 //cookie
 // var decodedCookie = decodeURIComponent(document.cookie);

@@ -56,19 +56,22 @@
             console.log('Signout failed')
         });
     }
-	function myFunction(){
-		dbRef.ref("/"+currentUserId).on('value', function(snapshot) {
-                   var rubyamount=snapshot.val().ruby; 
-                 console.log(rubyamount);
-             });
-	}
+// 	function myFunction(){
+// 		dbRef.ref("/"+currentUserId).on('value', function(snapshot) {
+//                    var rubyamount=snapshot.val().ruby; 
+// 		var cozyamount=snapshot.val().cozy;
+//                  console.log(rubyamount);
+//              });
+// 	}
 	function cozy(){
 		dbRef.ref("/"+currentUserId).on('value', function(snapshot) {
                    var rubyamount=snapshot.val().ruby; 
+		var cozyamount=snapshot.val().cozy;
                  console.log(rubyamount);
 		   dbRef.ref(user.uid).update({
             		
-            		ruby: rubyamount-10
+            		ruby: rubyamount-10,
+			cozy: cozyamount+1
         });
              });
 	}

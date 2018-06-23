@@ -1,13 +1,7 @@
 @media screen and (max-width: 414px) {
-    .contain {
+    body {
 
         background-color: #DCD5F2;
-        position: relative;
-        display: center;
-        width: 375px;
-        height: 667px;
-        margin-left: auto;
-        margin-right: auto;
     }
 
     button {

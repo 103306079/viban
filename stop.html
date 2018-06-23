@@ -65,7 +65,8 @@ firebase.auth().onAuthStateChanged(function(user) {
     if (user) {
         // User is signed in.
         console.log(user.uid);
-        var timeDuration = end - dataSnapshot.getValue(time);
+        console.log(user.time);
+        var timeDuration = end - dbRef.ref(user.time);
         var Mins = Math.round(((timeDuration % 86400000) % 3600000) / 60000);
         dbRef.ref(user.uid).update({
             digTime: Mins,

@@ -60,8 +60,7 @@ firebase.auth().onAuthStateChanged(function(user) {
 function coupon() {
     exchange = true;
     if (exchange == true) {
-    	console.log(currentUserId);
-        dbRef.ref("/" + user.uid).once('value', function(snapshot) {
+        dbRef.ref("/" + currentUserId).once('value', function(snapshot) {
             var demeAmount = snapshot.val().deme;
             console.log(demeAmount);
             demeAmount = demeAmount - 1;
@@ -87,7 +86,7 @@ function coupon() {
     </div>
     <div class="container">
         <!-- Modal -->
-        <div class="modal fade" id="myModal" role="dialog">
+        <div class="modal fade" id="myModal" role="dialog modal-sm">
             <div class="modal-dialog">
                 <!-- Modal content-->
                 <div class="modal-content">

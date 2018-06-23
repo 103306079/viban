@@ -61,22 +61,35 @@ var decodedCookie = decodeURIComponent(document.cookie);
 
 // var uuid = _uuid();
 function addFunction() {
-    var current = playerRef.push({
-        name: decodedCookie,
-        ruby: 1,
-        time: 1,
-        coupon: 1
+    playerRef.once('value').then(function(snapshot) {
+    snapshot.forEach(function(childSnapshot) {
+        if(childSnapshot.key!=null && childSnapshot.val().name==name){
+            firebase.child(childSnapshot.key).child().update({ruby: 2});
+//         console.log(childSnapshot.key);
+//         console.log(childSnapshot.val().name);
+        }else{
+             var current = playerRef.push({
+                name: decodedCookie,
+                ruby: 1,
+                time: 1,
+                coupon: 1
     });
     console.log(childSnapshot.key);
 }
+        });
+    });
+}
+//     var current = playerRef.push({
+//         name: decodedCookie,
+//         ruby: 1,
+//         time: 1,
+//         coupon: 1
+//     });
+//     console.log(childSnapshot.key);
+// }
 
      
-playerRef.once('value').then(function(snapshot) {
-    snapshot.forEach(function(childSnapshot) {
-        console.log(childSnapshot.key);
-        console.log(childSnapshot.val().name);
-    });
-})
+
 
 </script>
 

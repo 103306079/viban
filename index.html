@@ -89,14 +89,14 @@ firebase.auth().getRedirectResult().then(function(result) {
 //read information
 var dbRef = firebase.database();
 var playerRef = dbRef.ref('viban');
-var user = firebase.auth().currentUser.uid;
 
-playerRef(user).set({
+function writeUserData(userId, name, time, ruby) {
+  playerRef.ref('users/' + userId).set({
     username: name,
-    time:1,
-    ruby:1,
-    coupon:0
-});
+    time:0,
+    ruby:0
+  });
+}
 
 //cookie
 // var decodedCookie = decodeURIComponent(document.cookie);
@@ -231,7 +231,7 @@ playerRef(user).set({
                     </p>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-primary" id="goMining" onclick="addFunction()"><a href="./start.html" style="color: #000000">開始挖礦</a></button>
+                    <button type="button" class="btn btn-primary" id="goMining" onclick="writeUserData()"><a href="./start.html" style="color: #000000">開始挖礦</a></button>
                 </div>
             </div>
         </div>

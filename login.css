@@ -4,16 +4,18 @@
         background-color: #DCD5F2;
     }
 
+    .contain {
+        margin: 10% 12%; 
+    }
+
     .btn {
         background: #807598;
         border: #807598;
         text-align:center;
-        margin-left: 8%;
     }
 
     p {
 
-        margin: 8%;
         margin-top: 20%;
     }
 }

@@ -110,7 +110,7 @@ firebase.auth().getRedirectResult().then(function(result) {
 // var dbRef = firebase.database();
 // var playerRef = dbRef.ref('viban');
 
-function writeUserData(userId, name, time, ruby) {
+function writeUserData() {
     dbRef.ref(user.uid).set({
         username: name,
         email: user.email,

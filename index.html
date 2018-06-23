@@ -86,8 +86,9 @@ firebase.auth().getRedirectResult().then(function(result) {
     });
 
     dbRef.once('value').then(function(snapshot) {
-        snapshot..once('value').then(function(childsnapshot) {
+        snapshot.once('value').then(function(childsnapshot) {
             console.log(childsnapshot);
+        })
     })
 
 

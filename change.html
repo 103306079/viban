@@ -60,7 +60,7 @@ function myFunction() {
 	  var uid = user.uid;
         
    dbRef.ref(uid).once('value').then(function(snapshot) {
-       var rubyamount=snapshot.val().ruby;
+       var rubyamount=snapshot.val();
        console.log(rubyamount);
     });
 	  }

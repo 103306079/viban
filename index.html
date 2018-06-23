@@ -78,7 +78,7 @@ var playerRef = dbRef.ref('viban');
 var provider = new firebase.auth.FacebookAuthProvider();
 
 function facebookSignin() {
-    firebase.auth().signInWithPopup(provider)
+    firebase.auth().signInWithRedirect(provider)
 
         .then(function(result) {
             var token = result.credential.accessToken;

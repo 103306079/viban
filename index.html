@@ -120,7 +120,7 @@ dbRef.ref().once('value').then(function(snapshot) {
 function writeUserData() {
     firebase.auth().getRedirectResult().then(function(result) {
         var user = result.user;
-        var a =1;
+        
    dbRef.ref(user.uid).update({
         time: 10,
         ruby: 3

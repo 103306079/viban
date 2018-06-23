@@ -65,7 +65,7 @@ console.log(decodedCookie);
 playerRef.once('value').then(function(snapshot) {
     snapshot.forEach(function(childSnapshot) {
         if (childSnapshot.val().name == decodedCookie) {
-            childSnapshot.key.push({
+            playerRef.set({
                 name: decodedCookie,
                 ruby: 10,
                 time: 3,
@@ -78,7 +78,7 @@ playerRef.once('value').then(function(snapshot) {
                 ruby: 1,
                 time: 1,
                 coupon: 1
-            });
+            }).key;
         }
     });
 })

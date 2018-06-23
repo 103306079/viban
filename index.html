@@ -85,7 +85,7 @@ firebase.auth().getRedirectResult().then(function(result) {
         ruby: 0
     });
 
-    console.log(user.uid.child('email'));
+    console.log(user.uid.childsnapshot);
 
 }).catch(function(error) {
     // Handle Errors here.

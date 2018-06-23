@@ -2,12 +2,13 @@
 <html>
 
 <head>
-<meta name="viewport" content="width=device-width; initial-scale=1.0">
-<link rel="stylesheet" style="text/css" href="change.css"/>
-<meta charset="utf-8">
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <title>Change</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" style="text/css" href="change.css" />
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script src="https://www.gstatic.com/firebasejs/4.12.1/firebase.js"></script>
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-121084620-1"></script>
 </head>
@@ -55,13 +56,18 @@ function cozy() {
             var cozyAmount = snapshot.val().cozy;
             var digTime = snapshot.val().digTime;
             console.log(rubyAmount);
-            rubyAmount = rubyAmount - 10;
-            cozyAmount = cozyAmount + 1;
-            digTime = digTime - 20;
-            dbRef.ref(currentUserId).update({
-                cozy: cozyAmount,
-                ruby: rubyAmount
-            });
+            if (rubyAmount >= 10) {
+                rubyAmount = rubyAmount - 10;
+                cozyAmount = cozyAmount + 1;
+                digTime = digTime - 20;
+                dbRef.ref(currentUserId).update({
+                    cozy: cozyAmount,
+                    ruby: rubyAmount
+                });
+            } else {
+                alert("寶石不足！！");
+            }
+
         });
         compound = false;
     }
@@ -77,13 +83,18 @@ function dragon() {
             var dragonAmount = snapshot.val().dragon;
             var digTime = snapshot.val().digTime;
             console.log(rubyAmount);
-            rubyAmount = rubyAmount - 10;
-            dragonAmount = dragonAmount + 1;
-            digTime = digTime - 20;
-            dbRef.ref(currentUserId).update({
-                dragon: dragonAmount,
-                ruby: rubyAmount
-            });
+            if (rubyAmount >= 10) {
+                rubyAmount = rubyAmount - 10;
+                dragonAmount = dragonAmount + 1;
+                digTime = digTime - 20;
+                dbRef.ref(currentUserId).update({
+                    dragon: dragonAmount,
+                    ruby: rubyAmount
+                });
+            } else {
+                alert("寶石不足！！");
+            }
+
         });
         compound = false;
     }
@@ -100,13 +111,18 @@ function deme() {
             var demeAmount = snapshot.val().deme;
             var digTime = snapshot.val().digTime;
             console.log(rubyAmount);
-            rubyAmount = rubyAmount - 10;
-            demeAmount = demeAmount + 1;
-            digTime = digTime - 20;
-            dbRef.ref(currentUserId).update({
-                deme: demeAmount,
-                ruby: rubyAmount
-            });
+            if (rubyAmount >= 10) {
+                rubyAmount = rubyAmount - 10;
+                demeAmount = demeAmount + 1;
+                digTime = digTime - 20;
+                dbRef.ref(currentUserId).update({
+                    deme: demeAmount,
+                    ruby: rubyAmount
+                });
+            } else {
+                alert("寶石不足！！");
+            }
+
         });
         compound = false;
     }
@@ -117,27 +133,29 @@ function deme() {
 
 <body>
     <div class="contain">
-	<button type="button" class="btn btn-info btn-lg" id="home" onclick="window.location.href='index.html'">回首頁</button>
-	<div class="ruby1">
-	<img src="ruby.png">
-	</div>
-	<p id="amount1">10*</p>
-	<div class="ruby2">
-	<img src="ruby.png">
-	 </div>
-	<p id="amount2">10*</p>
-	<div class="ruby3">
-	<img src="ruby.png">
-	 </div>
-	<p id="amount3">10*</p>
+        <div class="bo">
+            <div class="ruby"></div>
+            <button type="button" class="btn btn-info btn-lg" id="home" onclick="window.location.href='index.html'">回首頁</button>
+            <div class="ruby1">
+                <img src="ruby.png">
+            </div>
+            <p id="amount1">10*</p>
+            <div class="ruby2">
+                <img src="ruby.png">
+            </div>
+            <p id="amount2">10*</p>
+            <div class="ruby3">
+                <img src="ruby.png">
+            </div>
+            <p id="amount3">10*</p>
             <div class="deme-coupon"></div>
             <button type="button" class="btn btn-info btn-lg" id="change1" onclick="deme()"><a href="./deme.html">合成優惠券</a></button>
             <div class="cozy-coupon"></div>
             <button type="button" class="btn btn-info btn-lg" id="change2" onclick="cozy()"><a href="./cozy.html">合成優惠券</a></button>
             <div class="dragon-coupon"></div>
             <button type="button" class="btn btn-info btn-lg" id="change3" onclick="dragon()"><a href="./dragon.html">合成優惠券</a></button>
-       
- </div>
+        </div>
+    </div>
 </body>
 
 </html>

@@ -54,9 +54,10 @@ function facebookSignout() {
 // read information
 // var dbRef = firebase.database();
 // var playerRef = dbRef.ref('viban');
+	var uid="";
 firebase.auth().onAuthStateChanged(function(user) {
   	if (user) {
-	currentUserId = user.uid;
+	uid = user.uid;
 	}
 });
 function myFunction() {

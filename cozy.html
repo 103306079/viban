@@ -42,9 +42,8 @@ var exchange = false;
 firebase.auth().onAuthStateChanged(function(user) {
     if (user) {
         // User is signed in.
-        console.log(user.uid);
-        // console.log(user.uid.time);
-
+        currentUserId = user.uid;
+        console.log(currentUserId);
         dbRef.ref("/" + user.uid).on('value', function(snapshot) {
             var cozyAmount = snapshot.val().cozy;
             console.log(cozyAmount);
@@ -61,11 +60,11 @@ firebase.auth().onAuthStateChanged(function(user) {
 function coupon() {
     exchange = true;
     if (exchange == true) {
-        dbRef.ref("/" + user.uid).once('value', function(snapshot) {
+        dbRef.ref("/" + currentUserId).once('value', function(snapshot) {
             var cozyAmount = snapshot.val().cozy;
             console.log(cozyAmount);
             cozyAmount = cozyAmount - 1;
-            dbRef.ref(user.uid).update({
+            dbRef.ref(currentUserId).update({
                 cozy: cozyAmount
             });
         });

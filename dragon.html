@@ -41,10 +41,11 @@ var exchange = false;
 firebase.auth().onAuthStateChanged(function(user) {
     if (user) {
         // User is signed in.
+        currentUserId = user.uid;
         console.log(user.uid);
         // console.log(user.uid.time);
 
-        dbRef.ref("/" + user.uid).on('value', function(snapshot) {
+        dbRef.ref("/" + currentUserId).on('value', function(snapshot) {
             var dragonAmount = snapshot.val().dragon;
             console.log(dragonAmount);
             $(".coupon").append("<p>" + dragonAmount + "</p>");
@@ -60,11 +61,11 @@ firebase.auth().onAuthStateChanged(function(user) {
 function coupon() {
     exchange = true;
     if (exchange == true) {
-        dbRef.ref("/" + user.uid).once('value', function(snapshot) {
+        dbRef.ref("/" + currentUserId).once('value', function(snapshot) {
             var dragonAmount = snapshot.val().dragon;
             console.log(dragonAmount);
             dragonAmount = dragonAmount - 1;
-            dbRef.ref(user.uid).update({
+            dbRef.ref(currentUserId).update({
                 dragon: dragonAmount
             });
         });

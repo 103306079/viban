@@ -66,12 +66,17 @@ firebase.auth().onAuthStateChanged(function(user) {
         // User is signed in.
         console.log(user.uid);
         // console.log(user.uid.time);
-        var timeDuration = end - dbRef.ref().child('time');
-        var Mins = Math.round(((timeDuration % 86400000) % 3600000) / 60000);
-        dbRef.ref(user.uid).update({
-            digTime: Mins,
-            ruby: 0
-        });
+
+        dbRef.ref("/" + user.uid).on('value').then(function(snapshot) {
+            var startTime = snapshot.val().time;
+            console.log(startTime);
+            var timeDuration = end - startTime;
+            var Mins = Math.round(((timeDuration % 86400000) % 3600000) / 60000);
+            dbRef.ref(user.uid).update({
+                digTime: Mins,
+                ruby: 0
+            });
+        })
         $(".timeDuration").append("<p>目前已挖礦" + Mins + "分</p>");
     } else {
         // User is signed out.

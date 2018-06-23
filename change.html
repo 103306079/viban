@@ -43,16 +43,20 @@ firebase.auth().onAuthStateChanged(function(user) {
 
 function cozy() {
     compound = true;
+    console.log(compound);
     dbRef.ref("/" + currentUserId).on('value', function(snapshot) {
         var rubyAmount = snapshot.val().ruby;
-        var cozyamount = snapshot.val().cozy;
+        var cozyAmount = snapshot.val().cozy;
         console.log(rubyAmount);
+        rubyAmount = rubyAmount - 10;
+        cozyAmount = cozyAmount+ 1;
         dbRef.ref(currentUserId).update({
-            cozy: cozyamount + 1,
-            ruby: rubyAmount - 10
+            cozy: cozyAmount,
+            ruby: rubyAmount
         });
     });
     compound = false;
+    console.log(compound);
 }
 
 function dragon() {

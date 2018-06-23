@@ -1,19 +1,28 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-<title>Change</title>
-<meta name="viewport" content="width=device-width; initial-scale=1.0">
-<link rel="stylesheet" style="text/css" href="deme.css"/>
-<meta charset="utf-8">
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <title>Demeter</title>
+    <meta name="viewport" content="width=device-width; initial-scale=1.0">
+    <link rel="stylesheet" style="text/css" href="deme.css" />
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <!--firebase-->
+    <script src="https://www.gstatic.com/firebasejs/4.12.1/firebase.js"></script>
 </head>
-	<script>
-	window.dataLayer = window.dataLayer || [];
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-121084620-1"></script>
+<script>
+//Google Analytics
+window.dataLayer = window.dataLayer || [];
+
 function gtag() { dataLayer.push(arguments); }
 gtag('js', new Date());
 gtag('config', 'UA-121084620-1');
+
+
 // Initialize Firebase
 var config = {
     apiKey: "AIzaSyBqaB_5x6WNZiU5RoSZ4aveLmuMgfs0m_0",
@@ -25,14 +34,36 @@ var config = {
 };
 firebase.initializeApp(config);
 var dbRef = firebase.database();
-	</script>
+//先把uid 儲存起來 之後都可以用
+var currentUserId = "";
+
+firebase.auth().onAuthStateChanged(function(user) {
+    if (user) {
+        // User is signed in.
+        console.log(user.uid);
+        // console.log(user.uid.time);
+
+        dbRef.ref("/" + user.uid).on('value', function(snapshot) {
+            var demeAmount = snapshot.val().deme;
+            console.log(demeAmount);
+            $(".coupon").append("<p>" + demeAmount + "</p>");
+        })
+
+    } else {
+        // User is signed out.
+        console.log("user is signed out!")
+    }
+});
+</script>
+
 <body>
-<div class="contain">
-	<button type="button" class="btn btn-info btn-lg" id="home" onclick="window.location.href='index.html'">回首頁</button>
-	
-	<div class="bo">
-	<button type="button" class="btn btn-info btn-lg" id="collect" onclick="window.location.href='collect.html'"></button>
-	<button type="button" class="btn btn-info btn-lg" id="change"></button>
-	</div>
+    <div class="contain">
+        <div class="coupon" style="padding-top: 80%; padding-left: 50%; font-size: 20px"></div>
+        <button type="button" class="btn btn-info btn-lg" id="home" onclick="window.location.href='index.html'">回首頁</button>
+        <div class="bo">
+            <button type="button" class="btn btn-info btn-lg" id="collect" onclick="window.location.href='collect.html'"></button>
+            <button type="button" class="btn btn-info btn-lg" id="change"></button>
+        </div>
 </body>
+
 </html>

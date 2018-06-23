@@ -10,8 +10,19 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script src="https://www.gstatic.com/firebasejs/4.12.1/firebase.js"></script>
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-121084620-1"></script>
+    <!--firebase-->
+    <script src="https://www.gstatic.com/firebasejs/4.12.1/firebase.js"></script>
 </head>
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-121084620-1"></script>
 <script>
+//Google Analytics
+window.dataLayer = window.dataLayer || [];
+
+function gtag() { dataLayer.push(arguments); }
+gtag('js', new Date());
+gtag('config', 'UA-121084620-1');
+
 // Initialize Firebase
 var config = {
     apiKey: "AIzaSyBqaB_5x6WNZiU5RoSZ4aveLmuMgfs0m_0",
@@ -35,7 +46,7 @@ firebase.auth().onAuthStateChanged(function(user) {
         dbRef.ref("/" + user.uid).on('value', function(snapshot) {
             var cozyAmount = snapshot.val().cozy;
             console.log(cozyAmount);
-            $(".coupon").append("<p>" + cozyAmount+ "</p>");
+            $(".coupon").append("<p>" + cozyAmount + "</p>");
         })
 
     } else {
@@ -43,16 +54,16 @@ firebase.auth().onAuthStateChanged(function(user) {
         console.log("user is signed out!")
     }
 });
-
 </script>
 
 <body>
     <div class="contain">
-        <div class="coupon" style="padding-top: 50%; padding-left: 30%; font-size: 15px"></div>
+        <div class="coupon" style="padding-top: 80%; padding-left: 50%; font-size: 20px"></div>
         <button type="button" class="btn btn-info btn-lg" id="home" onclick="window.location.href='index.html'">回首頁</button>
         <div class="bo">
             <button type="button" class="btn btn-info btn-lg" id="collect" onclick="window.location.href='collect.html'"></button>
             <button type="button" class="btn btn-info btn-lg" id="change"></button>
         </div>
 </body>
+
 </html>

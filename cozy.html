@@ -8,25 +8,69 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script src="https://www.gstatic.com/firebasejs/4.12.1/firebase.js"></script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-121084620-1"></script>
 </head>
 <script>
-	window.dataLayer = window.dataLayer || [];
-function gtag() { dataLayer.push(arguments); }
-gtag('js', new Date());
-gtag('config', 'UA-121084620-1');
 // Initialize Firebase
-var config = {
-    apiKey: "AIzaSyBqaB_5x6WNZiU5RoSZ4aveLmuMgfs0m_0",
-    authDomain: "viban-44f1e.firebaseapp.com",
-    databaseURL: "https://viban-44f1e.firebaseio.com",
-    projectId: "viban-44f1e",
-    storageBucket: "viban-44f1e.appspot.com",
-    messagingSenderId: "150917914821"
-};
-firebase.initializeApp(config);
-var dbRef = firebase.database();
-	</script>
-<body>
+ var config = {
+        apiKey: "AIzaSyBqaB_5x6WNZiU5RoSZ4aveLmuMgfs0m_0",
+        authDomain: "viban-44f1e.firebaseapp.com",
+        databaseURL: "https://viban-44f1e.firebaseio.com",
+        projectId: "viban-44f1e",
+        storageBucket: "viban-44f1e.appspot.com",
+        messagingSenderId: "150917914821"
+    };
+    firebase.initializeApp(config);
+	var dbRef = firebase.database();
+    //先把uid 儲存起來 之後都可以用
+    var currentUserId ="2genxkG8K0bMF3LryCWaN8EQVyA3";
+    //進行註冊
+    firebase.auth().onAuthStateChanged(function(user) {
+        console.log(user);
+        if (user) {
+            currentUserId = user.uid;
+            console.log(currentUserId);
+        }
+        
+    });
+    //FB登入程式碼
+	var provider = new firebase.auth.FacebookAuthProvider();
+    function facebookSignin() {
+        firebase.auth().signInWithRedirect(provider).then(function(result) {
+            var token = result.credential.accessToken;
+            var user = result.user;
+            console.log(user);
+        }).catch(function(error) {
+            console.log(error.code);
+            console.log(error.message);
+        });
+    }
+    function facebookSignout() {
+        firebase.auth().signOut().then(function() {
+            console.log('Signout successful!')
+        }, function(error) {
+            console.log('Signout failed')
+        });
+    }
+	function myFunction(){
+		dbRef.ref("/"+currentUserId).on('value', function(snapshot) {
+                   var cozyamount=snapshot.val().cozy; 
+                 console.log(cozyamount);
+             });
+	}
+//     $(document).ready(function(){
+    
+//         $(".showRuby").on("click", function(){
+//             console.log("ENTER");
+//             dbRef.ref("/"+currentUserId).on('value', function(snapshot) {
+//                 var rubyamount=snapshot.val().ruby; 
+//                 $(".myRubyValue").text(rubyamount);
+//             });
+//         });
+//     });
+</script>
+<body onload="myFunction()">
 <div class="contain">
 	<button type="button" class="btn btn-info btn-lg" id="home" onclick="window.location.href='index.html'">回首頁</button>
 	

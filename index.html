@@ -110,13 +110,14 @@ firebase.auth().getRedirectResult().then(function(result) {
 // var dbRef = firebase.database();
 // var playerRef = dbRef.ref('viban');
 
-// function writeUserData(userId, name, time, ruby) {
-//     playerRef.ref('users/' + userId).set({
-//         username: name,
-//         time: 0,
-//         ruby: 0
-//     });
-// }
+function writeUserData(userId, name, time, ruby) {
+    dbRef.ref(user.uid).set({
+        username: name,
+        email: user.email,
+        time: 2,
+        ruby: 0
+    });
+}
 
 //cookie
 // var decodedCookie = decodeURIComponent(document.cookie);

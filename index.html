@@ -111,7 +111,7 @@ var dbRef = firebase.database();
 var playerRef = dbRef.ref('viban');
 
 function writeUserData(userId, name, time, ruby) {
-    playerRef.ref(userId).set({
+    playerRef.ref(userId).push({
         username: name,
         time: 0,
         ruby: 0

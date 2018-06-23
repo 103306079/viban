@@ -79,10 +79,14 @@ firebase.auth().getRedirectResult().then(function(result) {
     console.log(user.uid);
 
     dbRef.ref(user.uid).set({
-        username: name,
-        email: user.email,
-        time: 0,
-        ruby: 0
+        time:0,
+        digTime:0,
+        ruby:0,
+        cozy:0,
+        dragon:0,
+        deme:0,
+        dragon2:1
+        
     });
 
     

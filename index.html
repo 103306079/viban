@@ -114,21 +114,21 @@ function writeUserData(userId, name, time, ruby) {
 }
 
 //cookie
-var decodedCookie = decodeURIComponent(document.cookie);
-console.log(decodedCookie);
+// var decodedCookie = decodeURIComponent(document.cookie);
+// console.log(decodedCookie);
 
-playerRef.once('value').then(function(snapshot) {
-    // snapshot.forEach(function(childSnapshot) {
-        if (decodedCookie == childSnapshot.val().name) {
-            var current = childSnapshot.key;
-            console.log(current);
-            playerRef.child(current).set({
-                name: decodedCookie,
-                ruby: 14,
-                time: 6,
-                coupon: 3
-            });
-        }
+// playerRef.once('value').then(function(snapshot) {
+//     // snapshot.forEach(function(childSnapshot) {
+//         if (decodedCookie == childSnapshot.val().name) {
+//             var current = childSnapshot.key;
+//             console.log(current);
+//             playerRef.child(current).set({
+//                 name: decodedCookie,
+//                 ruby: 14,
+//                 time: 6,
+//                 coupon: 3
+//             });
+//         }
         // if (decodedCookie != childSnapshot.val().name) {
         //     var current = playerRef.push({
         //         name: decodedCookie,
@@ -138,7 +138,7 @@ playerRef.once('value').then(function(snapshot) {
         //     }).key;
         // }
     // });
-})
+// })
 </script>
 
 <body>

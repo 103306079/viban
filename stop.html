@@ -22,6 +22,7 @@
     </script>
 </head>
 <script>
+
 // Initialize Firebase
 var config = {
     apiKey: "AIzaSyBqaB_5x6WNZiU5RoSZ4aveLmuMgfs0m_0",
@@ -32,78 +33,96 @@ var config = {
     messagingSenderId: "150917914821"
 };
 firebase.initializeApp(config);
-
 var dbRef = firebase.database();
-
-// var end = new Date().getTime();
-// console.log(end);
-// timeRef.on("value", function(snapshot) {
-//     console.log(snapshot.val());
-//     var timeDuration = end - snapshot.val();
-//     console.log(timeDuration)
-//     var Mins = Math.round(((timeDuration % 86400000) % 3600000) / 60000);
-//     console.log(Mins);
-//     $(".timeDuration").append("<p>目前已挖礦" + Mins + "分</p>"+);
-//     digTimeRef.set(Mins);
-// })
-
-firebase.auth().getRedirectResult().then(function(result) {
-    var user = result.user;
-    var timeDuration = end - childsnapshot.val().time;
-    var Mins = Math.round(((timeDuration % 86400000) % 3600000) / 60000);
-    dbRef.ref(user.uid).update({
-        digTime: Mins,
-        ruby: 0
+// var playerRef = dbRef.ref('viban');
+// login with facebook
+var provider = new firebase.auth.FacebookAuthProvider();
+function facebookSignin() {
+    firebase.auth().signInWithRedirect(provider).then(function(result) {
+        var token = result.credential.accessToken;
+        var user = result.user;
+        console.log(user);
+    }).catch(function(error) {
+        console.log(error.code);
+        console.log(error.message);
     });
-    $(".timeDuration").append("<p>目前已挖礦" + Mins + "分</p>"+);
-});
-
-var count = 0;
-if (window.DeviceOrientationEvent || window.DeviceMotionEvent) {
-    window.addEventListener('deviceorientation', function(event) {
-
-        alpha = event.alpha,
-            beta = event.beta,
-            gamma = event.gamma;
-
-        // look at phone
-        // if (beta >= 20 && beta <= 90 && gamma >= 0 && gamma <= 10) {
-        //     document.getElementById('contain').append("現在狀態:看手機");
-        // }
-
-        window.addEventListener('devicemotion', function(event) {
-            var accel = event.acceleration;
-            if (beta >= 20 && beta <= 90 && gamma >= 0 && gamma <= 10) {
-                counter++;
-                timeout = setTimeout(function() {
-                    if (counter < 4) {
-                        counter = 0;
-                    }
-                }, 800);
-            } else if (accel.x > 1.5 || accel.y > 1.5) {
-                document.location.href = "https://103306079.github.io/viban/dig.html"
-
-            } else {
-
-            }
-            if (counter > 4) {
-                // $('.sensor').append('Magic 8 ball says: you rock!');
-                counter = 0;
-                clearInterval(timeout);
-            }
-        });
-
-    }, false);
-} else {
-    document.querySelector('body').innerHTML = '你的瀏覽器不支援喔';
 }
+function facebookSignout() {
+    firebase.auth().signOut().then(function() {
+        console.log('Signout successful!')
+    }, function(error) {
+        console.log('Signout failed')
+    });
+}
+
+dbRef.ref().once('value').then(function(snapshot) {
+    snapshot.forEach(function(childsnapshot) {
+        console.log(childsnapshot.val());
+    })
+})
+// dbRef.once('value').then(function(snapshot) {
+//     console.log(snapshot);
+// })
+// read information
+// var dbRef = firebase.database();
+// var playerRef = dbRef.ref('viban');
+    function myFunction() {
+    firebase.auth().getRedirectResult().then(function(result) {
+        var user = result.user;
+        var a =10;
+   dbRef.ref(user.uid).once('value').then(function(snapshot) {
+       var rubyamount=snapshot.val().ruby;
+       if(rubyamount>=10){
+           document.getElementById("dig").innerHTML ="<button type="button" onclick="window.location.href='index.html'">合成寶石</button>"
+       }
+    });
+    });
+}
+// function writeUserData() {
+//     firebase.auth().getRedirectResult().then(function(result) {
+//         var user = result.user;
+//         var a =10;
+//    dbRef.ref(user.uid).update({
+//         time: 0,
+//        digTime:0,
+//         ruby: 30-a
+//     });
+//     });
+// }
+//cookie
+// var decodedCookie = decodeURIComponent(document.cookie);
+// console.log(decodedCookie);
+// playerRef.once('value').then(function(snapshot) {
+//     snapshot.forEach(function(childSnapshot) {
+//         if (decodedCookie == childSnapshot.val().name) {
+//             var current = childSnapshot.key;
+//             console.log(current);
+//             playerRef.child(current).set({
+//                 name: decodedCookie,
+//                 ruby: 14,
+//                 time: 6,
+//                 coupon: 3
+//             });
+//         }
+//         if (decodedCookie != childSnapshot.val().name) {
+//             var current = playerRef.push({
+//                 name: decodedCookie,
+//                 ruby: 1,
+//                 time: 1,
+//                 coupon: 1
+//             }).key;
+//         }
+//     });
+// })
 </script>
 
-<body>
+<body onload="myFunction()">
     <div class="contain">
         <div class="timeDuration" style="padding-left: 40%; padding-top: 18%;font-size: 15px">
         </div>
-        <button type="button" id="dig" onclick="window.location.href='index.html'">合成寶石</button>
+        <div id="dig">
+        
+            <div>
     </div>
 </body>
 

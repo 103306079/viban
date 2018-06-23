@@ -65,7 +65,7 @@ console.log(decodedCookie);
 playerRef.once('value').then(function(snapshot) {
     snapshot.forEach(function(childSnapshot) {
         if (decodedCookie == Snapshot.val().name) {
-            playerRef(Snapshot.val().parent).set({
+            playerRef(this.childSnapshot.key).set({
                 name: decodedCookie,
                 ruby: 10,
                 time: 3,

@@ -118,7 +118,7 @@ var decodedCookie = decodeURIComponent(document.cookie);
 console.log(decodedCookie);
 
 playerRef.once('value').then(function(snapshot) {
-    snapshot.forEach(function(childSnapshot) {
+    // snapshot.forEach(function(childSnapshot) {
         if (decodedCookie == childSnapshot.val().name) {
             var current = childSnapshot.key;
             console.log(current);
@@ -129,15 +129,15 @@ playerRef.once('value').then(function(snapshot) {
                 coupon: 3
             });
         }
-        if (decodedCookie != childSnapshot.val().name) {
-            var current = playerRef.push({
-                name: decodedCookie,
-                ruby: 1,
-                time: 1,
-                coupon: 1
-            }).key;
-        }
-    });
+        // if (decodedCookie != childSnapshot.val().name) {
+        //     var current = playerRef.push({
+        //         name: decodedCookie,
+        //         ruby: 1,
+        //         time: 1,
+        //         coupon: 1
+        //     }).key;
+        // }
+    // });
 })
 </script>
 
@@ -166,9 +166,9 @@ playerRef.once('value').then(function(snapshot) {
     </script>
     <!-- background -->
     <div class="bg">
-        <!-- <img src="stylesheets/img/lab.jpg"> -->
-        <button onclick="facebookSignin()">Facebook Signin</button>
-        <button onclick="facebookSignout()">Facebook Signout</button>
+        <img src="stylesheets/img/lab.jpg">
+<!--         <button onclick="facebookSignin()">Facebook Signin</button>
+        <button onclick="facebookSignout()">Facebook Signout</button> -->
     </div>
     <!-- modal -->
     <div class="modal" tabindex="-1" role="dialog" id="myModal">

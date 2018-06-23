@@ -3,7 +3,7 @@
 
 <head>
     <title>Stop</title>
-    <meta name="viewport" content="width=device-width; initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" style="text/css" href="stop.css" />
     <meta charset="utf-8">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -65,7 +65,7 @@ firebase.auth().onAuthStateChanged(function(user) {
     if (user) {
         // User is signed in.
         console.log(user.uid);
-        var timeDuration = end - user.uid.child(time);
+        var timeDuration = end - user.uid.child('time');
         var Mins = Math.round(((timeDuration % 86400000) % 3600000) / 60000);
         dbRef.ref(user.uid).update({
             digTime: Mins,

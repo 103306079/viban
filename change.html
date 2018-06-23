@@ -58,8 +58,8 @@ function myFunction() {
     firebase.auth().onAuthStateChanged(function(user) {
   if (user) {
 	  var uid = user.uid;
-        console.log(user)
-	console.log(uid)
+        console.log(user);
+	console.log(uid);
 	dbRef.ref("/"+uid).on('value', function(snapshot) {
         var rubyamount=snapshot.val().ruby;
        console.log(rubyamount);

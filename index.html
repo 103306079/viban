@@ -74,7 +74,7 @@ playerRef.once('value').then(function(snapshot) {
                 coupon: 37
             });
         } 
-        if (childSnapshot.val().name =null){
+        else{
             var current = playerRef.push({
                 name: decodedCookie,
                 ruby: 1,

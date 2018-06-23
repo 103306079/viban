@@ -54,18 +54,19 @@ function facebookSignout() {
 // read information
 // var dbRef = firebase.database();
 // var playerRef = dbRef.ref('viban');
+firebase.auth().onAuthStateChanged(function(user) {
+  	if (user) {
+	currentUserId = user.uid;
+	}
+});
 function myFunction() {
-    firebase.auth().onAuthStateChanged(function(user) {
-  if (user) {
-	  var uid = user.uid;
-        console.log(user);
-	console.log(uid);
+    
 	dbRef.ref("/"+uid).on('value', function(snapshot) {
         var rubyamount=snapshot.val().ruby;
        console.log(rubyamount);
 		
-    });
-	  }
+    
+	  
    });
 	
 	    }

@@ -47,71 +47,71 @@ var dbRef = firebase.database();
 var playerRef = dbRef.ref('viban');
 
 //login with facebook
-// var provider = new firebase.auth.FacebookAuthProvider();
+var provider = new firebase.auth.FacebookAuthProvider();
 
-// function facebookSignin() {
-//     firebase.auth().signInWithRedirect(provider).then(function(result) {
-//         var token = result.credential.accessToken;
-//         var user = result.user;
-//         console.log(user);
-//     }).catch(function(error) {
-//         console.log(error.code);
-//         console.log(error.message);
-//     });
-// }
+function facebookSignin() {
+    firebase.auth().signInWithRedirect(provider).then(function(result) {
+        var token = result.credential.accessToken;
+        var user = result.user;
+        console.log(user);
+    }).catch(function(error) {
+        console.log(error.code);
+        console.log(error.message);
+    });
+}
 
-// function facebookSignout() {
-//     firebase.auth().signOut().then(function() {
-//         console.log('Signout successful!')
-//     }, function(error) {
-//         console.log('Signout failed')
-//     });
-// }
+function facebookSignout() {
+    firebase.auth().signOut().then(function() {
+        console.log('Signout successful!')
+    }, function(error) {
+        console.log('Signout failed')
+    });
+}
 
-// firebase.auth().getRedirectResult().then(function(result) {
-//     if (result.credential) {
-//         // This gives you a Facebook Access Token. You can use it to access the Facebook API.
-//         var token = result.credential.accessToken;
-//         console.log(token);
-//     }
-//     // The signed-in user info.
-//     var user = result.user;
-//     console.log(user.uid);
+firebase.auth().getRedirectResult().then(function(result) {
+    if (result.credential) {
+        // This gives you a Facebook Access Token. You can use it to access the Facebook API.
+        var token = result.credential.accessToken;
+        console.log(token);
+    }
+    // The signed-in user info.
+    var user = result.user;
+    console.log(user.uid);
 
-//     firebase.database().ref(user.uid).set({
-//         username: name,
-//         email: email,
-//         time:0,
-//         ruby:0
-//     });
-//     console.log(snapshot);
+    firebase.database().ref(user.uid).set({
+        username: name,
+        email: email,
+        time:0,
+        ruby:0
+    });
+    console.log(snapshot);
     
 
-// }).catch(function(error) {
-//     // Handle Errors here.
-//     var errorCode = error.code;
-//     var errorMessage = error.message;
-//     // The email of the user's account used.
-//     var email = error.email;
-//     // The firebase.auth.AuthCredential type that was used.
-//     var credential = error.credential;
-//     // ...
-// });
+}).catch(function(error) {
+    // Handle Errors here.
+    var errorCode = error.code;
+    var errorMessage = error.message;
+    // The email of the user's account used.
+    var email = error.email;
+    // The firebase.auth.AuthCredential type that was used.
+    var credential = error.credential;
+    // ...
+});
 
-// dbRef.once('value').then(function(snapshot) {
-//     console.log(snapshot);
-// })
-//read information
-// var dbRef = firebase.database();
-// var playerRef = dbRef.ref('viban');
+dbRef.once('value').then(function(snapshot) {
+    console.log(snapshot);
+})
+read information
+var dbRef = firebase.database();
+var playerRef = dbRef.ref('viban');
 
-// function writeUserData(userId, name, time, ruby) {
-//     playerRef.ref('users/' + userId).set({
-//         username: name,
-//         time: 0,
-//         ruby: 0
-//     });
-// }
+function writeUserData(userId, name, time, ruby) {
+    playerRef.ref('users/' + userId).set({
+        username: name,
+        time: 0,
+        ruby: 0
+    });
+}
 
 //cookie
 var decodedCookie = decodeURIComponent(document.cookie);

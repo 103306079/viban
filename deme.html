@@ -36,6 +36,7 @@ firebase.initializeApp(config);
 var dbRef = firebase.database();
 //先把uid 儲存起來 之後都可以用
 var currentUserId = "";
+var exchange = false;
 
 firebase.auth().onAuthStateChanged(function(user) {
     if (user) {
@@ -54,6 +55,24 @@ firebase.auth().onAuthStateChanged(function(user) {
         console.log("user is signed out!")
     }
 });
+
+
+function exchange() {
+    exchange = true;
+    if (exchange == true) {
+        dbRef.ref("/" + currentUserId).once('value', function(snapshot) {
+            var cozyAmount = snapshot.val().cozy;
+            console.log(cozyAmount);
+            cozyAmount = cozyAmount - 1;
+            dbRef.ref(currentUserId).update({
+                cozy: cozyAmount
+            });
+        });
+        exchange = false;
+    }
+    console.log(exchange);
+    $('#myModal').modal('show');
+}
 </script>
 
 <body>
@@ -62,8 +81,29 @@ firebase.auth().onAuthStateChanged(function(user) {
         <button type="button" class="btn btn-info btn-lg" id="home" onclick="window.location.href='index.html'">回首頁</button>
         <div class="bo">
             <button type="button" class="btn btn-info btn-lg" id="collect" onclick="window.location.href='change.html'"></button>
-            <button type="button" class="btn btn-info btn-lg" id="change"></button>
+            <button type="button" class="btn btn-info btn-lg" id="change" onclick="exchange()"></button>
         </div>
+    </div>
+    <div class="container">
+        <!-- Modal -->
+        <div class="modal fade" id="myModal" role="dialog">
+            <div class="modal-dialog">
+                <!-- Modal content-->
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h4 class="modal-title">兌換</h4>
+                    </div>
+                    <div class="modal-body">
+                        <p>兌換成功!</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </body>
 
 </html>

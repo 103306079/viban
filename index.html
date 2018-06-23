@@ -78,7 +78,7 @@ firebase.auth().getRedirectResult().then(function(result) {
     var user = result.user;
     console.log(user.uid);
 
-    playerRef.ref(user.uid).set({
+    playerRef.ref(user.uid).update({
         name: user.name,
         time: 0,
         digtime: 0,

@@ -65,13 +65,13 @@
 // 	}
 	function cozy(){
 		dbRef.ref("/"+currentUserId).on('value', function(snapshot) {
-                   var rubyamount=snapshot.val().ruby; 
+                var rubyamount=snapshot.val().ruby; 
 		var cozyamount=snapshot.val().cozy;
                  console.log(rubyamount);
-		   dbRef.ref(user.uid).update({
-            		
-            		ruby: rubyamount-10,
-			cozy: cozyamount+1
+		   dbRef.ref(currentUserId).update({
+            		cozy: cozyamount+1,
+            		ruby: rubyamount-10
+			
         });
              });
 	}

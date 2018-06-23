@@ -76,6 +76,7 @@
     // timeRef.set(start);
     firebase.auth().getRedirectResult().then(function(result) {
         var user = result.user;
+        console.log(user.uid);
         dbRef.ref(user.uid).update({
             time: start,
             digTime: 0,

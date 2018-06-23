@@ -76,7 +76,7 @@ firebase.auth().getRedirectResult().then(function(result) {
     }
     // The signed-in user info.
     var user = result.user;
-    console.log(user.uid.name);
+    console.log(user.uid.email);
 
     firebase.database().ref(user.uid).set({
         name: user.name,

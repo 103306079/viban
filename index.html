@@ -43,7 +43,7 @@ var config = {
     messagingSenderId: "150917914821"
 };
 firebase.initializeApp(config);
-// var dbRef = firebase.database();
+var dbRef = firebase.database();
 // var playerRef = dbRef.ref('viban');
 
 // login with facebook
@@ -78,13 +78,17 @@ firebase.auth().getRedirectResult().then(function(result) {
     var user = result.user;
     console.log(user.uid);
 
-    firebase.database().ref(user.uid).set({
+    dbRef.ref(user.uid).set({
         username: name,
         email: email,
-        time:0,
-        ruby:0
+        time: 0,
+        ruby: 0
     });
-    console.log(snapshot);
+
+    dbRef.once('value').then(function(snapshot) {
+        snapshot..once('value').then(function(childsnapshot) {
+            console.log(childsnapshot);
+    })
 
 
 }).catch(function(error) {
@@ -164,10 +168,9 @@ firebase.auth().getRedirectResult().then(function(result) {
         fjs.parentNode.insertBefore(js, fjs);
     }(document, 'script', 'facebook-jssdk'));
     </script>
-    
     <!-- background -->
     <div class="bg">
-<!--         <img src="stylesheets/img/lab.jpg"> -->
+        <!--         <img src="stylesheets/img/lab.jpg"> -->
         <button onclick="facebookSignin()">Facebook Signin</button>
         <button onclick="facebookSignout()">Facebook Signout</button>
     </div>

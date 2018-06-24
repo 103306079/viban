@@ -4,7 +4,7 @@
 <head>
     <title>road1</title>
     <meta name="viewport" content="width=device-width; initial-scale=1.0">
-    <link rel="stylesheet" style="text/css" href="road1.css" />
+    <link rel="stylesheet" style="text/css" href="compound.css" />
     <meta charset="utf-8">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
@@ -23,27 +23,45 @@ gtag('js', new Date());
 gtag('config', 'UA-121084620-1');
 </script>
 <script>
+// Initialize Firebase
+var config = {
+    apiKey: "AIzaSyBqaB_5x6WNZiU5RoSZ4aveLmuMgfs0m_0",
+    authDomain: "viban-44f1e.firebaseapp.com",
+    databaseURL: "https://viban-44f1e.firebaseio.com",
+    projectId: "viban-44f1e",
+    storageBucket: "viban-44f1e.appspot.com",
+    messagingSenderId: "150917914821"
+};
+firebase.initializeApp(config);
+
 var dbRef = firebase.database();
 var compound = false;
 //先把uid 儲存起來 之後都可以用
 // var currentUserId = "2genxkG8K0bMF3LryCWaN8EQVyA3";
 //進行註冊
 firebase.auth().onAuthStateChanged(function(user) {
-    console.log(user);
     if (user) {
-        currentUserId = user.uid;
-        console.log(currentUserId);
-        dbRef.ref("/" + currentUserId).on('value', function(snapshot) {
-            var rubyAmount = snapshot.val().ruby;
-            var demeAmount = snapshot.val().deme;
-            var cozyAmount = snapshot.val().cozy;
-            var dragonAmount = snapshot.val().dragon;
-            console.log(rubyAmount);
-            $(".ruby").append("<p>目前已挖到" + rubyAmount + "顆寶石</p>");
-            $(".deme-coupon").append("<p>目前有" + demeAmount + "張優惠卷</p>");
-            $(".cozy-coupon").append("<p>目前有" + cozyAmount + "張優惠卷</p>");
-            $(".dragon-coupon").append("<p>目前有" + dragonAmount + "張優惠卷</p>");
-        });
+        // User is signed in.
+        console.log(user.uid);
+        // console.log(user.uid.time);
+
+        dbRef.ref("/" + user.uid).on('value', function(snapshot) {
+            var startTime = snapshot.val().time;
+            console.log(startTime);
+            var timeDuration = end - startTime;
+            var Mins = Math.round(((timeDuration % 86400000) % 3600000) / 60000);
+            var rubyAmount = parseInt(Mins / 20) * 10;
+            dbRef.ref(user.uid).update({
+                digTime: Mins,
+                ruby: rubyAmount
+            });
+            $(".timeDuration").append("<p>目前已挖礦" + Mins + "分</p>");
+            $(".timeDuration").append("<p>目前已挖到" + rubyAmount + "顆寶石</p>");
+        })
+
+    } else {
+        // User is signed out.
+        console.log("user is signed out!")
     }
 });
 </script>
@@ -53,18 +71,6 @@ firebase.auth().onAuthStateChanged(function(user) {
         <div class="timeDuration">
         </div>
     </div>
-    <script>
-    // Initialize Firebase
-    var config = {
-        apiKey: "AIzaSyBqaB_5x6WNZiU5RoSZ4aveLmuMgfs0m_0",
-        authDomain: "viban-44f1e.firebaseapp.com",
-        databaseURL: "https://viban-44f1e.firebaseio.com",
-        projectId: "viban-44f1e",
-        storageBucket: "viban-44f1e.appspot.com",
-        messagingSenderId: "150917914821"
-    };
-    firebase.initializeApp(config);
-    </script>
 </body>
 
 </html>

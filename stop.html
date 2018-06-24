@@ -72,13 +72,13 @@ firebase.auth().onAuthStateChanged(function(user) {
             console.log(startTime);
             var timeDuration = end - startTime;
             var Mins = Math.round(((timeDuration % 86400000) % 3600000) / 60000);
-            var rubyAmount = parseInt(Mins/20)*10;
+            // var rubyAmount = parseInt(Mins/20)*10;
             dbRef.ref(user.uid).update({
                 digTime: Mins,
-                ruby: rubyAmount
+                // ruby: rubyAmount
             });
             $(".timeDuration").append("<p>目前已挖礦" + Mins + "分</p>");
-            $(".timeDuration").append("<p>目前已挖到" + rubyAmount + "顆寶石</p>");
+            // $(".timeDuration").append("<p>目前已挖到" + rubyAmount + "顆寶石</p>");
         })
 
     } else {
@@ -132,7 +132,7 @@ if (window.DeviceOrientationEvent || window.DeviceMotionEvent) {
     <div class="contain">
         <div class="timeDuration" style="padding-left: 40%;padding-top: 7%;font-size: 15px">
         </div>
-        <button type="button" id="dig" onclick="window.location.href='index.html'">合成寶石</button>
+        <button type="button" id="dig" onclick="window.location.href='compound.html'">合成寶石</button>
     </div>
 </body>
 

@@ -2,7 +2,7 @@
 <html>
 
 <head>
-    <title>road1</title>
+    <title>Compound</title>
     <meta name="viewport" content="width=device-width; initial-scale=1.0">
     <link rel="stylesheet" style="text/css" href="compound.css" />
     <meta charset="utf-8">
@@ -44,7 +44,7 @@ firebase.auth().onAuthStateChanged(function(user) {
         // User is signed in.
         console.log(user.uid);
         // console.log(user.uid.time);
-
+        var end = new Date().getTime();
         dbRef.ref("/" + user.uid).on('value', function(snapshot) {
             var startTime = snapshot.val().time;
             console.log(startTime);
@@ -56,7 +56,7 @@ firebase.auth().onAuthStateChanged(function(user) {
                 ruby: rubyAmount
             });
             $(".timeDuration").append("<p>目前已挖礦" + Mins + "分</p>");
-            $(".timeDuration").append("<p>目前已挖到" + rubyAmount + "顆寶石</p>");
+            $(".timeDuration").append("<p>共合成" + rubyAmount + "顆寶石</p>");
         })
 
     } else {

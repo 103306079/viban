@@ -45,7 +45,7 @@ firebase.auth().onAuthStateChanged(function(user) {
         console.log(user.uid);
         // console.log(user.uid.time);
         var end = new Date().getTime();
-        dbRef.ref("/" + user.uid).on('value', function(snapshot) {
+        dbRef.ref("/" + user.uid).once('value', function(snapshot) {
             var startTime = snapshot.val().time;
             console.log(startTime);
             var timeDuration = end - startTime;
@@ -70,6 +70,8 @@ firebase.auth().onAuthStateChanged(function(user) {
     <div class="contain">
         <div class="timeDuration">
         </div>
+        <button type="button" class="btn btn-primary" id="go"><a href = "https://103306079.github.io/viban/change.html">去合成優惠券！</a></button>
+    </div>
     </div>
 </body>
 

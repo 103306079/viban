@@ -1,24 +1,25 @@
-@media screen and (max-width: 414px){
-.contain{
-	     
-    background-image: url('compound.png');        
-    background-repeat: no-repeat;        
-    position: relative;
-    display: center;        
-    width:375px;            
-    height: 667px;       
-    margin-left: auto;      
-    margin-right: auto;       
-  
+@media screen and (max-width: 414px) {
+    .contain {
 
-	}
-.timeDuration{
-        padding-top: 100px; 
+        background-image: url('compound.png');
+        background-repeat: no-repeat;
+        position: relative;
+        display: center;
+        width: 375px;
+        height: 667px;
+        margin-left: auto;
+        margin-right: auto;
     }
-    .timeDuration> p {
-        text-align:center;
-        font-size:24px;
+    .timeDuration {
+        padding-top: 100px;
+    }
+    .timeDuration>p {
+        text-align: center;
+        font-size: 24px;
     }
 
-
+    .btn {
+        background: #807598;
+        border: #807598;
+    }
 }

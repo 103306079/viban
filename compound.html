@@ -50,7 +50,7 @@ firebase.auth().onAuthStateChanged(function(user) {
             console.log(startTime);
             var timeDuration = end - startTime;
             var Mins = Math.round(((timeDuration % 86400000) % 3600000) / 60000);
-            var rubyAmount = parseInt(Mins / 20) * 10;
+            var rubyAmount = parseInt(Mins / 2);
             dbRef.ref(user.uid).update({
                 digTime: Mins,
                 ruby: rubyAmount

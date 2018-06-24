@@ -100,20 +100,20 @@ img{
     left: 275px;
     top: 183px;
     color: white;
-    font-size: 40px;
+    font-size: 12px;
 	}
 .cozy-coupon{
 	position: absolute;
     left: 275px;
     top: 333px;
     color: white;
-    font-size: 40px;
+    font-size: 12px;
 	}
 .dragon-coupon{
-	width:120px;
-	background-color: #bfb0d6;
 	position: absolute;
-    left: 255px;
-    top: 550px;
+    left: 275px;
+    top: 483px;
+    color: white;
+    font-size:12px;
 	}
 }

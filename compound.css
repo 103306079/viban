@@ -18,6 +18,11 @@
         font-size: 24px;
     }
 
+    .btn {
+        background: #807598;
+        border: #807598;
+    }
+
     .btn a {
         background: #807598;
         border: #807598;

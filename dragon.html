@@ -3,7 +3,7 @@
 
 <head>
     <title>Dragon</title>
-    <meta name="viewport" content="width=device-width; initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" style="text/css" href="dragon.css" />
     <meta charset="utf-8">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -59,26 +59,30 @@ firebase.auth().onAuthStateChanged(function(user) {
 
 
 function coupon() {
-    exchange = true;
-    if (exchange == true) {
+    if (exchange == false) {
         dbRef.ref("/" + currentUserId).once('value', function(snapshot) {
             var dragonAmount = snapshot.val().dragon;
             console.log(dragonAmount);
-            dragonAmount = dragonAmount - 1;
-            dbRef.ref(currentUserId).update({
-                dragon: dragonAmount
-            });
+            if (dragonAmount >= 1) {
+                exchange = true;
+                dragonAmount = dragonAmount - 1;
+                dbRef.ref(currentUserId).update({
+                    dragon: dragonAmount
+                });
+                alert("兌換成功！");
+            } else {
+                alert("優惠券不足！");
+            }
         });
         exchange = false;
     }
     console.log(exchange);
-    alert("兌換成功！");
 }
 </script>
 
 <body>
     <div class="contain">
-        <div class="coupon" style="padding-top: 80%; padding-left: 50%; font-size: 20px"></div>
+        <div class="coupon" style="padding-top: 100%; padding-left:60%; font-size: 20px"></div>
         <button type="button" class="btn btn-info btn-lg" id="home" onclick="window.location.href='index.html'">回首頁</button>
         <div class="bo">
             <button type="button" class="btn btn-info btn-lg" id="collect" onclick="window.location.href='change.html'"></button>

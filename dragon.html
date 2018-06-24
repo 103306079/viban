@@ -69,6 +69,7 @@ function coupon() {
                 dbRef.ref(currentUserId).update({
                     dragon: dragonAmount
                 });
+                location.reload();
                 alert("兌換成功！");
             } else {
                 alert("優惠券不足！");

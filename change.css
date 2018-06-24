@@ -95,4 +95,25 @@ img{
     color: white;
     font-size: 40px;
 }
+.deme-coupon{
+	position: absolute;
+    left: 275px;
+    top: 183px;
+    color: white;
+    font-size: 40px;
+	}
+.cozy-coupon{
+	position: absolute;
+    left: 275px;
+    top: 333px;
+    color: white;
+    font-size: 40px;
+	}
+.dragon-coupon{
+	width:120px;
+	background-color: #bfb0d6;
+	position: absolute;
+    left: 255px;
+    top: 550px;
+	}
 }

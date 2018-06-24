@@ -32,4 +32,13 @@
     top: 610px;
 	  font-size:20px;
     }
+	#goMining{
+		width:120px;
+	background-color: #bfb0d6;
+	    border-color: #807598;
+	position: absolute;
+    left: 30px;
+    top: 580px;
+	  font-size:20px;
+	}
 }

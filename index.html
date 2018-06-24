@@ -104,16 +104,16 @@ firebase.auth().onAuthStateChanged(function(user) {
 });
 
 
-function writeUserData() {
-    firebase.auth().getRedirectResult().then(function(result) {
-        var user = result.user;
-        dbRef.ref(user.uid).update({
-            time: 0,
-            digTime: 0,
-            ruby: 0
-        });
-    });
-}
+// function writeUserData() {
+//     firebase.auth().getRedirectResult().then(function(result) {
+//         var user = result.user;
+//         dbRef.ref(user.uid).update({
+//             time: 0,
+//             digTime: 0,
+//             ruby: 0
+//         });
+//     });
+// }
 //cookie
 // var decodedCookie = decodeURIComponent(document.cookie);
 // console.log(decodedCookie);

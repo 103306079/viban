@@ -98,28 +98,28 @@ img{
 .ruby{
 	position: absolute;
     left: 135px;
-    top: 50px;
+    top: 20px;
     color: white;
-    font-size:30px;
+    font-size:20px;
 	}
 .deme-coupon{
 	position: absolute;
     left: 225px;
-    top: 213px;
+    top: 183px;
     color: white;
     font-size: 12px;
 	}
 .cozy-coupon{
 	position: absolute;
     left: 225px;
-    top: 363px;
+    top: 333px;
     color: white;
     font-size: 12px;
 	}
 .dragon-coupon{
 	position: absolute;
     left: 225px;
-    top: 513px;
+    top: 483px;
     color: white;
     font-size:12px;
 	}

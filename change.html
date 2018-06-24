@@ -8,7 +8,119 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script src="https://www.gstatic.com/firebasejs/4.12.1/firebase.js"></script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-121084620-1"></script>
 </head>
+<script>
+// Initialize Firebase
+var config = {
+    apiKey: "AIzaSyBqaB_5x6WNZiU5RoSZ4aveLmuMgfs0m_0",
+    authDomain: "viban-44f1e.firebaseapp.com",
+    databaseURL: "https://viban-44f1e.firebaseio.com",
+    projectId: "viban-44f1e",
+    storageBucket: "viban-44f1e.appspot.com",
+    messagingSenderId: "150917914821"
+};
+firebase.initializeApp(config);
+var dbRef = firebase.database();
+var compound = false;
+//先把uid 儲存起來 之後都可以用
+// var currentUserId = "2genxkG8K0bMF3LryCWaN8EQVyA3";
+//進行註冊
+firebase.auth().onAuthStateChanged(function(user) {
+    console.log(user);
+    if (user) {
+        currentUserId = user.uid;
+        console.log(currentUserId);
+        dbRef.ref("/" + currentUserId).on('value', function(snapshot) {
+            var rubyAmount = snapshot.val().ruby;
+            var demeAmount = snapshot.val().deme;
+            var cozyAmount = snapshot.val().cozy;
+            var dragonAmount = snapshot.val().dragon;
+            console.log(rubyAmount);
+            $(".ruby").append("<p>目前已挖到" + rubyAmount + "顆寶石</p>");
+            $(".deme-coupon").append("<p>目前有" + demeAmount + "張優惠卷</p>");
+            $(".cozy-coupon").append("<p>目前有" + cozyAmount + "張優惠卷</p>");
+            $(".dragon-coupon").append("<p>目前有" + dragonAmount + "張優惠卷</p>");
+        });
+    }
+});
+function cozy() {
+    compound = true;
+    console.log(compound);
+    if (compound == true) {
+        dbRef.ref("/" + currentUserId).once('value', function(snapshot) {
+            var rubyAmount = snapshot.val().ruby;
+            var cozyAmount = snapshot.val().cozy;
+            var digTime = snapshot.val().digTime;
+            console.log(rubyAmount);
+            if (rubyAmount >= 10) {
+                rubyAmount = rubyAmount - 10;
+                cozyAmount = cozyAmount + 1;
+                digTime = digTime - 20;
+                dbRef.ref(currentUserId).update({
+                    cozy: cozyAmount,
+                    ruby: rubyAmount
+                });
+            } else {
+                alert("寶石不足！！");
+            }
+        });
+        compound = false;
+    }
+    console.log(compound);
+}
+function dragon() {
+    compound = true;
+    console.log(compound);
+    if (compound == true) {
+        dbRef.ref("/" + currentUserId).once('value', function(snapshot) {
+            var rubyAmount = snapshot.val().ruby;
+            var dragonAmount = snapshot.val().dragon;
+            var digTime = snapshot.val().digTime;
+            console.log(rubyAmount);
+            if (rubyAmount >= 10) {
+                rubyAmount = rubyAmount - 10;
+                dragonAmount = dragonAmount + 1;
+                digTime = digTime - 20;
+                dbRef.ref(currentUserId).update({
+                    dragon: dragonAmount,
+                    ruby: rubyAmount
+                });
+            } else {
+                alert("寶石不足！！");
+            }
+        });
+        compound = false;
+    }
+    console.log(compound);
+}
+function deme() {
+    compound = true;
+    console.log(compound);
+    if (compound == true) {
+        dbRef.ref("/" + currentUserId).once('value', function(snapshot) {
+            var rubyAmount = snapshot.val().ruby;
+            var demeAmount = snapshot.val().deme;
+            var digTime = snapshot.val().digTime;
+            console.log(rubyAmount);
+            if (rubyAmount >= 10) {
+                rubyAmount = rubyAmount - 10;
+                demeAmount = demeAmount + 1;
+                digTime = digTime - 20;
+                dbRef.ref(currentUserId).update({
+                    deme: demeAmount,
+                    ruby: rubyAmount
+                });
+            } else {
+                alert("寶石不足！！");
+            }
+        });
+        compound = false;
+    }
+    console.log(compound);
+}
+</script>
 <body>
 <div class="contain">
 	<button type="button" class="btn btn-info btn-lg" id="home" onclick="window.location.href='index.html'">回首頁</button>

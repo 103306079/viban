@@ -18,9 +18,9 @@
         font-size: 24px;
     }
 
-    .btn {
+    .btn a {
         background: #807598;
         border: #807598;
-        color: #000000; 
+        padding-bottom: 10%;
     }
 }

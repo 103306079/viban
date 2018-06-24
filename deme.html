@@ -68,6 +68,7 @@ function coupon() {
                 dbRef.ref(currentUserId).update({
                     deme: demeAmount
                 });
+                location.reload();
                 alert("兌換成功！");
             } else {
                 alert("優惠券不足！");

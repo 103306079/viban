@@ -58,20 +58,25 @@ firebase.auth().onAuthStateChanged(function(user) {
 
 
 function coupon() {
-    exchange = true;
-    if (exchange == true) {
+    if (exchange == false) {
         dbRef.ref("/" + currentUserId).once('value', function(snapshot) {
             var cozyAmount = snapshot.val().cozy;
             console.log(cozyAmount);
-            cozyAmount = cozyAmount - 1;
-            dbRef.ref(currentUserId).update({
-                cozy: cozyAmount
-            });
+            if (cozyAmount >= 1) {
+                exchange = true;
+                cozyAmount = cozyAmount - 1;
+                dbRef.ref(currentUserId).update({
+                    cozy: cozyAmount
+                });
+                alert("兌換成功！");
+            } else {
+                alert("優惠券不足！");
+            }
         });
         exchange = false;
     }
     console.log(exchange);
-    alert("兌換成功！");
+}
 }
 </script>
 
